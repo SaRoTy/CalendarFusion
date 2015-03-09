@@ -5,12 +5,12 @@ import java.net.URL;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class Adapter implements IAdapter
+public abstract class Adapter implements IAdapter
 {
     protected URL url;
 
     public Adapter(URL url)
     {
-        //lol'd
+        this.url = url;
     }
 }

@@ -1,6 +1,7 @@
 package com.saroty.ter.adapter.factory;
 
 import com.saroty.ter.adapter.Adapter;
+import com.saroty.ter.adapter.exception.NoAdapterFoundException;
 
 import java.net.URL;
 
@@ -9,5 +10,5 @@ import java.net.URL;
  */
 public interface IAdapterFactory
 {
-    Adapter makeAdapter(URL url);
+    Adapter makeAdapter(URL url) throws NoAdapterFoundException;
 }
