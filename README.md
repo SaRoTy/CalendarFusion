@@ -7,7 +7,7 @@
 Pour cellcat, on a toujours un fichier xml (qui est mis en forme à l'aide d'un fichier xsl, qu'on peut ignorer).
 
 La node principale s'appele timetable (oui on s'en branle :D).
-On a ensuite une node __options__ formaté come ceci : 
+On a ensuite une node __option__ formaté come ceci : 
 
 ```xml
 <option combined="0" totalweeks="0" showemptydays="1" dayclass="reverse">
@@ -32,7 +32,7 @@ On a ensuite une node __options__ formaté come ceci :
 
 (Ces options sont pour le langage surtout, mais on les utiliseras pour faire plus *propre* ^_^)
 
-La suite consiste en une succesion de node de type __style__ :
+La suite consiste en une succesion de node de type __span__ :
 
 ```xml
 <span id="0" date="02/03/2015" rawix="29" rawlen="1">
@@ -59,7 +59,7 @@ La suite consiste en une succesion de node de type __style__ :
 
 Elle servent à crée la structure de l'emplois du temps.
 
-Enfin, le plus important, les nodes de type events :
+Enfin, le plus important, les nodes de type event :
 
 ```xml
 <event id="58055" colour="#D3D3FF">
