@@ -1,0 +1,2339 @@
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ttss.xsl"?>
+<timetable>
+   <option combined="0" totalweeks="0" showemptydays="1" dayclass="reverse">
+      <link href="g558.xml" class="xml">Imprimer</link>
+      <weeks>Semaines</weeks>
+      <dates>Dates</dates>
+      <week>Semaine</week>
+      <date>Date</date>
+      <all>Toutes les semaines</all>
+      <notes>Remarques</notes>
+      <id>ID</id>
+      <tag>Champs Libre</tag>
+      <footer>
+         Publié le 06/03/2015 07:18:23 - Université Toulouse III -  Paul Sabatier
+         <br />
+         Créé par
+         <a href="http://www.celcat.com" target="_parent">CELCAT Timetabler Web Publisher</a>
+      </footer>
+      <subheading>Emploi du temps Groupe - L3 info - S1 - G 2.1</subheading>
+   </option>
+   <property />
+   <span id="0" date="02/03/2015" rawix="29" rawlen="1">
+      <description>Sem 10, commençant le 02/03/2015</description>
+      <title>10</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="1" date="09/03/2015" rawix="30" rawlen="1">
+      <description>Sem 11, commençant le 09/03/2015</description>
+      <title>11</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="2" date="16/03/2015" rawix="31" rawlen="1">
+      <description>Sem 12, commençant le 16/03/2015</description>
+      <title>12</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="3" date="23/03/2015" rawix="32" rawlen="1">
+      <description>Sem 13, commençant le 23/03/2015</description>
+      <title>13</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="4" date="30/03/2015" rawix="33" rawlen="1">
+      <description>Sem 14, commençant le 30/03/2015</description>
+      <title>14</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="5" date="06/04/2015" rawix="34" rawlen="1">
+      <description>Sem 15, commençant le 06/04/2015</description>
+      <title>15</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="6" date="13/04/2015" rawix="35" rawlen="1">
+      <description>Sem 16, commençant le 13/04/2015</description>
+      <title>16</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="7" date="20/04/2015" rawix="36" rawlen="1">
+      <description>Sem 17, commençant le 20/04/2015</description>
+      <title>17</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="8" date="27/04/2015" rawix="37" rawlen="1">
+      <description>Sem 18, commençant le 27/04/2015</description>
+      <title>18</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="9" date="04/05/2015" rawix="38" rawlen="1">
+      <description>Sem 19, commençant le 04/05/2015</description>
+      <title>19</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="10" date="11/05/2015" rawix="39" rawlen="1">
+      <description>Sem 20, commençant le 11/05/2015</description>
+      <title>20</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="11" date="18/05/2015" rawix="40" rawlen="1">
+      <description>Sem 21, commençant le 18/05/2015</description>
+      <title>21</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="12" date="25/05/2015" rawix="41" rawlen="1">
+      <description>Sem 22, commençant le 25/05/2015</description>
+      <title>22</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="13" date="01/06/2015" rawix="42" rawlen="1">
+      <description>Sem 23, commençant le 01/06/2015</description>
+      <title>23</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="14" date="08/06/2015" rawix="43" rawlen="1">
+      <description>Sem 24, commençant le 08/06/2015</description>
+      <title>24</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="15" date="15/06/2015" rawix="44" rawlen="1">
+      <description>Sem 25, commençant le 15/06/2015</description>
+      <title>25</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="16" date="22/06/2015" rawix="45" rawlen="1">
+      <description>Sem 26, commençant le 22/06/2015</description>
+      <title>26</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="17" date="29/06/2015" rawix="46" rawlen="1">
+      <description>Sem 27, commençant le 29/06/2015</description>
+      <title>27</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="18" date="06/07/2015" rawix="47" rawlen="1">
+      <description>Sem 28, commençant le 06/07/2015</description>
+      <title>28</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <span id="19" date="13/07/2015" rawix="48" rawlen="1">
+      <description>Sem 29, commençant le 13/07/2015</description>
+      <title>29</title>
+      <alleventweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNN</alleventweeks>
+      <day id="0">
+         <name>lundi</name>
+      </day>
+      <day id="1">
+         <name>mardi</name>
+      </day>
+      <day id="2">
+         <name>mercredi</name>
+      </day>
+      <day id="3">
+         <name>jeudi</name>
+      </day>
+      <day id="4">
+         <name>vendredi</name>
+      </day>
+   </span>
+   <event id="58055" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="58055" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="58055" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="65425" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>GESTION</item>
+         </module>
+         <room>
+            <item>FSI / U4-214</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="65425" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>GESTION</item>
+         </module>
+         <room>
+            <item>FSI / U4-214</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="12" colour="#B8FDC1">
+      <day>0</day>
+      <prettytimes>07:45-23:00</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>23:00</endtime>
+      <category>FERIE</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources />
+   </event>
+   <event id="16" colour="#B8FDC1">
+      <day>0</day>
+      <prettytimes>07:45-23:00</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>23:00</endtime>
+      <category>FERIE</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNN</rawweeks>
+      <resources />
+   </event>
+   <event id="77356" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>C.M.I Partie Finance</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77356" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>C.M.I Partie Finance</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77356" colour="#D3D3FF">
+      <day>0</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>C.M.I Partie Finance</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="69561" colour="#FFD3A8">
+      <day>0</day>
+      <prettytimes>10:00-12:40</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:40</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI LECLERC (bât 4A)</item>
+            <item>FSI / AMPHI MATHIS (U1-A1)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40695" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40695" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40695" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40695" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40695" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40672" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40672" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40672" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40672" colour="#BED3D3">
+      <day>0</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="66187" colour="#D3D3A8">
+      <day>0</day>
+      <prettytimes>18:00-19:00</prettytimes>
+      <starttime>18:00</starttime>
+      <endtime>19:00</endtime>
+      <category>CONTROLE CONTINU</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. LOGIQUE</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI LE CHATELIER (bât 2A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="50028" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U1-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="50028" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U1-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68813" colour="#FFD3A8">
+      <day>1</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI GRIGNARD (bat 2A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="64151" colour="#D2C3CF">
+      <day>1</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="64151" colour="#D2C3CF">
+      <day>1</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="64151" colour="#D2C3CF">
+      <day>1</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="64151" colour="#D2C3CF">
+      <day>1</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U3-104</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77355" colour="#D3D3FF">
+      <day>1</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>C.M.I Partie Finance</item>
+         </module>
+         <room>
+            <item>FSI / U2-113</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68344" colour="#FFD3A8">
+      <day>1</day>
+      <prettytimes>10:15-12:15</prettytimes>
+      <starttime>10:15</starttime>
+      <endtime>12:15</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. LOGIQUE</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI GRIGNARD (bat 2A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40665" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40665" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40665" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40665" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68372" colour="#BED3D3">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68349" colour="#FFD3A8">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI GRIGNARD (bat 2A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68361" colour="#FFD3A8">
+      <day>1</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ARCHITECTURE</item>
+         </module>
+         <room>
+            <item>FSI / 1TP1-B07</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="67641" colour="#D2C3CF">
+      <day>1</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U4-100</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 Info - S1 - G3</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40641" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U1-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="40641" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U1-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42675" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42675" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42675" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / U4-202</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61726" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / 4TP2-M6 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="49835" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>GESTION</item>
+         </module>
+         <room>
+            <item>FSI / U4-103  Salles Thèses</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="49835" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>GESTION</item>
+         </module>
+         <room>
+            <item>FSI / U4-103  Salles Thèses</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="58074" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / U2-209 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61689" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / U2-112</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42406" colour="#D3D3FF">
+      <day>2</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>C.M.I Partie Finance</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI DAURAT U3</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68463" colour="#FFD3A8">
+      <day>2</day>
+      <prettytimes>10:00-12:40</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:40</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI LECLERC (bât 4A)</item>
+            <item>FSI / AMPHI MOLLIARD (bât 4A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77939" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-205 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68397" colour="#FFD3A8">
+      <day>2</day>
+      <prettytimes>14:30-16:30</prettytimes>
+      <starttime>14:30</starttime>
+      <endtime>16:30</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>MATHEMATIQUES</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI DAURAT U3</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68398" colour="#FFD3A8">
+      <day>2</day>
+      <prettytimes>14:30-16:30</prettytimes>
+      <starttime>14:30</starttime>
+      <endtime>16:30</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>GESTION</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI MATHIS (U1-A1)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="65242" colour="#BED3D3">
+      <day>2</day>
+      <prettytimes>15:30-17:45</prettytimes>
+      <starttime>15:30</starttime>
+      <endtime>17:45</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42624" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-105</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42624" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-105</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42624" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-105</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="42624" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / U3-105</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="15" colour="#B8FDC1">
+      <day>3</day>
+      <prettytimes>07:45-23:00</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>23:00</endtime>
+      <category>FERIE</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNN</rawweeks>
+      <resources />
+   </event>
+   <event id="41361" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>LANGUE VIVANTE</item>
+         </module>
+         <room>
+            <item>FSI / 4A-K02</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G2</item>
+         </group>
+      </resources>
+   </event>
+   <event id="41361" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>LANGUE VIVANTE</item>
+         </module>
+         <room>
+            <item>FSI / 4A-K02</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G2</item>
+         </group>
+      </resources>
+   </event>
+   <event id="41361" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>LANGUE VIVANTE</item>
+         </module>
+         <room>
+            <item>FSI / 4A-K02</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G2</item>
+         </group>
+      </resources>
+   </event>
+   <event id="41361" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>LANGUE VIVANTE</item>
+         </module>
+         <room>
+            <item>FSI / 4A-K02</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G2</item>
+         </group>
+      </resources>
+   </event>
+   <event id="41361" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>LANGUE VIVANTE</item>
+         </module>
+         <room>
+            <item>FSI / 4A-K02</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G2</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68369" colour="#FFD3A8">
+      <day>3</day>
+      <prettytimes>10:15-12:15</prettytimes>
+      <starttime>10:15</starttime>
+      <endtime>12:15</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>CONSTRUCTION REUT. COMP.</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI GRIGNARD (bat 2A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68381" colour="#FFD3A8">
+      <day>3</day>
+      <prettytimes>10:15-12:15</prettytimes>
+      <starttime>10:15</starttime>
+      <endtime>12:15</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TYPES ABSTRAITS</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI MAXWELL (bât 3TP2)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="58102" colour="#BED3D3">
+      <day>3</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / 4TP2-M7 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="58102" colour="#BED3D3">
+      <day>3</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / 4TP2-M7 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61711" colour="#D3D3FF">
+      <day>3</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / U2-117</item>
+         </room>
+         <group>
+            <item>L3 info - section 1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68465" colour="#FFD3A8">
+      <day>3</day>
+      <prettytimes>14:00-16:00</prettytimes>
+      <starttime>14:00</starttime>
+      <endtime>16:00</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>SGBD</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI DENJOY (U1-A2)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61843" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U4-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 info - S1 - G1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61843" colour="#D2C3CF">
+      <day>3</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / U4-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 info - S1 - G1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77546" colour="#D3D3FF">
+      <day>3</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ORIENTATION</item>
+         </module>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61643" colour="#FDFDE2">
+      <day>3</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>SOUTIEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U2-117</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61719" colour="#BED3D3">
+      <day>3</day>
+      <prettytimes>18:00-20:00</prettytimes>
+      <starttime>18:00</starttime>
+      <endtime>20:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>BIOLOGIE</item>
+         </module>
+         <room>
+            <item>FSI / 4TP2-M6 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="45721" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U4-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77412" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U2-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77412" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U2-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77412" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>07:45-09:45</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>09:45</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>METHODOLOGIE DE DVP LOG</item>
+         </module>
+         <room>
+            <item>FSI / U2-214</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 1.2</item>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="13" colour="#B8FDC1">
+      <day>4</day>
+      <prettytimes>07:45-23:00</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>23:00</endtime>
+      <category>FERIE</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNN</rawweeks>
+      <resources />
+   </event>
+   <event id="14" colour="#B8FDC1">
+      <day>4</day>
+      <prettytimes>07:45-23:00</prettytimes>
+      <starttime>07:45</starttime>
+      <endtime>23:00</endtime>
+      <category>FERIE</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNN</rawweeks>
+      <resources />
+   </event>
+   <event id="62493" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="62493" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="62493" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="62493" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="62493" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>10:00-12:00</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:00</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-204 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68347" colour="#FFD3A8">
+      <day>4</day>
+      <prettytimes>10:00-12:40</prettytimes>
+      <starttime>10:00</starttime>
+      <endtime>12:40</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ORIENTATION</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI BOREL (U2-A1)</item>
+            <item>FSI / AMPHI DE BROGLIE (U2-A2)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77398" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U4-212</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 Info - S1 - G3</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77398" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U4-212</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 Info - S1 - G3</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77398" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U4-212</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 Info - S1 - G3</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77927" colour="#BED3D3">
+      <day>4</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>TP</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <room>
+            <item>FSI / U3-201 TP-INFO</item>
+         </room>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77397" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>13:30-15:30</prettytimes>
+      <starttime>13:30</starttime>
+      <endtime>15:30</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>TESTS ET MAINTENANCE LOG.</item>
+         </module>
+         <group>
+            <item>L3 info - S1 - G 2.1</item>
+            <item>L3 Info - S1 - G3</item>
+         </group>
+      </resources>
+   </event>
+   <event id="49924" colour="#D2C3CF">
+      <day>4</day>
+      <prettytimes>14:00-17:00</prettytimes>
+      <starttime>14:00</starttime>
+      <endtime>17:00</endtime>
+      <category>COURS/TD</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI AMPERE (Bât 3A)</item>
+            <item>FSI / AMPHI COTTON (bât.3A)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="68458" colour="#FFD3A8">
+      <day>4</day>
+      <prettytimes>14:30-16:30</prettytimes>
+      <starttime>14:30</starttime>
+      <endtime>16:30</endtime>
+      <category>EXAMEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. EVENEMENTIELLE</item>
+         </module>
+         <room>
+            <item>FSI / AMPHI FRENET (U2-A3)</item>
+            <item>FSI / AMPHI VANDEL (U2-A4)</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="61639" colour="#FDFDE2">
+      <day>4</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>SOUTIEN</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>PROG. FONCTIONNELLE 2</item>
+         </module>
+         <room>
+            <item>FSI / U2-113</item>
+         </room>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77544" colour="#D3D3FF">
+      <day>4</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ORIENTATION</item>
+         </module>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77544" colour="#D3D3FF">
+      <day>4</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ORIENTATION</item>
+         </module>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+   <event id="77544" colour="#D3D3FF">
+      <day>4</day>
+      <prettytimes>15:45-17:45</prettytimes>
+      <starttime>15:45</starttime>
+      <endtime>17:45</endtime>
+      <category>COURS</category>
+      <prettyweeks />
+      <rawweeks>NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNYNNNNNNNNNNNNNNNNNNNN</rawweeks>
+      <resources>
+         <module>
+            <item>ORIENTATION</item>
+         </module>
+         <group>
+            <item>L3 Info</item>
+         </group>
+      </resources>
+   </event>
+</timetable>
+
