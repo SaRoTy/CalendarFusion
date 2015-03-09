@@ -7,9 +7,9 @@ import java.net.URL;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class CellcatXmlAdapter extends Adapter
+public class CellcatAdapter extends Adapter
 {
-    public CellcatXmlAdapter(URL url)
+    public CellcatAdapter(URL url)
     {
         super(url);
     }

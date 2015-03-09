@@ -1,7 +1,7 @@
 package com.saroty.ter.adapter.factory;
 
 import com.saroty.ter.adapter.Adapter;
-import com.saroty.ter.adapter.cellcat.CellcatXmlAdapter;
+import com.saroty.ter.adapter.cellcat.CellcatAdapter;
 import com.saroty.ter.adapter.exception.NoAdapterFoundException;
 import com.saroty.ter.adapter.factory.enums.VerifiedCellcatHostsEnum;
 
@@ -18,13 +18,13 @@ public class AdapterFactory implements IAdapterFactory
     {
         if(VerifiedCellcatHostsEnum.contains(url.getHost()))
             return makeCellcat(url);
-        throw new NoAdapterFoundException(url); //TODO: Exceptions plus spécifique
+        throw new NoAdapterFoundException(url); //TODO: Exceptions plus spécifiques
     }
 
     private Adapter makeCellcat(URL url) throws NoAdapterFoundException
     {
         if(url.getPath().endsWith(".xml"))
-            return new CellcatXmlAdapter(url);
+            return new CellcatAdapter(url);
 
         throw new NoAdapterFoundException(url);
     }

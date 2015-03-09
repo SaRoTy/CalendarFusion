@@ -3,7 +3,7 @@ package com.saroty.ter.schedule.time;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class LocalTime
+public class LocalTime implements Comparable<LocalTime>
 {
     private int hour;
     private int minute;
@@ -48,5 +48,16 @@ public class LocalTime
     public int getSecond()
     {
         return second;
+    }
+
+    public int convertToSecond()
+    {
+        return (hour * 3600 + minute * 60 + second);
+    }
+
+    @Override
+    public int compareTo(LocalTime other)
+    {
+        return (this.convertToSecond() - other.convertToSecond());
     }
 }
