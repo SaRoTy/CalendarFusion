@@ -1,6 +1,9 @@
 package com.saroty.ter.adapter.cellcat;
 
 import com.saroty.ter.adapter.Adapter;
+import com.saroty.ter.schedule.ScheduleTable;
+
+import org.apache.http.HttpResponse;
 
 import java.net.URL;
 
@@ -9,8 +12,20 @@ import java.net.URL;
  */
 public class CellcatAdapter extends Adapter
 {
-    public CellcatAdapter(URL url)
+    public CellcatAdapter(URL url, boolean trusted)
     {
-        super(url);
+        super(url, trusted);
+    }
+
+
+    @Override
+    public ScheduleTable adapt()
+    {
+        ScheduleTable table = new ScheduleTable();
+        HttpResponse response = loadUrl();
+
+        System.out.println(response.getEntity().getContentType());
+
+        return table;
     }
 }

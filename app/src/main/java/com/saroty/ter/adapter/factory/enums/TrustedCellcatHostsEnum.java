@@ -3,12 +3,12 @@ package com.saroty.ter.adapter.factory.enums;
 /**
  * Created by root on 09/03/15.
  */
-public enum VerifiedCellcatHostsEnum
+public enum TrustedCellcatHostsEnum
 {
     CELLCATFSI_UPSTLSE_FR("celcatfsi.ups-tlse.fr");
     private String host;
 
-    private VerifiedCellcatHostsEnum(String host)
+    private TrustedCellcatHostsEnum(String host)
     {
         this.host = host;
     }
@@ -20,9 +20,10 @@ public enum VerifiedCellcatHostsEnum
 
     public static boolean contains(String host)
     {
-        for(VerifiedCellcatHostsEnum e : VerifiedCellcatHostsEnum.values())
+        for (TrustedCellcatHostsEnum e : TrustedCellcatHostsEnum.values())
         {
-            if(host == e.getHost()) return true;
+            if (host.equals(e.getHost()))
+                return true;
         }
         return false;
     }
