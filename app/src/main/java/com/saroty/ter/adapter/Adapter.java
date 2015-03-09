@@ -11,6 +11,6 @@ public class Adapter implements IAdapter
 
     public Adapter(URL url)
     {
-
+        //lol'd
     }
 }
