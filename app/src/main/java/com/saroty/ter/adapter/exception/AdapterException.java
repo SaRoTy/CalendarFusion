@@ -7,7 +7,7 @@ import java.net.URL;
  */
 public abstract class AdapterException extends Exception
 {
-    protected URL url;
+    protected URL url; //TODO: Url possiblement inutile.
 
     public AdapterException(URL url)
     {

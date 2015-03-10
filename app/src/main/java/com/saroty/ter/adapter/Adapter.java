@@ -1,5 +1,6 @@
 package com.saroty.ter.adapter;
 
+import com.saroty.ter.adapter.exception.AdapterConnectionException;
 import com.saroty.ter.web.ssl.InsecureSSLSocketFactory;
 
 import org.apache.http.HttpResponse;
@@ -40,19 +41,15 @@ public abstract class Adapter implements IAdapter
             this.httpClient = new DefaultHttpClient();
     }
 
-    protected HttpResponse loadUrl()
+    protected HttpResponse loadUrl() throws AdapterConnectionException
     {
         try
         {
             return httpClient.execute(new HttpGet(url.toURI()));
-        } catch (IOException e)
+        } catch (Exception e)
         {
-            e.printStackTrace();//TODO: Throw exception
-        } catch (URISyntaxException e)
-        {
-            e.printStackTrace();//TODO: Throw exception
+            throw new AdapterConnectionException(url);
         }
-        return null;
     }
 
     private DefaultHttpClient createInsecureClient()

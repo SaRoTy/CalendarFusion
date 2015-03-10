@@ -35,6 +35,6 @@ public class AdaptScheduleTask extends AsyncTask<URL, Integer, ScheduleTable>
     public void onPostExecute(ScheduleTable table)
     {
         if (exception != null)
-            System.out.println("Erreur à l'adaptation : " + exception.toString());
+            exception.printStackTrace();
     }
 }

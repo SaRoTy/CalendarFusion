@@ -1,5 +1,6 @@
 package com.saroty.ter.adapter;
 
+import com.saroty.ter.adapter.exception.AdapterException;
 import com.saroty.ter.schedule.ScheduleTable;
 
 /**
@@ -7,5 +8,5 @@ import com.saroty.ter.schedule.ScheduleTable;
  */
 public interface IAdapter
 {
-    public ScheduleTable adapt();
+    public ScheduleTable adapt() throws AdapterException;
 }

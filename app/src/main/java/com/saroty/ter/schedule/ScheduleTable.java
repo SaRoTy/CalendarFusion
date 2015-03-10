@@ -1,5 +1,7 @@
 package com.saroty.ter.schedule;
 
+import android.util.SparseArray;
+
 import com.saroty.ter.schedule.time.DayOfWeek;
 
 import java.util.TreeMap;
@@ -9,15 +11,20 @@ import java.util.TreeMap;
  */
 public class ScheduleTable
 {
-    private TreeMap<DayOfWeek, ScheduleDay> days;
+    private SparseArray<ScheduleWeek> weeks;
 
     public ScheduleTable()
     {
-        days = new TreeMap<DayOfWeek, ScheduleDay>();
+        weeks = new SparseArray<ScheduleWeek>();
     }
 
-    public void addDay(DayOfWeek weekDay, ScheduleDay day)
+    public void addWeek(int weekNumber, ScheduleWeek week)
     {
-        days.put(weekDay, day);
+        weeks.append(weekNumber, week);
+    }
+
+    public int weekCount()
+    {
+        return weeks.size();
     }
 }
