@@ -2,22 +2,21 @@ package com.saroty.ter.task;
 
 import android.os.AsyncTask;
 
-import com.saroty.ter.adapter.exception.NoAdapterFoundException;
 import com.saroty.ter.adapter.factory.AdapterFactory;
-import com.saroty.ter.schedule.ScheduleTable;
+import com.saroty.ter.schedule.Schedule;
 
 import java.net.URL;
 
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class AdaptScheduleTask extends AsyncTask<URL, Integer, ScheduleTable>
+public class AdaptScheduleTask extends AsyncTask<URL, Integer, Schedule>
 {
     private static AdapterFactory factory = new AdapterFactory();
     private Exception exception;
 
     @Override
-    protected ScheduleTable doInBackground(URL... urls)
+    protected Schedule doInBackground(URL... urls)
     {
         //TODO: Implement for multiple URLS
 
@@ -32,7 +31,7 @@ public class AdaptScheduleTask extends AsyncTask<URL, Integer, ScheduleTable>
     }
 
     @Override
-    public void onPostExecute(ScheduleTable table)
+    public void onPostExecute(Schedule table)
     {
         if (exception != null)
             exception.printStackTrace();
