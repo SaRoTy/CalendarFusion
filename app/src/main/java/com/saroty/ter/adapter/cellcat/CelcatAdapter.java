@@ -118,6 +118,7 @@ public class CelcatAdapter extends Adapter
             return table;
         } catch (Exception e)
         {
+            e.printStackTrace();
             throw new AdapterParsingException(url);
         }
     }
