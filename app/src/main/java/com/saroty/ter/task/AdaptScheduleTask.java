@@ -33,7 +33,7 @@ public class AdaptScheduleTask extends AsyncTask<URL, Integer, Schedule>
     @Override
     public void onPostExecute(Schedule table)
     {
-        System.out.println(table);
+        //System.out.println(table);
         if (exception != null)
             exception.printStackTrace();
     }
