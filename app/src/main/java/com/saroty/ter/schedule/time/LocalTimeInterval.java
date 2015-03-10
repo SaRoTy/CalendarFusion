@@ -1,10 +1,13 @@
 package com.saroty.ter.schedule.time;
 
+import java.io.Serializable;
+
 /**
  * Created by Arthur on 10/03/2015.
  */
-public class LocalTimeInterval implements Comparable<LocalTimeInterval>
+public class LocalTimeInterval implements Comparable<LocalTimeInterval>, Serializable
 {
+    private static final long serialVersionUID = -7554035215853832772L;
     LocalTime start;
     LocalTime end;
 

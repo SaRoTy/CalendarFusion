@@ -13,11 +13,6 @@ public enum TrustedCelcatHostsEnum
         this.host = host;
     }
 
-    public String getHost()
-    {
-        return host;
-    }
-
     public static boolean contains(String host)
     {
         for (TrustedCelcatHostsEnum e : TrustedCelcatHostsEnum.values())
@@ -26,5 +21,10 @@ public enum TrustedCelcatHostsEnum
                 return true;
         }
         return false;
+    }
+
+    public String getHost()
+    {
+        return host;
     }
 }

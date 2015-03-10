@@ -1,16 +1,17 @@
 package com.saroty.ter.schedule;
 
 import com.saroty.ter.schedule.time.DayOfWeek;
-import com.saroty.ter.schedule.time.LocalTimeInterval;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.TreeMap;
 
 /**
  * Created by Arthur on 10/03/2015.
  */
-public class CourseWeek
+public class CourseWeek implements Serializable
 {
+    private static final long serialVersionUID = -6160484802650547377L;
     private TreeMap<DayOfWeek, CourseDay> days;
 
     public CourseWeek()
@@ -32,9 +33,9 @@ public class CourseWeek
     public String toString()
     {
         String result = "[Course]\n";
-        for(Map.Entry<DayOfWeek, CourseDay> entry : days.entrySet())
+        for (Map.Entry<DayOfWeek, CourseDay> entry : days.entrySet())
         {
-            result += "(" + entry.getKey().toString() +")\n" + entry.getValue().toString() + "\n";
+            result += "(" + entry.getKey().toString() + ")\n" + entry.getValue().toString() + "\n";
         }
         return result;
     }

@@ -1,22 +1,42 @@
 package com.saroty.ter.schedule;
 
-import android.util.SparseArray;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class Schedule
+public class Schedule implements Serializable
 {
-    private SparseArray<CourseWeek> weeks;
+    private static final long serialVersionUID = -7151757052818244043L;
+    private String name = "defaultSchedule";
+    private TreeMap<Integer, CourseWeek> weeks;
 
     public Schedule()
     {
-        weeks = new SparseArray<CourseWeek>();
+        weeks = new TreeMap<Integer, CourseWeek>();
+    }
+
+    public static Schedule loadSchedule(File loadFile) throws IOException, ClassNotFoundException
+    {
+        FileInputStream fis = new FileInputStream(loadFile);
+        ObjectInputStream is = new ObjectInputStream(fis);
+        Schedule schedule = (Schedule) is.readObject();
+        is.close();
+        fis.close();
+        return schedule;
     }
 
     public void addWeek(int weekNumber, CourseWeek week)
     {
-        weeks.append(weekNumber, week);
+        weeks.put(weekNumber, week);
     }
 
     public int weekCount()
@@ -33,12 +53,19 @@ public class Schedule
     public String toString()
     {
         String result = "[Schedule]\n";
-        int key;
-        for(int i = 0; i < weeks.size(); i++)
+        for (Map.Entry<Integer, CourseWeek> entry : weeks.entrySet())
         {
-            key = weeks.keyAt(i);
-            result += "(" + key + ")\n" + weeks.get(key);
+            result += "(" + entry.getKey() + ")\n" + entry.getValue();
         }
         return result;
+    }
+
+    public void saveSchedule(File saveFile) throws IOException
+    {
+        FileOutputStream fos = new FileOutputStream(saveFile);
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(this);
+        os.close();
+        fos.close();
     }
 }
