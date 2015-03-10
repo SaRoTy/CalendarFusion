@@ -1,6 +1,6 @@
 package com.saroty.ter.schedule;
 
-import com.saroty.ter.schedule.time.LocalTimeInterval;
+import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
 import java.util.Map;

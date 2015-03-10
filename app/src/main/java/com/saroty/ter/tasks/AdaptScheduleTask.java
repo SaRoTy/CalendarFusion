@@ -1,14 +1,11 @@
-package com.saroty.ter.task;
+package com.saroty.ter.tasks;
 
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.os.AsyncTask;
 
 import com.saroty.ter.adapter.factory.AdapterFactory;
 import com.saroty.ter.schedule.Schedule;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 /**

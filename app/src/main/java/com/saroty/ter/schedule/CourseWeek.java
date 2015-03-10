@@ -1,6 +1,6 @@
 package com.saroty.ter.schedule;
 
-import com.saroty.ter.schedule.time.DayOfWeek;
+import com.saroty.ter.time.DayOfWeek;
 
 import java.io.Serializable;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package com.saroty.ter.schedule.time;
+package com.saroty.ter.time;
 
 import java.io.Serializable;
 

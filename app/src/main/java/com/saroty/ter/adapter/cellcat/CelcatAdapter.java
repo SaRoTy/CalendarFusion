@@ -7,9 +7,9 @@ import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.CourseDay;
 import com.saroty.ter.schedule.CourseWeek;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.schedule.time.DayOfWeek;
-import com.saroty.ter.schedule.time.LocalTime;
-import com.saroty.ter.schedule.time.LocalTimeInterval;
+import com.saroty.ter.time.DayOfWeek;
+import com.saroty.ter.time.LocalTime;
+import com.saroty.ter.time.LocalTimeInterval;
 
 import org.apache.http.HttpResponse;
 import org.xmlpull.v1.XmlPullParser;
