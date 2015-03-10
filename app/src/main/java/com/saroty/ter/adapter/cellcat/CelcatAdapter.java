@@ -32,7 +32,6 @@ public class CelcatAdapter extends Adapter
     public Schedule adapt() throws AdapterException
     {
         HttpResponse response = loadUrl();
-        System.out.println(response.getEntity().getContentType());
         if (!response.getEntity().getContentType().getValue().endsWith("/xml"))
             throw new AdapterParsingException(url);
 
@@ -92,6 +91,8 @@ public class CelcatAdapter extends Adapter
                     {
                         if (xpp.getName().equalsIgnoreCase("day"))
                             curCourseDay = DayOfWeek.getById(Integer.parseInt(text));
+                        else if (xpp.getName().equalsIgnoreCase("category"))
+                            curCourse.setCategory(text);
                         else if (xpp.getName().equalsIgnoreCase("module"))
                             curCourse.setTitle(text);
                         else if (xpp.getName().equalsIgnoreCase("starttime"))
@@ -114,7 +115,6 @@ public class CelcatAdapter extends Adapter
                 }
                 eventType = xpp.next();
             }
-            System.out.println(table.weekCount());
             return table;
         } catch (Exception e)
         {

@@ -1,7 +1,9 @@
 package com.saroty.ter.schedule;
 
 import com.saroty.ter.schedule.time.DayOfWeek;
+import com.saroty.ter.schedule.time.LocalTimeInterval;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -24,5 +26,16 @@ public class CourseWeek
     public CourseDay getDay(DayOfWeek day)
     {
         return days.get(day);
+    }
+
+    @Override
+    public String toString()
+    {
+        String result = "[Course]\n";
+        for(Map.Entry<DayOfWeek, CourseDay> entry : days.entrySet())
+        {
+            result += "(" + entry.getKey().toString() +")\n" + entry.getValue().toString() + "\n";
+        }
+        return result;
     }
 }

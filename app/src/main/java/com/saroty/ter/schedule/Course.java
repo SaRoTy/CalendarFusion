@@ -30,6 +30,11 @@ public class Course
         return category;
     }
 
+    public String getTitle()
+    {
+        return title;
+    }
+
     public void setCategory(String category)
     {
         this.category = category;
@@ -38,5 +43,11 @@ public class Course
     public void setTitle(String title)
     {
         this.title = title;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "[Course] (" + category + ") " + title;
     }
 }

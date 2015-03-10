@@ -60,4 +60,10 @@ public class LocalTime implements Comparable<LocalTime>
     {
         return (this.convertToSecond() - other.convertToSecond());
     }
+
+    @Override
+    public String toString()
+    {
+        return hour + ":" + minute + ":" + second;
+    }
 }

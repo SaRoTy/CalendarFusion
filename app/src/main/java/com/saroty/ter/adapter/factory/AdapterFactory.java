@@ -17,11 +17,11 @@ public class AdapterFactory implements IAdapterFactory
     public Adapter makeAdapter(URL url) throws NoAdapterFoundException
     {
         if (TrustedCelcatHostsEnum.contains(url.getHost()))
-            return makeCellcat(url, true);
+            return makeCelcat(url, true);
         throw new NoAdapterFoundException(url);
     }
 
-    private Adapter makeCellcat(URL url, boolean trusted) throws NoAdapterFoundException
+    private Adapter makeCelcat(URL url, boolean trusted) throws NoAdapterFoundException
     {
         if (url.getPath().endsWith(".xml"))
             return new CelcatAdapter(url, true);

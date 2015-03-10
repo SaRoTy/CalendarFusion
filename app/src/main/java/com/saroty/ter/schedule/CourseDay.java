@@ -3,6 +3,7 @@ package com.saroty.ter.schedule;
 import com.saroty.ter.schedule.time.LocalTime;
 import com.saroty.ter.schedule.time.LocalTimeInterval;
 
+import java.util.Map;
 import java.util.TreeMap;
 
 /**
@@ -21,5 +22,16 @@ public class CourseDay
     public void addCourse(LocalTimeInterval interval, Course course)
     {
         courseList.put(interval, course);
+    }
+
+    @Override
+    public String toString()
+    {
+        String result = "[CourseDay]\n";
+        for(Map.Entry<LocalTimeInterval, Course> entry : courseList.entrySet())
+        {
+            result += "\t(" + entry.getKey().toString() + ")" + entry.getValue().toString() + "\n";
+        }
+        return result;
     }
 }

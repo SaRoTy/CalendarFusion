@@ -29,4 +29,10 @@ public class LocalTimeInterval implements Comparable<LocalTimeInterval>
     {
         return start.compareTo(another.getStart());
     }
+
+    @Override
+    public String toString()
+    {
+        return start.toString() + " - " + end.toString();
+    }
 }

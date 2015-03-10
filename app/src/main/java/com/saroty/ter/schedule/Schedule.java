@@ -28,4 +28,17 @@ public class Schedule
     {
         return weeks.get(weekNumber);
     }
+
+    @Override
+    public String toString()
+    {
+        String result = "[Schedule]\n";
+        int key;
+        for(int i = 0; i < weeks.size(); i++)
+        {
+            key = weeks.keyAt(i);
+            result += "(" + key + ")\n" + weeks.get(key);
+        }
+        return result;
+    }
 }
