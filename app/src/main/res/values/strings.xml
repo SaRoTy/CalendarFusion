@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Ter</string>
+    <string name="app_name">Schedule</string>
+    <string name="title_activity_schedules_list">Schedule list</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_schedules_list">Liste de vos calendriers</string>
 </resources>

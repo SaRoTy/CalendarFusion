@@ -25,16 +25,6 @@ public class Schedule implements Serializable
         weeks = new TreeMap<Integer, CourseWeek>();
     }
 
-    public static Schedule loadSchedule(File loadFile) throws IOException, ClassNotFoundException
-    {
-        FileInputStream fis = new FileInputStream(loadFile);
-        ObjectInputStream is = new ObjectInputStream(fis);
-        Schedule schedule = (Schedule) is.readObject();
-        is.close();
-        fis.close();
-        return schedule;
-    }
-
     public void addWeek(int weekNumber, CourseWeek week)
     {
         weeks.put(weekNumber, week);
@@ -43,6 +33,11 @@ public class Schedule implements Serializable
     public int weekCount()
     {
         return weeks.size();
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public CourseWeek getWeekByWeekNumber(int weekNumber)
@@ -59,14 +54,5 @@ public class Schedule implements Serializable
             result += "(" + entry.getKey() + ")\n" + entry.getValue();
         }
         return result;
-    }
-
-    public void saveSchedule(File saveFile) throws IOException
-    {
-        FileOutputStream fos = new FileOutputStream(saveFile);
-        ObjectOutputStream os = new ObjectOutputStream(fos);
-        os.writeObject(this);
-        os.close();
-        fos.close();
     }
 }

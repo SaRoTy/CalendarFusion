@@ -11,7 +11,7 @@ import java.net.URL;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class AdaptScheduleTask extends AsyncTask<URL, Integer, Schedule>
+public class AdaptScheduleTask extends AsyncTask<URL, Void, Schedule>
 {
     private static AdapterFactory factory = new AdapterFactory();
     private Exception exception;

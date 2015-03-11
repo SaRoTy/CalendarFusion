@@ -1,10 +1,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:schedule="http://schemas.android.com/apk/res-auto"
       xmlns:tools="http://schemas.android.com/tools"
       tools:context="com.saroty.ter.activities.SchedulesListActivity">
-<item
-        android:id="@+id/action_settings"
-        android:title="@string/action_settings"
+
+    <item
+        android:id="@+id/action_refresh"
         android:orderInCategory="100"
-        app:showAsAction="never"/>
+        schedule:showAsAction="ifRoom"
+        android:icon="@drawable/ic_refresh"
+        android:title="Refresh"/>
+
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="101"
+        schedule:showAsAction="ifRoom"
+        android:title="Settings">
+    </item>
 </menu>

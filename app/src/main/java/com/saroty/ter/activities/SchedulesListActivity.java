@@ -4,20 +4,29 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.saroty.ter.R;
+import com.saroty.ter.schedule.util.ScheduleFileUtil;
 
 
 public class SchedulesListActivity extends ActionBarActivity
 {
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedules_list);
+        //String[] list = ScheduleFileUtil.getScheduleList();
+        String[] list = {"Swagg schedule", "Even swagger schedule"};
+        adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                list);
+        ((ListView) findViewById(R.id.listView)).setAdapter(adapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -36,10 +45,10 @@ public class SchedulesListActivity extends ActionBarActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
+        /*if (id == R.id.action_settings)
         {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
