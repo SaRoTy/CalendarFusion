@@ -7,13 +7,6 @@
         android:id="@+id/action_refresh"
         android:orderInCategory="100"
         schedule:showAsAction="ifRoom"
-        android:icon="@drawable/ic_refresh"
-        android:title="Refresh"/>
-
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="101"
-        schedule:showAsAction="ifRoom"
-        android:title="Settings">
-    </item>
+        android:icon="@drawable/action_plus"
+        android:title="@string/add"/>
 </menu>
