@@ -1,6 +1,6 @@
-package com.saroty.ter.adapter;
+package com.saroty.ter.converters;
 
-import com.saroty.ter.adapter.exception.AdapterConnectionException;
+import com.saroty.ter.converters.exception.ConverterConnectionException;
 import com.saroty.ter.web.ssl.InsecureSSLSocketFactory;
 
 import org.apache.http.HttpResponse;
@@ -24,12 +24,12 @@ import java.security.KeyStore;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public abstract class Adapter implements IAdapter
+public abstract class Converter implements IConverter
 {
     protected URL url;
     protected HttpClient httpClient;
 
-    public Adapter(URL url, boolean trusted)
+    public Converter(URL url, boolean trusted)
     {
         this.url = url;
         if (trusted)
@@ -38,14 +38,14 @@ public abstract class Adapter implements IAdapter
             this.httpClient = new DefaultHttpClient();
     }
 
-    protected HttpResponse loadUrl() throws AdapterConnectionException
+    protected HttpResponse loadUrl() throws ConverterConnectionException
     {
         try
         {
             return httpClient.execute(new HttpGet(url.toURI()));
         } catch (Exception e)
         {
-            throw new AdapterConnectionException(url);
+            throw new ConverterConnectionException(url);
         }
     }
 

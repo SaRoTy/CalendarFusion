@@ -3,7 +3,7 @@ package com.saroty.ter.tasks;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import com.saroty.ter.adapter.factory.AdapterFactory;
+import com.saroty.ter.converters.factory.ConverterFactory;
 import com.saroty.ter.schedule.Schedule;
 
 import java.net.URL;
@@ -13,7 +13,7 @@ import java.net.URL;
  */
 public class AdaptScheduleTask extends AsyncTask<URL, Void, Schedule>
 {
-    private static AdapterFactory factory = new AdapterFactory();
+    private static ConverterFactory factory = new ConverterFactory();
     private Exception exception;
 
     protected Context context;

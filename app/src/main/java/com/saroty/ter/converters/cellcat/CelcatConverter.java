@@ -1,8 +1,8 @@
-package com.saroty.ter.adapter.cellcat;
+package com.saroty.ter.converters.cellcat;
 
-import com.saroty.ter.adapter.Adapter;
-import com.saroty.ter.adapter.exception.AdapterException;
-import com.saroty.ter.adapter.exception.AdapterParsingException;
+import com.saroty.ter.converters.Converter;
+import com.saroty.ter.converters.exception.ConverterException;
+import com.saroty.ter.converters.exception.ConverterParsingException;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.CourseDay;
 import com.saroty.ter.schedule.CourseWeek;
@@ -20,20 +20,20 @@ import java.net.URL;
 /**
  * Created by Arthur on 09/03/2015.
  */
-public class CelcatAdapter extends Adapter
+public class CelcatConverter extends Converter
 {
-    public CelcatAdapter(URL url, boolean trusted)
+    public CelcatConverter(URL url, boolean trusted)
     {
         super(url, trusted);
     }
 
 
     @Override
-    public Schedule adapt() throws AdapterException
+    public Schedule adapt() throws ConverterException
     {
         HttpResponse response = loadUrl();
         if (!response.getEntity().getContentType().getValue().endsWith("/xml"))
-            throw new AdapterParsingException(url);
+            throw new ConverterParsingException(url);
 
         XmlPullParserFactory factory = null;
         try
@@ -119,7 +119,7 @@ public class CelcatAdapter extends Adapter
         } catch (Exception e)
         {
             e.printStackTrace();
-            throw new AdapterParsingException(url);
+            throw new ConverterParsingException(url);
         }
     }
 }

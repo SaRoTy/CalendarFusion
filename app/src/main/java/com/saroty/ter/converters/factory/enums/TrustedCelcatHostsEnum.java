@@ -1,4 +1,4 @@
-package com.saroty.ter.adapter.factory.enums;
+package com.saroty.ter.converters.factory.enums;
 
 /**
  * Created by root on 09/03/15.

@@ -1,15 +1,15 @@
-package com.saroty.ter.adapter.exception;
+package com.saroty.ter.converters.exception;
 
 import java.net.URL;
 
 /**
  * Created by root on 09/03/15.
  */
-public abstract class AdapterException extends Exception
+public abstract class ConverterException extends Exception
 {
     protected URL url; //TODO: Url possiblement inutile.
 
-    public AdapterException(URL url)
+    public ConverterException(URL url)
     {
         this.url = url;
     }
