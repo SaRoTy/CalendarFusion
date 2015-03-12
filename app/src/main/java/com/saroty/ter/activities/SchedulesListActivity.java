@@ -1,14 +1,13 @@
 package com.saroty.ter.activities;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
-import com.saroty.ter.schedule.util.ScheduleFileUtil;
 
 
 public class SchedulesListActivity extends ActionBarActivity
@@ -22,7 +21,7 @@ public class SchedulesListActivity extends ActionBarActivity
         setContentView(R.layout.activity_schedules_list);
         //String[] list = ScheduleFileUtil.getScheduleList();
         String[] list = {"Swagg schedule", "Even swagger schedule"};
-        adapter=new ArrayAdapter<String>(this,
+        adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 list);
         ((ListView) findViewById(R.id.listView)).setAdapter(adapter);
