@@ -33,6 +33,11 @@ public class Schedule implements Serializable
         return name;
     }
 
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
     public CourseWeek getWeekByWeekNumber(int weekNumber)
     {
         return weeks.get(weekNumber);

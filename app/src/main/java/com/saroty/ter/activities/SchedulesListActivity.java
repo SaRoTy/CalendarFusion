@@ -1,5 +1,6 @@
 package com.saroty.ter.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -8,11 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
+import com.saroty.ter.adapters.ScheduleRowAdapter;
+import com.saroty.ter.models.list.ScheduleRowModel;
 
 
 public class SchedulesListActivity extends ActionBarActivity
 {
-    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -20,10 +22,9 @@ public class SchedulesListActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedules_list);
         //String[] list = ScheduleFileUtil.getScheduleList();
-        String[] list = {"Swagg schedule", "Even swagger schedule"};
-        adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                list);
+        ScheduleRowModel[] list = {new ScheduleRowModel("Emplois du temps L3 2.1", "C", null)};
+        ScheduleRowAdapter adapter = new ScheduleRowAdapter(this, list);
+
         ((ListView) findViewById(R.id.listView)).setAdapter(adapter);
     }
 
