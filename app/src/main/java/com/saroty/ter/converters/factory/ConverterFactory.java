@@ -5,6 +5,7 @@ import com.saroty.ter.converters.cellcat.CelcatConverter;
 import com.saroty.ter.converters.exception.NoConverterFoundException;
 import com.saroty.ter.converters.factory.enums.TrustedCelcatHostsEnum;
 
+import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
@@ -24,9 +25,16 @@ public class ConverterFactory implements IConverterFactory
     private Converter makeCelcat(URL url, boolean trusted) throws NoConverterFoundException
     {
         if (url.getPath().endsWith(".xml"))
-            return new CelcatConverter(url, true);
+            return new CelcatConverter(url, trusted);
         else if (url.getPath().endsWith(".html"))
-            ;//TODO: .html -> .xml
+        {
+            try
+            {
+                return new CelcatConverter(new URL(url.getPath().replaceAll(".html$", ".xml")), trusted);
+            } catch (MalformedURLException e)
+            {
+            }
+        }
         throw new NoConverterFoundException(url);
     }
 }

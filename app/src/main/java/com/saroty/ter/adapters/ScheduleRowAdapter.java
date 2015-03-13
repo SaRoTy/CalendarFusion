@@ -1,11 +1,13 @@
 package com.saroty.ter.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
@@ -23,7 +25,6 @@ public class ScheduleRowAdapter extends ArrayAdapter<ScheduleRowModel>
 
     public ScheduleRowAdapter(Context context, ScheduleRowModel[] modelsArrayList)
     {
-
         super(context, R.layout.schedules_list_row, modelsArrayList);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         DATA = modelsArrayList;
