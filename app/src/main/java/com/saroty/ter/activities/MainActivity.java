@@ -1,46 +1,35 @@
 package com.saroty.ter.activities;
 
-import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
+import android.support.v7.app.ActionBar;
+import android.support.v4.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListView;
+import android.view.ViewGroup;
+import android.os.Build;
 
 import com.saroty.ter.R;
-import com.saroty.ter.adapters.ScheduleRowAdapter;
-import com.saroty.ter.models.list.ScheduleRowModel;
+import com.saroty.ter.fragments.ScheduleListFragment;
 
-
-public class SchedulesListActivity extends ActionBarActivity
+public class MainActivity extends ActionBarActivity
 {
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_schedules_list);
-        //String[] list = ScheduleFileUtil.getScheduleList();
-        final ScheduleRowModel[] list = {new ScheduleRowModel("Emplois du temps L3 2.1", "C", null)};
-        ScheduleRowAdapter adapter = new ScheduleRowAdapter(this, list);
-
-        ListView listView = ((ListView) findViewById(R.id.listView));
-
-        listView.setAdapter(adapter);
-
-        listView.setOnItemClickListener(new OnItemClickListener()
+        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null)
         {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Log.v("OnClick", "okok");
-            }
-        });
-
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, new ScheduleListFragment())
+                    .commit();
+        }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)

@@ -29,7 +29,6 @@ public class ScheduleFileUtil
 
     public static void saveSchedule(Schedule schedule) throws IOException
     {
-        //TODO: Filtrer nom des fichiers
         FileOutputStream fos = new FileOutputStream(new File(ScheduleApplication.getContext().getFilesDir().getAbsolutePath() + SCHEDULES_DIR + schedule.getName()));
         ObjectOutputStream os = new ObjectOutputStream(fos);
         os.writeObject(schedule);
