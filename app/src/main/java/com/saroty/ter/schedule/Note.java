@@ -5,5 +5,6 @@ package com.saroty.ter.schedule;
  */
 public class Note
 {
+    private String name;
 
 }
