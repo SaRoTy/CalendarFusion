@@ -38,6 +38,25 @@ public class ScheduleFileUtil
         return ScheduleApplication.getContext().getFilesDir().list();
     }
 
+    private static void saveObject(Serializable object, String path) throws IOException
+    {
+        FileOutputStream fos = new FileOutputStream(new File(path));
+        ObjectOutputStream os = new ObjectOutputStream(fos);
+        os.writeObject(object);
+        os.close();
+        fos.close();
+    }
+
+    private static Object loadObject(String path) throws IOException, ClassNotFoundException
+    {
+        FileInputStream fis = new FileInputStream(new File(path));
+        ObjectInputStream is = new ObjectInputStream(fis);
+        Object object = is.readObject();
+        is.close();
+        fis.close();
+        return object;
+    }
+
     private static class ScheduleList implements Serializable
     {
         private static final long serialVersionUID = 5922156061064170476L;
@@ -60,24 +79,5 @@ public class ScheduleFileUtil
         {
             saveObject(this, ScheduleApplication.getContext().getFilesDir().getAbsolutePath() + SCHEDULES_DIR + "/" + SCHEDULES_LIST_FILE);
         }
-    }
-
-    private static void saveObject(Serializable object, String path) throws IOException
-    {
-        FileOutputStream fos = new FileOutputStream(new File(path));
-        ObjectOutputStream os = new ObjectOutputStream(fos);
-        os.writeObject(object);
-        os.close();
-        fos.close();
-    }
-
-    private static Object loadObject(String path) throws IOException, ClassNotFoundException
-    {
-        FileInputStream fis = new FileInputStream(new File(path));
-        ObjectInputStream is = new ObjectInputStream(fis);
-        Object object = is.readObject();
-        is.close();
-        fis.close();
-        return object;
     }
 }

@@ -10,15 +10,15 @@ public class ScheduleApplication extends Application
 {
     private static ScheduleApplication instance;
 
+    public static Context getContext()
+    {
+        return instance.getApplicationContext();
+    }
+
     @Override
     public void onCreate()
     {
         super.onCreate();
         instance = this;
-    }
-
-    public static Context getContext()
-    {
-        return instance.getApplicationContext();
     }
 }

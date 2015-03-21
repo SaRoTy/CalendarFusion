@@ -1,18 +1,15 @@
 package com.saroty.ter.activities;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.os.Build;
+import android.widget.ListView;
 
 import com.saroty.ter.R;
+import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.fragments.ScheduleListFragment;
+import com.saroty.ter.models.list.NavigationRowModel;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -22,10 +19,17 @@ public class MainActivity extends ActionBarActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ListView listView = ((ListView) findViewById(R.id.drawer_list));
+
+        final NavigationRowModel[] list = {new NavigationRowModel("a")};
+
+        listView.setAdapter(new NavigationRowAdapter(this, list));
+
         if (savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ScheduleListFragment())
+                    .add(R.id.frame_container, new ScheduleListFragment())
                     .commit();
         }
     }
@@ -45,7 +49,7 @@ public class MainActivity extends ActionBarActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        //int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
         /*if (id == R.id.action_settings)
