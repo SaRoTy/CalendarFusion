@@ -14,9 +14,8 @@ import java.net.URL;
 public class AdaptScheduleTask extends AsyncTask<URL, Void, Schedule>
 {
     private static ConverterFactory factory = new ConverterFactory();
-    private Exception exception;
-
     protected Context context;
+    private Exception exception;
 
     public AdaptScheduleTask(Context context)
     {

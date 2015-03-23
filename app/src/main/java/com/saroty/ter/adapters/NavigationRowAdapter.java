@@ -8,24 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
-import com.saroty.ter.models.list.ScheduleRowModel;
+import com.saroty.ter.models.list.NavigationRowModel;
 
 /**
- * Created by Arthur on 12/03/2015.
+ * Created by Arthur on 21/03/2015.
  */
-public class ScheduleRowAdapter extends ArrayAdapter<ScheduleRowModel>
+public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
 {
-    private final ScheduleRowModel[] DATA;
+
+    private final NavigationRowModel[] DATA;
     private LayoutInflater mInflater;
 
-    public ScheduleRowAdapter(Context context, ScheduleRowModel[] modelsArrayList)
+    public NavigationRowAdapter(Context context, NavigationRowModel[] modelsArrayList)
     {
-        super(context, R.layout.schedules_list_row, modelsArrayList);
+        super(context, R.layout.drawer_list_row, modelsArrayList);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         DATA = modelsArrayList;
     }
 
-    //TODO : Implement color if whe keep it
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
@@ -33,11 +33,10 @@ public class ScheduleRowAdapter extends ArrayAdapter<ScheduleRowModel>
 
         if (convertView == null)
         {
-            convertView = mInflater.inflate(R.layout.schedules_list_row, null);
+            convertView = mInflater.inflate(R.layout.drawer_list_row, null);
 
             holder = new ViewHolder();
-            holder.title = (TextView) convertView.findViewById(R.id.schedule_list_row_title);
-            holder.type = (TextView) convertView.findViewById(R.id.schedule_list_row_type);
+            holder.title = (TextView) convertView.findViewById(R.id.drawer_list_row_title);
 
             convertView.setTag(holder);
         } else
@@ -46,14 +45,12 @@ public class ScheduleRowAdapter extends ArrayAdapter<ScheduleRowModel>
         }
 
         holder.title.setText(DATA[position].getTitle());
-        holder.type.setText(DATA[position].getType());
 
         return convertView;
     }
 
-    private static class ViewHolder //Lié à la performence, trick refilé par google.
+    private static class ViewHolder
     {
         TextView title;
-        TextView type;
     }
 }
