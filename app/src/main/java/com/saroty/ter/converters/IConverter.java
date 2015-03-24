@@ -8,5 +8,5 @@ import com.saroty.ter.schedule.Schedule;
  */
 public interface IConverter
 {
-    public Schedule adapt() throws ConverterException;
+    public Schedule convert() throws ConverterException;
 }

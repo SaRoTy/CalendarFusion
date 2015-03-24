@@ -15,7 +15,7 @@ import java.net.URL;
 public class ConverterFactory implements IConverterFactory
 {
     @Override
-    public Converter makeAdapter(URL url) throws NoConverterFoundException
+    public Converter makeConverter(URL url) throws NoConverterFoundException
     {
         if (TrustedCelcatHostsEnum.contains(url.getHost()))
             return makeCelcat(url, true);

@@ -28,7 +28,7 @@ public class AdaptScheduleTask extends AsyncTask<URL, Void, Schedule>
         //TODO: Implement for multiple URLS
         try
         {
-            return factory.makeAdapter(urls[0]).adapt();
+            return factory.makeConverter(urls[0]).convert();
         } catch (Exception e)
         {
             this.exception = e;

@@ -29,7 +29,7 @@ public class CelcatConverter extends Converter
 
 
     @Override
-    public Schedule adapt() throws ConverterException
+    public Schedule convert() throws ConverterException
     {
         HttpResponse response = loadUrl();
         if (!response.getEntity().getContentType().getValue().endsWith("/xml"))

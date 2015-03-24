@@ -10,5 +10,5 @@ import java.net.URL;
  */
 public interface IConverterFactory
 {
-    Converter makeAdapter(URL url) throws NoConverterFoundException;
+    Converter makeConverter(URL url) throws NoConverterFoundException;
 }

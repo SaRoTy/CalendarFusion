@@ -22,7 +22,7 @@ public class MainActivity extends ActionBarActivity
 
         ListView listView = ((ListView) findViewById(R.id.drawer_list));
 
-        final NavigationRowModel[] list = {new NavigationRowModel("a")};
+        final NavigationRowModel[] list = {new NavigationRowModel("Page principale"), new NavigationRowModel("P")};
 
         listView.setAdapter(new NavigationRowAdapter(this, list));
 
