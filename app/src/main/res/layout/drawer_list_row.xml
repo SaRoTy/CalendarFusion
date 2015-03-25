@@ -6,11 +6,10 @@
 
     <TextView
         android:id="@+id/drawer_list_row_title"
-        android:paddingTop="6dp"
-        android:layout_width="32dp"
+        android:layout_width="wrap_content"
         android:layout_height="32dp"
+        android:layout_centerVertical="true"
         android:textColor="#FFFFFF"
-        android:textSize="18dp"
-        android:textStyle="bold"/>
+        android:textSize="12sp"/>
 
 </RelativeLayout>

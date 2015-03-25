@@ -13,7 +13,7 @@
     <!-- Listview to display slider menu -->
     <ListView
         android:id="@+id/drawer_list"
-        android:layout_width="240dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:choiceMode="singleChoice"
