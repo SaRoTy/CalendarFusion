@@ -1,6 +1,12 @@
 package com.saroty.ter.schedule;
 
+import android.util.Log;
+
+import com.saroty.ter.time.DayOfWeek;
+
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -38,9 +44,20 @@ public class Schedule implements Serializable
         this.name = name;
     }
 
-    public CourseWeek getWeekByWeekNumber(int weekNumber)
+    public CourseWeek getWeekByWeekNumber(int weekNumber){ return weeks.get(weekNumber); }
+
+    public CourseDay getDayByDate(Date date)
     {
-        return weeks.get(weekNumber);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+
+        //CourseWeek week = getWeekByWeekNumber(cal.get(Calendar.WEEK_OF_YEAR));
+
+       // DayOfWeek day = DayOfWeek.getById(cal.get(Calendar.DAY_OF_WEEK));
+        //week.getDay(day);
+
+        return null;
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.saroty.ter.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -9,6 +10,7 @@ import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
+import com.saroty.ter.fragments.ListCoursesOfDayFragment;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
 
@@ -29,8 +31,8 @@ public class MainActivity extends ActionBarActivity
 
         if (savedInstanceState == null)
         {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_container, new ScheduleListFragment())
+            getSupportFragmentManager()
+                    .beginTransaction().add(R.id.frame_container,new ListCoursesOfDayFragment())
                     .commit();
         }
     }

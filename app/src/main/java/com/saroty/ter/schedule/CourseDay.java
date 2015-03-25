@@ -23,6 +23,11 @@ public class CourseDay implements Serializable
     public void addCourse(LocalTimeInterval interval, Course course)
     {
         courseList.put(interval, course);
+
+    }
+
+    public Course[] toArray(){
+        return (Course[])courseList.values().toArray();
     }
 
     @Override
