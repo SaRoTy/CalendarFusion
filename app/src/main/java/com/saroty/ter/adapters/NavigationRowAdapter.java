@@ -18,10 +18,12 @@ public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
 
     private final NavigationRowModel[] DATA;
     private LayoutInflater mInflater;
+    private int mSelectedElement;
 
     public NavigationRowAdapter(Context context, NavigationRowModel[] modelsArrayList)
     {
         super(context, R.layout.drawer_list_row, modelsArrayList);
+        mSelectedElement = 0;
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         DATA = modelsArrayList;
     }
@@ -29,31 +31,19 @@ public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
     @Override
     public View getView(int position, View convertView, ViewGroup parent)
     {
-        ViewHolder holder;
+        if (mSelectedElement == position)
+            convertView = mInflater.inflate(R.layout.drawer_list_row_selected, null);
+        else
+            convertView = mInflater.inflate(R.layout.drawer_list_row, null);
 
-        if (convertView == null)
-        {
-            if(position == 1)//TODO:Remove this (test)
-                convertView = mInflater.inflate(R.layout.drawer_list_row_selected, null);
-            else
-                convertView = mInflater.inflate(R.layout.drawer_list_row, null);
-
-            holder = new ViewHolder();
-            holder.title = (TextView) convertView.findViewById(R.id.drawer_list_row_title);
-
-            convertView.setTag(holder);
-        } else
-        {
-            holder = (ViewHolder) convertView.getTag();
-        }
-
-        holder.title.setText(DATA[position].getTitle());
+        ((TextView) convertView.findViewById(R.id.drawer_list_row_title)).setText(DATA[position].getTitle());
 
         return convertView;
     }
 
-    private static class ViewHolder
+    public void setSelectedElement(int position)
     {
-        TextView title;
+        mSelectedElement = position;
+        notifyDataSetChanged();
     }
 }

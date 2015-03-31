@@ -1,10 +1,13 @@
 package com.saroty.ter.activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
@@ -14,6 +17,9 @@ import com.saroty.ter.models.list.NavigationRowModel;
 
 public class MainActivity extends ActionBarActivity
 {
+    private ListView mNavigationListView;
+    private DrawerLayout mDrawerLayout;
+    private NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Options")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -21,11 +27,10 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView listView = ((ListView) findViewById(R.id.drawer_list));
+        mDrawerLayout = ((DrawerLayout) findViewById(R.id.drawer_layout));
 
-        final NavigationRowModel[] list = {new NavigationRowModel("Page principale"), new NavigationRowModel("P")};
-
-        listView.setAdapter(new NavigationRowAdapter(this, list));
+        mNavigationListView = ((ListView) findViewById(R.id.drawer_list));
+        mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationModel));
 
         if (savedInstanceState == null)
         {
@@ -33,6 +38,16 @@ public class MainActivity extends ActionBarActivity
                     .add(R.id.frame_container, new ScheduleListFragment())
                     .commit();
         }
+
+        mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
+                ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
+                mDrawerLayout.closeDrawers();
+            }
+        });
     }
 
 

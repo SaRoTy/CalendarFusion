@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <item name="lightblue" type="color">#47A7E8</item>
+    <item name="lightblack" type="color">#1E1E1E</item>
+    <item name="white" type="color">#FFFFFF</item>
     <item name="black" type="color">#262626</item>
     <item name="gray" type="color">#D3D3D3</item>
     <item name="blue" type="color">#3089CE</item>
@@ -14,19 +15,4 @@
     <item name="darkgreen" type="color">#FF669900</item>
     <item name="darkorange" type="color">#FFFF8800</item>
     <item name="darkred" type="color">#FFCC0000</item>
-
-    <integer-array name="androidcolors">
-        <item>@color/black</item>
-        <item>@color/blue</item>
-        <item>@color/purple</item>
-        <item>@color/green</item>
-        <item>@color/orange</item>
-        <item>@color/red</item>
-        <item>@color/darkblue</item>
-        <item>@color/darkpurple</item>
-        <item>@color/darkgreen</item>
-        <item>@color/darkorange</item>
-        <item>@color/darkred</item>
-    </integer-array>
-
 </resources> 

@@ -40,17 +40,20 @@ public class ScheduleListFragment extends Fragment
         final AnimatedExpandableListView listView = ((AnimatedExpandableListView) rootView.findViewById(R.id.schedule_list_view));
 
         listView.setAdapter(adapter);
-
         int count =  adapter.getGroupCount(); //Moche, mais le seul moyen acctuel.
         for (int i = 0; i <count ; i++)
             listView.expandGroup(i);
 
-        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
+        {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
-                if (listView.isGroupExpanded(groupPosition)) {
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id)
+            {
+                if (listView.isGroupExpanded(groupPosition))
+                {
                     listView.collapseGroupWithAnimation(groupPosition);
-                } else {
+                } else
+                {
                     listView.expandGroupWithAnimation(groupPosition);
                 }
                 return true;
