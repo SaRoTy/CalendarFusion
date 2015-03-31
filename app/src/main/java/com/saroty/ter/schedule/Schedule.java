@@ -48,15 +48,21 @@ public class Schedule implements Serializable
 
     public CourseDay getDayByDate(Date date)
     {
+        CourseWeek week;
+        DayOfWeek day;
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
 
-        //CourseWeek week = getWeekByWeekNumber(cal.get(Calendar.WEEK_OF_YEAR));
+        if( !weeks.containsKey(cal.get(Calendar.WEEK_OF_YEAR)) )
+            Log.v("debug romain","nok contain");
 
-       // DayOfWeek day = DayOfWeek.getById(cal.get(Calendar.DAY_OF_WEEK));
-        //week.getDay(day);
+        if( (week = getWeekByWeekNumber(cal.get(Calendar.WEEK_OF_YEAR))) == null )
+            Log.v("debug romain","probleme week");
 
-        return null;
+        if( (day = DayOfWeek.getById(cal.get(Calendar.DAY_OF_WEEK))) == null )
+            Log.v("deug romain","probleme day");
+
+        return week.getDay(day);
 
     }
 
@@ -66,7 +72,8 @@ public class Schedule implements Serializable
         String result = "[Schedule]\n";
         for (Map.Entry<Integer, CourseWeek> entry : weeks.entrySet())
         {
-            result += "(" + entry.getKey() + ")\n" + entry.getValue();
+            //result += "(" + entry.getKey() + ")\n" + entry.getValue();
+            result += "(" + entry.getKey()+ ")\n";
         }
         return result;
     }
