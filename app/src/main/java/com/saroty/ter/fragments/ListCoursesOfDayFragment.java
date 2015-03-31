@@ -42,7 +42,6 @@ public class ListCoursesOfDayFragment extends Fragment{
         this.listDay = null;
         this.semaine = 33;
         this.adapter = null;
-        this.textView = new TextView(getActivity().getApplicationContext());
     }
 
     @Override
@@ -50,7 +49,7 @@ public class ListCoursesOfDayFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-
+        this.textView = new TextView(getActivity().getApplicationContext());
         mList.addHeaderView(textView);
 
         AdaptScheduleTask a = new AdaptScheduleTask(getActivity().getApplicationContext());
