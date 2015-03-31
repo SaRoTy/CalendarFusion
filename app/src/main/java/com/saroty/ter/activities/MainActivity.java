@@ -1,6 +1,7 @@
 package com.saroty.ter.activities;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -12,14 +13,16 @@ import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
+import com.saroty.ter.fragments.ListCoursesOfDayFragment;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
 
 public class MainActivity extends ActionBarActivity
 {
+    private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Options")};
+    private final Class[] mNavigationFragments = {ListCoursesOfDayFragment.class, ScheduleListFragment.class, null};
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
-    private NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Options")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,9 +37,7 @@ public class MainActivity extends ActionBarActivity
 
         if (savedInstanceState == null)
         {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_container, new ScheduleListFragment())
-                    .commit();
+
         }
 
         mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -44,10 +45,29 @@ public class MainActivity extends ActionBarActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
-                mDrawerLayout.closeDrawers();
+                onDrawerListItemClick(parent, view, position, id);
             }
         });
+    }
+
+    private void onDrawerListItemClick(AdapterView<?> parent, View view, int position, long id)
+    {
+        ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
+        mDrawerLayout.closeDrawers();
+
+        try
+        {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_container, (Fragment) mNavigationFragments[position].newInstance())
+                    .commit();
+        } catch (InstantiationException e)
+        {
+            e.printStackTrace();
+        } catch (IllegalAccessException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 
@@ -76,4 +96,6 @@ public class MainActivity extends ActionBarActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
