@@ -1,6 +1,7 @@
 package com.saroty.ter.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,8 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel> {
             convertView = mInflater.inflate(R.layout.course_of_day_list_row, null);
 
             holder = new ViewHolder();
-            holder.nom = (TextView) convertView.findViewById(R.id.course_day_nom);
+            holder.nom = (TextView) convertView.findViewById(R.id.course_list_row_title);
+            holder.type = (TextView) convertView.findViewById(R.id.course_list_row_type);
 
             convertView.setTag(holder);
         } else
@@ -44,6 +46,7 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel> {
             holder = (ViewHolder) convertView.getTag();
         }
 
+        holder.type.setText(""+(1+position));
         holder.nom.setText(DATA[position].getNom());
 
         return convertView;
@@ -52,5 +55,6 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel> {
     private static class ViewHolder //Lié à la performence, trick refilé par google.
     {
         TextView nom;
+        TextView type;
     }
 }

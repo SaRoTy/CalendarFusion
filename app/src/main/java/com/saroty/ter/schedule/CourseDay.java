@@ -17,7 +17,7 @@ public class CourseDay implements Serializable
 
     public CourseDay()
     {
-        courseList = new TreeMap<LocalTimeInterval, Course>();
+        courseList = new TreeMap<>();
     }
 
     public void addCourse(LocalTimeInterval interval, Course course)
@@ -26,8 +26,13 @@ public class CourseDay implements Serializable
 
     }
 
-    public Course[] toArray(){
-        return (Course[])courseList.values().toArray();
+    //TODO : à changer
+    /*public Course[] toArray(){
+        return courseList.values().toArray(new Course[courseList.values().size()]);
+    }*/
+
+    public TreeMap<LocalTimeInterval, Course> getCourses(){
+        return courseList;
     }
 
     @Override

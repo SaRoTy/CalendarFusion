@@ -9,12 +9,5 @@ import com.saroty.ter.schedule.CourseDay;
  */
 public class ModelToRowModel {
 
-    public static CourseRowModel[] CourseToRow(Course[] tab){
-        CourseRowModel[] result = new CourseRowModel[tab.length];
 
-        for(int i=0;i<tab.length;i++)
-            result[i] = new CourseRowModel(tab[i].getTitle());
-
-        return result;
-    }
 }
