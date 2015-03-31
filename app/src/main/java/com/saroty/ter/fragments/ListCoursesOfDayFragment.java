@@ -21,6 +21,7 @@ import com.saroty.ter.time.LocalTimeInterval;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
@@ -31,17 +32,20 @@ import java.util.concurrent.ExecutionException;
 public class ListCoursesOfDayFragment extends Fragment{
 
     private ListView mList;
-    private TreeMap<LocalTimeInterval,Course> listDay;
-    private int semaine;
-    private int jour;
-    private ListCourseOfDayRowAdapter adapter;
-    private  Schedule schedule = null;
-    private TextView textView;
+    private TreeMap<LocalTimeInterval,Course> mListDay;
+    private int mWeek;
+    private int mDay;
+    private int mYear;
+    private ListCourseOfDayRowAdapter mAdapter;
+    private  Schedule mSchedule = null;
+    private TextView mTextView;
 
     public ListCoursesOfDayFragment() {
-        this.listDay = null;
-        this.semaine = 33;
-        this.adapter = null;
+        this.mListDay = null;
+        this.mAdapter = null;
+        this.mWeek = Calendar.WEEK_OF_YEAR;
+        this.mDay = Calendar.DAY_OF_WEEK;
+        this.mYear = Calendar.YEAR;
     }
 
     @Override
@@ -49,14 +53,14 @@ public class ListCoursesOfDayFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-        this.textView = new TextView(getActivity().getApplicationContext());
-        mList.addHeaderView(textView);
+        this.mTextView = new TextView(getActivity().getApplicationContext());
+        mList.addHeaderView(mTextView);
 
         AdaptScheduleTask a = new AdaptScheduleTask(getActivity().getApplicationContext());
 
         try {
             a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
-            this.schedule = a.get();
+            this.mSchedule = a.get();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -67,66 +71,74 @@ public class ListCoursesOfDayFragment extends Fragment{
 
         loadEDT();
 
-        rootView.setOnTouchListener(new MyListener(getActivity().getApplicationContext()){
+        /*rootView.setOnTouchListener(new MyListener(getActivity().getApplicationContext()){
             @Override
             public void onSwipeLeft() {
-                jourAvant();
+                jourApres();
                 loadEDT();
             }
 
             @Override
             public void onSwipeRight() {
-                jourApres();
+                jourAvant();
                 loadEDT();
             }
-        });
+        });*/
 
         return rootView;
     }
 
     private int jourAvant(){
-        this.jour = (this.jour-1) % 7;
-        return this.jour;
+        this.mDay = (this.mDay -1) % 7;
+        return this.mDay;
     }
 
     private int jourApres(){
-        this.jour = (this.jour+1) % 7;
-        return this.jour;
+        this.mDay = (this.mDay +1) % 7;
+        return this.mDay;
     }
 
     private void loadEDT(){
         CourseRowModel[] model;
         int i=0;
 
-        listDay = schedule.getWeekByWeekNumber(this.semaine).getDay(DayOfWeek.getById(this.jour)).getCourses();
-        model = new CourseRowModel[listDay.size()];
+        //TODO : changer de hardcode
+        mListDay = mSchedule.getWeekByWeekNumber(33).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+        model = new CourseRowModel[mListDay.size()];
 
-        for(Map.Entry<LocalTimeInterval,Course> cours : listDay.entrySet()) {
+        for(Map.Entry<LocalTimeInterval,Course> cours : mListDay.entrySet()){
             model[i] = new CourseRowModel(cours.getValue().getTitle(),cours.getKey().toString());
             Log.v("debug romain - Model",cours.getValue().getTitle()+" "+cours.getKey().toString());
             i++;
         }
 
-        adapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(),model);
+        mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(),model);
 
-        mList.setAdapter(adapter);
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.set(Calendar.WEEK_OF_YEAR,this.mWeek);
+        calendar.set(Calendar.DAY_OF_WEEK,this.mDay);
+
+        setTitleListView(calendar.getTime().toString());
+
+        mList.setAdapter(mAdapter);
 
     }
 
     public void setTitleListView(String title){
-        this.textView.setText(title);
+        this.mTextView.setText(title);
     }
 
     public void onTaskFinished(Schedule s) {
         //...
 
 
-        //Course[] listDay = s.getDayByDate(new Date()).toArray();
+        //Course[] mListDay = s.getDayByDate(new Date()).toArray();
 
         //CourseDay list  = s.getDayByDate(new Date());
 
-        /*Log.v("debug task finished",""+listDay.length);
-        ListCourseOfDayRowAdapter adapter = new ListCourseOfDayRowAdapter(this.getActivity().getApplicationContext(), ModelToRowModel.CourseToRow(listDay));
+        /*Log.v("debug task finished",""+mListDay.length);
+        ListCourseOfDayRowAdapter adapter = new ListCourseOfDayRowAdapter(this.getActivity().getApplicationContext(), ModelToRowModel.CourseToRow(mListDay));
 
         mList.setAdapter(adapter);*/
     }

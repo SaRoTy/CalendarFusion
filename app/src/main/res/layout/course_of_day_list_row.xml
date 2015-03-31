@@ -11,6 +11,7 @@
         android:layout_height="32dp"
         android:layout_margin="8dp"
         android:background="@drawable/rectangle"
+        android:layout_centerVertical="true"
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:textSize="12sp"

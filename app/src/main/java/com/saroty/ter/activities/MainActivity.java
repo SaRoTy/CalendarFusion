@@ -14,6 +14,7 @@ import android.widget.ListView;
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.fragments.ListCoursesOfDayFragment;
+import com.saroty.ter.fragments.MyViewPager;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
 
@@ -43,6 +44,11 @@ public class MainActivity extends ActionBarActivity
                 onDrawerListItemClick(parent, view, position, id);
             }
         });
+
+        if(savedInstanceState == null)
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.frame_container,new MyViewPager())
+                    .commit();
     }
 
     private void onDrawerListItemClick(AdapterView<?> parent, View view, int position, long id)
