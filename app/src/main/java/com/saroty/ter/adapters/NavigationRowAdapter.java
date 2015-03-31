@@ -33,7 +33,10 @@ public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
 
         if (convertView == null)
         {
-            convertView = mInflater.inflate(R.layout.drawer_list_row, null);
+            if(position == 1)//TODO:Remove this (test)
+                convertView = mInflater.inflate(R.layout.drawer_list_row_selected, null);
+            else
+                convertView = mInflater.inflate(R.layout.drawer_list_row, null);
 
             holder = new ViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.drawer_list_row_title);

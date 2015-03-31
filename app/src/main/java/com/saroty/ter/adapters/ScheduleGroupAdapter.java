@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
 
+import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.saroty.ter.R;
 import com.saroty.ter.models.list.ScheduleGroupModel;
 
 /**
  * Created by Arthur on 12/03/2015.
  */
-public class ScheduleGroupAdapter extends BaseExpandableListAdapter
+public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExpandableListAdapter
 {
     private final ScheduleGroupModel[] DATA;
     private LayoutInflater mInflater;
@@ -29,12 +30,6 @@ public class ScheduleGroupAdapter extends BaseExpandableListAdapter
     public int getGroupCount()
     {
         return DATA.length;
-    }
-
-    @Override
-    public int getChildrenCount(int groupPosition)
-    {
-        return DATA[groupPosition].getRowCount();
     }
 
     @Override
@@ -91,7 +86,7 @@ public class ScheduleGroupAdapter extends BaseExpandableListAdapter
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
+    public View getRealChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
         ChildViewHolder holder;
 
@@ -113,6 +108,12 @@ public class ScheduleGroupAdapter extends BaseExpandableListAdapter
         holder.type.setText(DATA[groupPosition].getRow(childPosition).getType());
 
         return convertView;
+    }
+
+    @Override
+    public int getRealChildrenCount(int groupPosition)
+    {
+        return DATA[groupPosition].getRowCount();
     }
 
     @Override

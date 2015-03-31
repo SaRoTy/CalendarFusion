@@ -1,6 +1,7 @@
 package com.saroty.ter.activities;
 
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -23,7 +24,7 @@ public class MainActivity extends ActionBarActivity
 
         ListView listView = ((ListView) findViewById(R.id.drawer_list));
 
-        final NavigationRowModel[] list = {new NavigationRowModel("Page principale"), new NavigationRowModel("P")};
+        final NavigationRowModel[] list = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers")};
 
         listView.setAdapter(new NavigationRowAdapter(this, list));
 
@@ -33,6 +34,14 @@ public class MainActivity extends ActionBarActivity
                     .add(R.id.frame_container, new ScheduleListFragment())
                     .commit();
         }
+
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ListView mDrawerList = (ListView) findViewById(R.id.drawer_list);
+
+        int width = getResources().getDisplayMetrics().widthPixels * 2/3;
+        DrawerLayout.LayoutParams params = (android.support.v4.widget.DrawerLayout.LayoutParams) mDrawerList.getLayoutParams();
+        params.width = width;
+        mDrawerList.setLayoutParams(params);
     }
 
 
