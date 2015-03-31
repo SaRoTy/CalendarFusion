@@ -16,7 +16,6 @@ public class AdaptScheduleTask extends AsyncTask<URL, Void, Schedule>
     private static ConverterFactory factory = new ConverterFactory();
     protected Context context;
     private Exception exception;
-
     public AdaptScheduleTask(Context context)
     {
         this.context = context.getApplicationContext();
