@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.saroty.ter.Listener.MyListener;
 import com.saroty.ter.R;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
@@ -33,19 +34,13 @@ public class ListCoursesOfDayFragment extends Fragment{
 
     private ListView mList;
     private TreeMap<LocalTimeInterval,Course> mListDay;
-    private int mWeek;
-    private int mDay;
-    private int mYear;
     private ListCourseOfDayRowAdapter mAdapter;
-    private  Schedule mSchedule = null;
+    private Schedule mSchedule = null;
     private TextView mTextView;
 
     public ListCoursesOfDayFragment() {
         this.mListDay = null;
         this.mAdapter = null;
-        this.mWeek = Calendar.WEEK_OF_YEAR;
-        this.mDay = Calendar.DAY_OF_WEEK;
-        this.mYear = Calendar.YEAR;
     }
 
     @Override
@@ -56,54 +51,17 @@ public class ListCoursesOfDayFragment extends Fragment{
         this.mTextView = new TextView(getActivity().getApplicationContext());
         mList.addHeaderView(mTextView);
 
-        AdaptScheduleTask a = new AdaptScheduleTask(getActivity().getApplicationContext());
-
-        try {
-            a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
-            this.mSchedule = a.get();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         loadEDT();
 
-        /*rootView.setOnTouchListener(new MyListener(getActivity().getApplicationContext()){
-            @Override
-            public void onSwipeLeft() {
-                jourApres();
-                loadEDT();
-            }
-
-            @Override
-            public void onSwipeRight() {
-                jourAvant();
-                loadEDT();
-            }
-        });*/
-
         return rootView;
-    }
-
-    private int jourAvant(){
-        this.mDay = (this.mDay -1) % 7;
-        return this.mDay;
-    }
-
-    private int jourApres(){
-        this.mDay = (this.mDay +1) % 7;
-        return this.mDay;
     }
 
     private void loadEDT(){
         CourseRowModel[] model;
         int i=0;
 
-        //TODO : changer de hardcode
-        mListDay = mSchedule.getWeekByWeekNumber(33).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+        mListDay = ((MainActivity)this.getActivity()).getCours();
+
         model = new CourseRowModel[mListDay.size()];
 
         for(Map.Entry<LocalTimeInterval,Course> cours : mListDay.entrySet()){
@@ -116,8 +74,8 @@ public class ListCoursesOfDayFragment extends Fragment{
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.WEEK_OF_YEAR,this.mWeek);
-        calendar.set(Calendar.DAY_OF_WEEK,this.mDay);
+        calendar.set(Calendar.WEEK_OF_YEAR,((MainActivity)this.getActivity()).getmWeek());
+        calendar.set(Calendar.DAY_OF_WEEK,((MainActivity)this.getActivity()).getmDay());
 
         setTitleListView(calendar.getTime().toString());
 

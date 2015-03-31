@@ -41,7 +41,7 @@ public class MyViewPager extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_my_view_pager, container, false);
 
         myViewPagerAdapter =
-                new MyViewPagerAdapter(getActivity().getSupportFragmentManager());
+                new MyViewPagerAdapter(getFragmentManager());
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mViewPager.setAdapter(myViewPagerAdapter);

@@ -17,6 +17,17 @@ import com.saroty.ter.fragments.ListCoursesOfDayFragment;
 import com.saroty.ter.fragments.MyViewPager;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
+import com.saroty.ter.schedule.Course;
+import com.saroty.ter.schedule.Schedule;
+import com.saroty.ter.tasks.AdaptScheduleTask;
+import com.saroty.ter.time.DayOfWeek;
+import com.saroty.ter.time.LocalTimeInterval;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Calendar;
+import java.util.TreeMap;
+import java.util.concurrent.ExecutionException;
 
 public class MainActivity extends ActionBarActivity
 {
@@ -24,6 +35,15 @@ public class MainActivity extends ActionBarActivity
     private final Fragment[] mNavigationFragments = {new ListCoursesOfDayFragment(), new ScheduleListFragment(), null};
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
+    private Schedule mSchedule;
+    private int mDay;
+    private int mWeek;
+
+    public MainActivity(){
+        this.mWeek = 33;
+        this.mDay = Calendar.DAY_OF_WEEK;
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -44,6 +64,20 @@ public class MainActivity extends ActionBarActivity
                 onDrawerListItemClick(parent, view, position, id);
             }
         });
+
+        AdaptScheduleTask a = new AdaptScheduleTask(getApplicationContext());
+
+        try {
+            a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
+            this.mSchedule = a.get();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
         if(savedInstanceState == null)
             getSupportFragmentManager().beginTransaction()
@@ -85,6 +119,26 @@ public class MainActivity extends ActionBarActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public TreeMap<LocalTimeInterval,Course> getCours(){
+        return this.mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+    }
+
+    public void setmWeek(int week){
+        this.mWeek = week;
+    }
+
+    public void setmDay(int day){
+        this.mDay = day;
+    }
+
+    public int getmWeek(){
+        return this.mWeek;
+    }
+
+    public int getmDay(){
+        return this.mDay;
     }
 
 
