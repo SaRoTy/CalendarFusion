@@ -20,7 +20,7 @@ import com.saroty.ter.models.list.NavigationRowModel;
 public class MainActivity extends ActionBarActivity
 {
     private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Options")};
-    private final Class[] mNavigationFragments = {ListCoursesOfDayFragment.class, ScheduleListFragment.class, null};
+    private final Fragment[] mNavigationFragments = {new ListCoursesOfDayFragment(), new ScheduleListFragment(), null};
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
 
@@ -34,11 +34,6 @@ public class MainActivity extends ActionBarActivity
 
         mNavigationListView = ((ListView) findViewById(R.id.drawer_list));
         mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationModel));
-
-        if (savedInstanceState == null)
-        {
-
-        }
 
         mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -54,20 +49,9 @@ public class MainActivity extends ActionBarActivity
     {
         ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
         mDrawerLayout.closeDrawers();
-
-        try
-        {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_container, (Fragment) mNavigationFragments[position].newInstance())
-                    .commit();
-        } catch (InstantiationException e)
-        {
-            e.printStackTrace();
-        } catch (IllegalAccessException e)
-        {
-            e.printStackTrace();
-        }
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frame_container, mNavigationFragments[position])
+                .commit();
     }
 
 
