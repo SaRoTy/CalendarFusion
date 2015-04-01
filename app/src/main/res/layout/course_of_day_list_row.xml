@@ -7,10 +7,11 @@
 
     <TextView
         android:id="@+id/course_list_row_type"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:layout_margin="8dp"
-        android:background="@drawable/rectangle"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:layout_marginRight="5dp"
+        android:background="@color/blue"
         android:layout_centerVertical="true"
         android:gravity="center"
         android:textColor="#FFFFFF"

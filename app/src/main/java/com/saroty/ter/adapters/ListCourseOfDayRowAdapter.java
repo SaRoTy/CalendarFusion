@@ -46,7 +46,7 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel> {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.type.setText(""+(1+position));
+        holder.type.setText(DATA[position].getInter());
         holder.nom.setText(DATA[position].getNom());
 
         return convertView;

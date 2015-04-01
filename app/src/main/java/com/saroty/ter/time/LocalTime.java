@@ -67,6 +67,7 @@ public class LocalTime implements Comparable<LocalTime>, Serializable
     @Override
     public String toString()
     {
-        return hour + ":" + minute + ":" + second;
+        return String.format("%02d", hour) + ":" + String.format("%02d", minute);
+        // return hour + ":" + minute + ":" + second;
     }
 }
