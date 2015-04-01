@@ -16,36 +16,55 @@ import com.saroty.ter.fragments.ListCoursesOfDayFragment;
 import com.saroty.ter.fragments.MyViewPager;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
-import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.tasks.AdaptScheduleTask;
-import com.saroty.ter.time.DayOfWeek;
-import com.saroty.ter.time.LocalTimeInterval;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Calendar;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutionException;
+import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
 {
+    private static ArrayList<Schedule> mSchedules = new ArrayList<Schedule>();
+    private static int mCurrentSchedule = -1;
     private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Cours")};
     private final Fragment[] mNavigationFragments = {new ListCoursesOfDayFragment(), new ScheduleListFragment(), new MyViewPager()};
-
     private int mNavigationPosition = 0;
 
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
-    private Schedule mSchedule;
-    private int mDay;
-    private int mWeek;
 
-    public MainActivity(){
-        this.mWeek = 33;
-        this.mDay = Calendar.DAY_OF_WEEK;
+
+    public MainActivity()
+    {
     }
 
+    public static boolean hasCurrentSchedule()
+    {
+        return (mCurrentSchedule == -1);
+    }
+
+    public static Schedule getCurrentSchedule()
+    {
+        if (hasCurrentSchedule())
+            return mSchedules.get(mCurrentSchedule);
+        else
+            return null;
+    }
+
+    public static void setCurrentSchedule(Schedule s)
+    {
+        for (int i = 0; i < mSchedules.size(); i++)
+        {
+            if (mSchedules.get(i) == s)
+            {
+                mCurrentSchedule = i;
+                return;
+            }
+        }
+    }
+
+    public static ArrayList<Schedule> getSchedules()
+    {
+        return mSchedules;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -67,21 +86,7 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
-        AdaptScheduleTask a = new AdaptScheduleTask(getApplicationContext());
-
-        try {
-            a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
-            this.mSchedule = a.get();
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-
-        if(savedInstanceState == null)
+        if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction()
                     .add(R.id.frame_container, mNavigationFragments[mNavigationPosition])
                     .commit();
@@ -97,7 +102,6 @@ public class MainActivity extends ActionBarActivity
                 .commit();
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
@@ -111,31 +115,4 @@ public class MainActivity extends ActionBarActivity
     {
         return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
     }
-
-    public TreeMap<LocalTimeInterval, Course> getCours()
-    {
-        return this.mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
-    }
-
-    public int getmWeek()
-    {
-        return this.mWeek;
-    }
-
-    public void setmWeek(int week)
-    {
-        this.mWeek = week;
-    }
-
-    public int getmDay()
-    {
-        return this.mDay;
-    }
-
-    public void setmDay(int day)
-    {
-        this.mDay = day;
-    }
-
-
 }
