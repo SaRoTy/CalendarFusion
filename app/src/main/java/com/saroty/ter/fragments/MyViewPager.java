@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.saroty.ter.Listener.MyListener;
 import com.saroty.ter.R;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.adapters.MyViewPagerAdapter;
 import com.saroty.ter.schedule.Course;
@@ -31,6 +32,7 @@ public class MyViewPager extends Fragment {
 
     private MyViewPagerAdapter myViewPagerAdapter;
     private ViewPager mViewPager;
+    private MainActivity mActivity;
 
     public MyViewPager() {
 
@@ -40,11 +42,15 @@ public class MyViewPager extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_my_view_pager, container, false);
 
+        mActivity = (MainActivity)getActivity();
+
         myViewPagerAdapter =
-                new MyViewPagerAdapter(getFragmentManager());
+                new MyViewPagerAdapter(getFragmentManager(),mActivity);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mViewPager.setAdapter(myViewPagerAdapter);
+
+        mViewPager.setCurrentItem(mActivity.getmDay()+6);
 
         return rootView;
     }

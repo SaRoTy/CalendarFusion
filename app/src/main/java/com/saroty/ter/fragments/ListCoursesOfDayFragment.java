@@ -22,6 +22,7 @@ import com.saroty.ter.time.LocalTimeInterval;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
@@ -36,11 +37,15 @@ public class ListCoursesOfDayFragment extends Fragment{
     private TreeMap<LocalTimeInterval,Course> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
     private Schedule mSchedule = null;
-    private TextView mTextView;
+    private int mDay;
+    private int mWeek;
 
-    public ListCoursesOfDayFragment() {
+
+    public ListCoursesOfDayFragment(int day ,int week) {
         this.mListDay = null;
         this.mAdapter = null;
+        this.mDay = day;
+        this.mWeek = week;
     }
 
     @Override
@@ -48,8 +53,6 @@ public class ListCoursesOfDayFragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-        this.mTextView = new TextView(getActivity().getApplicationContext());
-        mList.addHeaderView(mTextView);
 
         loadEDT();
 
@@ -60,13 +63,16 @@ public class ListCoursesOfDayFragment extends Fragment{
         CourseRowModel[] model;
         int i=0;
 
-        mListDay = ((MainActivity)this.getActivity()).getCours();
+        mListDay = ((MainActivity)this.getActivity()).getCours(this.mDay,this.mWeek);
+
+        if(mListDay == null){
+            return;
+        }
 
         model = new CourseRowModel[mListDay.size()];
 
         for(Map.Entry<LocalTimeInterval,Course> cours : mListDay.entrySet()){
             model[i] = new CourseRowModel(cours.getValue().getTitle(),cours.getKey().toString());
-            Log.v("debug romain - Model",cours.getValue().getTitle()+" "+cours.getKey().toString());
             i++;
         }
 
@@ -77,15 +83,19 @@ public class ListCoursesOfDayFragment extends Fragment{
         calendar.set(Calendar.WEEK_OF_YEAR,((MainActivity)this.getActivity()).getmWeek());
         calendar.set(Calendar.DAY_OF_WEEK,((MainActivity)this.getActivity()).getmDay());
 
-        setTitleListView(calendar.getTime().toString());
-
         mList.setAdapter(mAdapter);
 
     }
 
-    public void setTitleListView(String title){
-        this.mTextView.setText(title);
+    public String getTitle(){
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.WEEK_OF_YEAR,mWeek);
+        calendar.set(Calendar.DAY_OF_WEEK,mDay+1%7);
+        //return new SimpleDateFormat("E-d").format(calendar.getTime());
+        return this.mDay+" "+this.mWeek;
     }
+
+
 
     public void onTaskFinished(Schedule s) {
         //...

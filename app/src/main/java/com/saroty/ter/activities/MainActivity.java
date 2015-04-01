@@ -18,6 +18,7 @@ import com.saroty.ter.fragments.MyViewPager;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
 import com.saroty.ter.schedule.Course;
+import com.saroty.ter.schedule.CourseWeek;
 import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.tasks.AdaptScheduleTask;
 import com.saroty.ter.time.DayOfWeek;
@@ -32,7 +33,7 @@ import java.util.concurrent.ExecutionException;
 public class MainActivity extends ActionBarActivity
 {
     private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Options")};
-    private final Fragment[] mNavigationFragments = {new ListCoursesOfDayFragment(), new ScheduleListFragment(), null};
+    private final Fragment[] mNavigationFragments;
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
     private Schedule mSchedule;
@@ -41,7 +42,10 @@ public class MainActivity extends ActionBarActivity
 
     public MainActivity(){
         this.mWeek = 33;
-        this.mDay = Calendar.DAY_OF_WEEK;
+        this.mDay = Calendar.DAY_OF_WEEK_IN_MONTH;
+        Fragment[] tab = {new ListCoursesOfDayFragment(this.mDay,this.mWeek), new ScheduleListFragment(), null};
+        this.mNavigationFragments = tab;
+
     }
 
 
@@ -121,8 +125,21 @@ public class MainActivity extends ActionBarActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public TreeMap<LocalTimeInterval,Course> getCours(){
-        return this.mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+    public TreeMap<LocalTimeInterval,Course> getCours(int day,int week){
+        CourseWeek coureweek;
+
+        /*if((coureweek = this.mSchedule.getWeekByWeekNumber(week)) == null)
+            return null;
+
+        if(coureweek.getDay(DayOfWeek.getById(day)) == null)
+            return null;*/
+
+        try{
+            return this.mSchedule.getWeekByWeekNumber(week).getDay(DayOfWeek.getById(day)).getCourses();
+        }catch(NullPointerException e){
+            return null;
+        }
+
     }
 
     public void setmWeek(int week){
