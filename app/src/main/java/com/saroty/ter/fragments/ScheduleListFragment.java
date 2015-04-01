@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
+import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
 import com.saroty.ter.models.list.ScheduleGroupModel;
 import com.saroty.ter.models.list.ScheduleRowModel;
 
@@ -70,5 +72,20 @@ public class ScheduleListFragment extends Fragment
         });
 
         return rootView;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+
+        if (id == R.id.action_add_schedule)
+        {
+            AddScheduleDialogFragment f = new AddScheduleDialogFragment();
+            f.show(getFragmentManager(), "AddScheduleDialogFragment");
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -8,17 +8,17 @@ import android.content.Context;
  */
 public class ScheduleApplication extends Application
 {
-    private static ScheduleApplication instance;
+    private static ScheduleApplication mInstance;
 
     public static Context getContext()
     {
-        return instance.getApplicationContext();
+        return mInstance.getApplicationContext();
     }
 
     @Override
     public void onCreate()
     {
         super.onCreate();
-        instance = this;
+        mInstance = this;
     }
 }

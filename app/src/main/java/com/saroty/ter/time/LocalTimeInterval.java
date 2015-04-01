@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class LocalTimeInterval implements Comparable<LocalTimeInterval>, Serializable
 {
     private static final long serialVersionUID = -7554035215853832772L;
-    LocalTime start;
-    LocalTime end;
+    private LocalTime start;
+    private LocalTime end;
 
     public LocalTimeInterval(LocalTime start, LocalTime end)
     {
