@@ -7,26 +7,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.saroty.ter.Listener.MyListener;
 import com.saroty.ter.R;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.tasks.AdaptScheduleTask;
-import com.saroty.ter.time.DayOfWeek;
 import com.saroty.ter.time.LocalTimeInterval;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Romain on 24/03/2015.
@@ -36,23 +28,31 @@ public class ListCoursesOfDayFragment extends Fragment{
     private ListView mList;
     private TreeMap<LocalTimeInterval,Course> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
-    private Schedule mSchedule = null;
     private int mDay;
     private int mWeek;
 
 
-    public ListCoursesOfDayFragment(int day ,int week) {
+    public ListCoursesOfDayFragment() {
         this.mListDay = null;
         this.mAdapter = null;
-        this.mDay = day;
-        this.mWeek = week;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
+        Bundle bundle =  this.getArguments();
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
+
+        this.mDay = (int)bundle.get("position");
+
+        this.mWeek = ((MainActivity)this.getActivity()).getmWeek()+(int)bundle.get("decal")
+                    + this.mDay/7;
+
+
+        this.mDay = this.mDay%7;
+
+
 
         loadEDT();
 
@@ -86,16 +86,6 @@ public class ListCoursesOfDayFragment extends Fragment{
         mList.setAdapter(mAdapter);
 
     }
-
-    public String getTitle(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.WEEK_OF_YEAR,mWeek);
-        calendar.set(Calendar.DAY_OF_WEEK,mDay+1%7);
-        //return new SimpleDateFormat("E-d").format(calendar.getTime());
-        return this.mDay+" "+this.mWeek;
-    }
-
-
 
     public void onTaskFinished(Schedule s) {
         //...

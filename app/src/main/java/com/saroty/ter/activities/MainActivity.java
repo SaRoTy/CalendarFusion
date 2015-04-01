@@ -41,9 +41,9 @@ public class MainActivity extends ActionBarActivity
     private int mWeek;
 
     public MainActivity(){
-        this.mWeek = 33;
+        this.mWeek = 32;
         this.mDay = Calendar.DAY_OF_WEEK_IN_MONTH;
-        Fragment[] tab = {new ListCoursesOfDayFragment(this.mDay,this.mWeek), new ScheduleListFragment(), null};
+        Fragment[] tab = {new ListCoursesOfDayFragment(), new ScheduleListFragment(), null};
         this.mNavigationFragments = tab;
 
     }

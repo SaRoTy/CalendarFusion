@@ -50,6 +50,7 @@ public class MyViewPager extends Fragment {
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mViewPager.setAdapter(myViewPagerAdapter);
 
+        //TODO : HARDCODE DU decal pour le jour souhaite pas top
         mViewPager.setCurrentItem(mActivity.getmDay()+6);
 
         return rootView;
