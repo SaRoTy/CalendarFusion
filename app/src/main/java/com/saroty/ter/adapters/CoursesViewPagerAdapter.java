@@ -11,6 +11,7 @@ import com.saroty.ter.fragments.navigation.courses.CourseListFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 /**
  * Created by Romain on 31/03/2015.
@@ -34,7 +35,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
 
         Bundle args = new Bundle();
         args.putInt("day", i%7);
-        args.putInt("week", this.mPager.getmWeek()+this.mDecalWeek+i/7);
+        args.putInt("week", this.mPager.getWeek() + this.mDecalWeek + i / 7);
 
         fragment.setArguments(args);
 
@@ -55,12 +56,14 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     public CharSequence getPageTitle(int position)
     {
         Calendar calendar = Calendar.getInstance();
-        int week = this.mPager.getmWeek() + this.mDecalWeek + position / 7;
+        int week = this.mPager.getWeek() + this.mDecalWeek + position / 7;
         int day = (position % 7) +2;
         calendar.set(Calendar.WEEK_OF_YEAR, week);
         calendar.set(Calendar.DAY_OF_WEEK, day);
 
+        String title = new SimpleDateFormat("EEEE dd/MM", Locale.FRENCH).format(calendar.getTime());
+
         //return day + " " + week;
-        return new SimpleDateFormat("E-d").format(calendar.getTime());
+        return Character.toUpperCase(title.charAt(0)) + title.substring(1);
     }
 }

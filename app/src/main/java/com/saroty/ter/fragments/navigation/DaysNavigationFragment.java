@@ -41,22 +41,22 @@ public class DaysNavigationFragment extends NavigationFragment
         return rootView;
     }
 
-    public int getmWeek()
+    public int getWeek()
     {
         return this.mWeek;
     }
 
-    public void setmWeek(int week)
+    public void setWeek(int week)
     {
         this.mWeek = week;
     }
 
-    public int getmDay()
+    public int getDay()
     {
         return this.mDay;
     }
 
-    public void setmDay(int day)
+    public void setDay(int day)
     {
         this.mDay = day;
     }
