@@ -1,101 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context="com.saroty.ter.fragments.navigation.SchedulesNavigationFragment">
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:columnCount="2"
+    android:padding="5dp"
+    tools:context="com.saroty.ter.fragments.ScheduleListFragment"
+    android:rowCount="3"
+    android:orientation="vertical">
+
+    <ImageView
+        android:background="@color/lightblue"
+        android:layout_column="1"
+        android:layout_rowSpan="2"
+        android:layout_row="0"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+    />
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/blue"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:orientation="horizontal"
-        >
-
-        <Button
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/back"/>
-
-        <TextView
-            android:id="@+id/detail_title"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Titre"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:background="@drawable/label_item"
-        android:orientation="horizontal"
-        >
+        android:background="@drawable/shadow"
+        android:layout_column="0"
+        android:layout_row="0"
+        android:layout_marginRight="5dp"
+        android:layout_centerVertical="true"
+        android:gravity="left|center"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginRight="10dp"
             android:text="@string/label_time"
+            android:layout_marginRight="10dp"
             android:textSize="12sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
 
         <View
-            android:layout_width="1dp"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_width="1dp"
+            android:background="@android:color/darker_gray"
             android:layout_marginRight="5dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:id="@+id/detail_time"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_columnSpan="1"
-        android:layout_margin="5dp"
-        android:layout_rowSpan="1"
-        android:background="@drawable/label_item"
-        android:orientation="horizontal">
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shadow"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:gravity="left|center"
+        android:padding="5dp">
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:layout_marginRight="10dp"
             android:text="@string/label_room"
+            android:layout_marginRight="10dp"
             android:textSize="12sp"
             android:textStyle="bold"
             />
 
         <View
-            android:layout_width="1dp"
             android:layout_height="fill_parent"
-            android:layout_marginLeft="5dp"
+            android:layout_width="1dp"
+            android:background="@android:color/darker_gray"
             android:layout_marginRight="5dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_marginLeft="5dp"/>
 
         <TextView
             android:id="@+id/detail_room"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             />
 
     </LinearLayout>
 
 
-</LinearLayout>
+
+</GridLayout>

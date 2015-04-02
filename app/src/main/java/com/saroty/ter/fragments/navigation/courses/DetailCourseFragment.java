@@ -16,18 +16,14 @@ import java.io.Serializable;
 /**
  * Created by Romain on 02/04/2015.
  */
-public class DetailCourseFragment extends Fragment
-{
+public class DetailCourseFragment extends Fragment {
 
     private static final String DESCRIBABLE_KEY_COURSE = "describable_key_course";
     private static final String DESCRIBABLE_KEY_LOCALTIME = "describable_key_localtime";
 
     private Button mBack;
 
-    public DetailCourseFragment(){}
-
-    public static DetailCourseFragment newInstance(Serializable course, Serializable localtime)
-    {
+    public static DetailCourseFragment newInstance(Serializable course, Serializable localtime) {
         DetailCourseFragment fragment = new DetailCourseFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(DESCRIBABLE_KEY_COURSE, course);
@@ -38,10 +34,12 @@ public class DetailCourseFragment extends Fragment
 
     }
 
+    public DetailCourseFragment(){}
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail_course, container, false);
-        this.mBack = (Button)rootView.findViewById(R.id.back);
+        //this.mBack = (Button)rootView.findViewById(R.id.back);
         Bundle bundle = getArguments();
 
         this.mBack.setOnClickListener(new View.OnClickListener() {
@@ -51,12 +49,16 @@ public class DetailCourseFragment extends Fragment
             }
         });
 
-        ((TextView) rootView.findViewById(R.id.detail_title)).setText((String) bundle.get("title"));
+        //((TextView) rootView.findViewById(R.id.detail_title)).setText((String) bundle.get("title"));
         ((TextView)rootView.findViewById(R.id.detail_time)).setText((String)bundle.get("time"));
         ((TextView)rootView.findViewById(R.id.detail_room)).setText((String)bundle.get("room"));
 
+        setHasOptionsMenu(true);
+
         return rootView;
     }
+
+
 
 
 
