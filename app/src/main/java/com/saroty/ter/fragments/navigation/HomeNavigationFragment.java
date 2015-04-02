@@ -1,7 +1,6 @@
-package com.saroty.ter.fragments;
+package com.saroty.ter.fragments.navigation;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import java.util.TreeMap;
 /**
  * Created by Arthur on 02/04/2015.
  */
-public class HomeFragment extends Fragment
+public class HomeNavigationFragment extends NavigationFragment
 {
     private ListView mCourseList;
     private TextView mDayText;
@@ -37,8 +36,6 @@ public class HomeFragment extends Fragment
     {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
         MainActivity mainActivity = (MainActivity) getActivity();
-
-        mainActivity.getSupportActionBar().setTitle("Accueil");
 
         mCourseList = (ListView) rootView.findViewById(R.id.course_list);
         mDayText = (TextView) rootView.findViewById(R.id.text_day);
@@ -114,4 +111,17 @@ public class HomeFragment extends Fragment
         super.onPause();
         mThread.interrupt();
     }
+
+    @Override
+    public String getNavigationTitle()
+    {
+        return "Accueil";
+    }
+
+    @Override
+    public String getActionbarTitle()
+    {
+        return "Accueil";
+    }
+
 }

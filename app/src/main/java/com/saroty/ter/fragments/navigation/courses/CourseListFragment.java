@@ -1,4 +1,4 @@
-package com.saroty.ter.fragments;
+package com.saroty.ter.fragments.navigation.courses;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -28,7 +28,7 @@ public class CourseListFragment extends Fragment
 {
 
     private ListView mList;
-    private TreeMap<LocalTimeInterval,Course> mListDay;
+    private TreeMap<LocalTimeInterval, Course> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
     private int mDay;
     private int mWeek;
@@ -47,52 +47,58 @@ public class CourseListFragment extends Fragment
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Liste des cours");
 
-        Bundle bundle =  getArguments();
+        Bundle bundle = getArguments();
 
-        this.mDay = (int)bundle.get("day");
+        this.mDay = (int) bundle.get("day");
 
-        this.mWeek = (int)bundle.get("week");
+        this.mWeek = (int) bundle.get("week");
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
 
-        if(((MainActivity)getActivity()).hasCurrentSchedule()){
-            this.mSchedule = ((MainActivity)getActivity()).getCurrentSchedule();
+        if (((MainActivity) getActivity()).hasCurrentSchedule())
+        {
+            this.mSchedule = ((MainActivity) getActivity()).getCurrentSchedule();
             loadDailyCourses();
         }
 
-        this.mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        this.mList.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+            {
                 CourseRowModel courseModel = (CourseRowModel) mList.getItemAtPosition(position);
-                DetailCourse fragment = new DetailCourse();
+                DetailCourseFragment fragment = new DetailCourseFragment();
                 Bundle bundle = new Bundle();
 
-                bundle.putString("title",courseModel.getName());
-                bundle.putString("time",courseModel.getInterval().toString());
-                bundle.putString("room",courseModel.getRoom());
+                bundle.putString("title", courseModel.getName());
+                bundle.putString("time", courseModel.getInterval().toString());
+                bundle.putString("room", courseModel.getRoom());
 
                 fragment.setArguments(bundle);
 
-                ((MainActivity)getActivity()).setCurrentFragment(fragment,true);
+                ((MainActivity) getActivity()).setCurrentFragment(fragment, true);
             }
         });
 
         return rootView;
     }
 
-    private void loadDailyCourses(){
+    private void loadDailyCourses()
+    {
         CourseRowModel[] model;
-        int i=0;
+        int i = 0;
 
-        if(mSchedule.getWeekByWeekNumber(this.mWeek) == null){
+        if (mSchedule.getWeekByWeekNumber(this.mWeek) == null)
+        {
             return;
         }
 
-        if(mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)) == null)
+        if (mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)) == null)
             return;
 
         mListDay = mSchedule
@@ -101,18 +107,19 @@ public class CourseListFragment extends Fragment
 
         model = new CourseRowModel[mListDay.size()];
 
-        for(Map.Entry<LocalTimeInterval,Course> cours : mListDay.entrySet()){
+        for (Map.Entry<LocalTimeInterval, Course> cours : mListDay.entrySet())
+        {
             model[i] = new CourseRowModel(cours.getValue().getTitle()
-                    ,cours.getKey(),cours.getValue().getRoom());
+                    , cours.getKey(), cours.getValue().getRoom());
             i++;
         }
 
-        mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(),model);
+        mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(), model);
 
         Calendar calendar = Calendar.getInstance();
 
-        calendar.set(Calendar.WEEK_OF_YEAR,32);
-        calendar.set(Calendar.DAY_OF_WEEK,0);
+        calendar.set(Calendar.WEEK_OF_YEAR, 32);
+        calendar.set(Calendar.DAY_OF_WEEK, 0);
 
         mList.setAdapter(mAdapter);
 

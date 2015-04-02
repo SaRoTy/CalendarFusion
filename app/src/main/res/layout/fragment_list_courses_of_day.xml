@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.saroty.ter.fragments.ScheduleListFragment">
+    tools:context="com.saroty.ter.fragments.navigation.SchedulesNavigationFragment">
 
-    <ListView
+<ListView
         android:id="@+id/list_courses_of_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

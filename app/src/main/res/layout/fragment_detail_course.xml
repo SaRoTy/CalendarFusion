@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.saroty.ter.fragments.ScheduleListFragment">
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              tools:context="com.saroty.ter.fragments.navigation.SchedulesNavigationFragment">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/blue"
+        android:orientation="horizontal"
         >
 
         <Button
@@ -18,42 +18,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/back"/>
+
         <TextView
             android:id="@+id/detail_title"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:padding="10dp"
             android:gravity="center"
+            android:padding="10dp"
+            android:text="Titre"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="Titre"/>
+            android:textStyle="bold"/>
 
-     </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="5dp"
         android:background="@drawable/label_item"
-       >
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:text="@string/label_time"
             android:layout_marginRight="10dp"
+            android:text="@string/label_time"
             android:textSize="12sp"
             android:textStyle="bold"
             />
 
         <View
-            android:layout_height="fill_parent"
             android:layout_width="1dp"
-            android:background="@android:color/darker_gray"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"/>
+            android:background="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/detail_time"
@@ -66,27 +67,27 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="5dp"
-        android:background="@drawable/label_item"
         android:layout_columnSpan="1"
-        android:layout_rowSpan="1">
+        android:layout_margin="5dp"
+        android:layout_rowSpan="1"
+        android:background="@drawable/label_item"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="50dp"
             android:layout_height="20dp"
-            android:text="@string/label_room"
             android:layout_marginRight="10dp"
+            android:text="@string/label_room"
             android:textSize="12sp"
             android:textStyle="bold"
             />
 
         <View
-            android:layout_height="fill_parent"
             android:layout_width="1dp"
-            android:background="@android:color/darker_gray"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
-            android:layout_marginLeft="5dp"/>
+            android:background="@android:color/darker_gray"/>
 
         <TextView
             android:id="@+id/detail_room"
@@ -95,7 +96,6 @@
             />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

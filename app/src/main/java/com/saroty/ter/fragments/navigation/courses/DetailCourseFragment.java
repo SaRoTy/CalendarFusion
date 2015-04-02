@@ -1,4 +1,4 @@
-package com.saroty.ter.fragments;
+package com.saroty.ter.fragments.navigation.courses;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,24 +10,25 @@ import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.activities.MainActivity;
-import com.saroty.ter.schedule.Course;
-import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.time.LocalTime;
 
 import java.io.Serializable;
 
 /**
  * Created by Romain on 02/04/2015.
  */
-public class DetailCourse extends Fragment {
+public class DetailCourseFragment extends Fragment
+{
 
     private static final String DESCRIBABLE_KEY_COURSE = "describable_key_course";
     private static final String DESCRIBABLE_KEY_LOCALTIME = "describable_key_localtime";
 
     private Button mBack;
 
-    public static DetailCourse newInstance(Serializable course, Serializable localtime) {
-        DetailCourse fragment = new DetailCourse();
+    public DetailCourseFragment(){}
+
+    public static DetailCourseFragment newInstance(Serializable course, Serializable localtime)
+    {
+        DetailCourseFragment fragment = new DetailCourseFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(DESCRIBABLE_KEY_COURSE, course);
         bundle.putSerializable(DESCRIBABLE_KEY_LOCALTIME, localtime);
@@ -36,8 +37,6 @@ public class DetailCourse extends Fragment {
         return fragment;
 
     }
-
-    public DetailCourse(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -52,7 +51,7 @@ public class DetailCourse extends Fragment {
             }
         });
 
-        ((TextView)rootView.findViewById(R.id.detail_title)).setText((String)bundle.get("title"));
+        ((TextView) rootView.findViewById(R.id.detail_title)).setText((String) bundle.get("title"));
         ((TextView)rootView.findViewById(R.id.detail_time)).setText((String)bundle.get("time"));
         ((TextView)rootView.findViewById(R.id.detail_room)).setText((String)bundle.get("room"));
 

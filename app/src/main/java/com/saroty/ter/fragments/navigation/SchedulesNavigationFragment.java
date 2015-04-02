@@ -1,8 +1,9 @@
-package com.saroty.ter.fragments;
+package com.saroty.ter.fragments.navigation;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,7 @@ import com.saroty.ter.models.list.ScheduleRowModel;
 import com.saroty.ter.schedule.Schedule;
 
 
-public class ScheduleListFragment extends Fragment implements AddScheduleDialogFragment.AddScheduleDialogListener
+public class SchedulesNavigationFragment extends NavigationFragment implements AddScheduleDialogFragment.AddScheduleDialogListener
 {
     private AnimatedExpandableListView mListView;
 
@@ -68,6 +69,8 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
                 return true;
             }
         });
+
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -87,6 +90,14 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
+    {
+        menu.clear();
+        inflater.inflate(R.menu.menu_schedule_list, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
     public void onScheduleDownloaded(Schedule schedule)
     {
         ((MainActivity) getActivity()).addSchedule(schedule);
@@ -98,5 +109,17 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     public void onScheduleDownloadError(Exception e)
     {
 
+    }
+
+    @Override
+    public String getNavigationTitle()
+    {
+        return "Calendriers";
+    }
+
+    @Override
+    public String getActionbarTitle()
+    {
+        return "Liste des calendriers";
     }
 }

@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.saroty.ter.fragments.CourseListFragment;
-import com.saroty.ter.fragments.DayListFragment;
+import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
+import com.saroty.ter.fragments.navigation.courses.CourseListFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -19,9 +19,9 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
 {
 
     private int mDecalWeek = -1;
-    private DayListFragment mPager;
+    private DaysNavigationFragment mPager;
 
-    public CoursesViewPagerAdapter(FragmentManager fm, DayListFragment pager)
+    public CoursesViewPagerAdapter(FragmentManager fm, DaysNavigationFragment pager)
     {
         super(fm);
         this.mPager = pager;

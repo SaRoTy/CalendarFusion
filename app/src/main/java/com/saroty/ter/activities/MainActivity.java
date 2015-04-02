@@ -1,9 +1,8 @@
 package com.saroty.ter.activities;
 
-import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -14,20 +13,17 @@ import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
-import com.saroty.ter.fragments.DayListFragment;
-import com.saroty.ter.fragments.HomeFragment;
-import com.saroty.ter.fragments.ScheduleListFragment;
-import com.saroty.ter.models.list.NavigationRowModel;
+import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
+import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
+import com.saroty.ter.fragments.navigation.SchedulesNavigationFragment;
 import com.saroty.ter.schedule.Schedule;
 
 import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
 {
-    //TODO: Regrouper les tableau dans une Structure
-    private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Cours")};
-    private final Fragment[] mNavigationFragments = {new HomeFragment(), new ScheduleListFragment(), new DayListFragment()};
-    private final int[] mNavigationFragmentsMenus = {R.menu.menu_empty, R.menu.menu_schedule_list, R.menu.menu_empty};
+    private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment()};
 
     private ArrayList<Schedule> mSchedules = new ArrayList<Schedule>();
     private int mCurrentSchedule = -1;
@@ -83,7 +79,7 @@ public class MainActivity extends ActionBarActivity
         mDrawerLayout = ((DrawerLayout) findViewById(R.id.drawer_layout));
 
         mNavigationListView = ((ListView) findViewById(R.id.drawer_list));
-        mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationModel));
+        mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationFragments));
 
         mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
@@ -109,14 +105,14 @@ public class MainActivity extends ActionBarActivity
         mDrawerLayout.closeDrawers();
 
         setCurrentFragment(mNavigationFragments[position],false);
+        invalidateOptionsMenu();
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_schedule_list, menu);
-        return true;
+        getSupportActionBar().setTitle(mNavigationFragments[mNavigationPosition].getActionbarTitle());
+        return super.onCreateOptionsMenu(menu);
     }
 
     public void setCurrentFragment(Fragment fragment, boolean backStack)
@@ -137,7 +133,8 @@ public class MainActivity extends ActionBarActivity
 
     }
 
-    public void fragmentBack(){
+    public void fragmentBack()
+    {
         getSupportFragmentManager().popBackStack();
     }
 

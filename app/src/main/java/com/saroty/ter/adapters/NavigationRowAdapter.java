@@ -8,19 +8,19 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
-import com.saroty.ter.models.list.NavigationRowModel;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
 
 /**
  * Created by Arthur on 21/03/2015.
  */
-public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
+public class NavigationRowAdapter extends ArrayAdapter<NavigationFragment>
 {
 
-    private final NavigationRowModel[] DATA;
+    private final NavigationFragment[] DATA;
     private LayoutInflater mInflater;
     private int mSelectedElement;
 
-    public NavigationRowAdapter(Context context, NavigationRowModel[] modelsArrayList)
+    public NavigationRowAdapter(Context context, NavigationFragment[] modelsArrayList)
     {
         super(context, R.layout.drawer_list_row, modelsArrayList);
         mSelectedElement = 0;
@@ -36,7 +36,7 @@ public class NavigationRowAdapter extends ArrayAdapter<NavigationRowModel>
         else
             convertView = mInflater.inflate(R.layout.drawer_list_row, null);
 
-        ((TextView) convertView.findViewById(R.id.drawer_list_row_title)).setText(DATA[position].getTitle());
+        ((TextView) convertView.findViewById(R.id.drawer_list_row_title)).setText(DATA[position].getNavigationTitle());
 
         return convertView;
     }
