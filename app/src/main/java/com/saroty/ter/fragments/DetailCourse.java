@@ -45,8 +45,6 @@ public class DetailCourse extends Fragment {
         this.mBack = (Button)rootView.findViewById(R.id.back);
         Bundle bundle = getArguments();
 
-        Schedule schedule = ((MainActivity)getActivity()).getCurrentSchedule();
-
         this.mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,12 +52,9 @@ public class DetailCourse extends Fragment {
             }
         });
 
-        //Course course = (Course)bundle.getSerializable("describable_key_course");
-        //LocalTime localTime = (LocalTime)bundle.getSerializable("describable_key_localtime");
-
-        /*((TextView)rootView.findViewById(R.id.detail_title)).setText(course.getTitle());
-        ((TextView)rootView.findViewById(R.id.detail_time)).setText(localTime.toString());
-        ((TextView)rootView.findViewById(R.id.detail_room)).setText(course.getRoom());*/
+        ((TextView)rootView.findViewById(R.id.detail_title)).setText((String)bundle.get("title"));
+        ((TextView)rootView.findViewById(R.id.detail_time)).setText((String)bundle.get("time"));
+        ((TextView)rootView.findViewById(R.id.detail_room)).setText((String)bundle.get("room"));
 
         return rootView;
     }

@@ -2,11 +2,10 @@ package com.saroty.ter.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
@@ -38,8 +37,6 @@ public class CourseListFragment extends Fragment
 
     public CourseListFragment()
     {
-        this.mListDay = null;
-        this.mAdapter = null;
     }
 
     public static CourseListFragment newInstance()
@@ -53,56 +50,60 @@ public class CourseListFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list_courses_of_day, container, false);
         ((MainActivity) getActivity()).getSupportActionBar().setTitle("Liste des cours");
+
         Bundle bundle =  getArguments();
-
-        this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-
-        mSchedule = ((MainActivity) getActivity()).getCurrentSchedule();
-
-        Log.v("a", ((MainActivity) getActivity()).getCurrentSchedule().toString());
 
         this.mDay = (int)bundle.get("day");
 
         this.mWeek = (int)bundle.get("week");
 
-        loadEDT();
+        this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
 
-        //setHasOptionsMenu(true);
+        if(((MainActivity)getActivity()).hasCurrentSchedule()){
+            this.mSchedule = ((MainActivity)getActivity()).getCurrentSchedule();
+            loadDailyCourses();
+        }
+
+        this.mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                CourseRowModel courseModel = (CourseRowModel) mList.getItemAtPosition(position);
+                DetailCourse fragment = new DetailCourse();
+                Bundle bundle = new Bundle();
+
+                bundle.putString("title",courseModel.getName());
+                bundle.putString("time",courseModel.getInterval().toString());
+                bundle.putString("room",courseModel.getRoom());
+
+                fragment.setArguments(bundle);
+
+                ((MainActivity)getActivity()).setCurrentFragment(fragment,true);
+            }
+        });
 
         return rootView;
     }
 
-    /*@Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_course_list, menu);
-    }*/
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        return true;
-    }
-
-
-    private void loadEDT()
-    {
+    private void loadDailyCourses(){
         CourseRowModel[] model;
         int i=0;
 
-        try
-        {
-            mListDay = mSchedule
-                    .getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
-        } catch (NullPointerException e)
-        {
+        if(mSchedule.getWeekByWeekNumber(this.mWeek) == null){
             return;
         }
+
+        if(mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)) == null)
+            return;
+
+        mListDay = mSchedule
+                .getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+
 
         model = new CourseRowModel[mListDay.size()];
 
         for(Map.Entry<LocalTimeInterval,Course> cours : mListDay.entrySet()){
-            model[i] = new CourseRowModel(cours.getValue().getTitle(), cours.getKey(), cours.getValue().getRoom());
+            model[i] = new CourseRowModel(cours.getValue().getTitle()
+                    ,cours.getKey(),cours.getValue().getRoom());
             i++;
         }
 

@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.saroty.ter.fragments.CourseListFragment;
 import com.saroty.ter.fragments.DayListFragment;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
@@ -55,11 +56,11 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     {
         Calendar calendar = Calendar.getInstance();
         int week = this.mPager.getmWeek() + this.mDecalWeek + position / 7;
-        int day = position % 7;
+        int day = (position % 7) +2;
         calendar.set(Calendar.WEEK_OF_YEAR, week);
         calendar.set(Calendar.DAY_OF_WEEK, day);
 
-        return day + " " + week;
-        //return new SimpleDateFormat("E-d").format(calendar.getTime());
+        //return day + " " + week;
+        return new SimpleDateFormat("E-d").format(calendar.getTime());
     }
 }

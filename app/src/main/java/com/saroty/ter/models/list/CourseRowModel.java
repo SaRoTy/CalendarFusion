@@ -1,12 +1,12 @@
 package com.saroty.ter.models.list;
 
+import com.saroty.ter.time.LocalTime;
 import com.saroty.ter.time.LocalTimeInterval;
 
 /**
  * Created by Romain on 24/03/2015.
  */
-public class CourseRowModel
-{
+public class CourseRowModel {
 
     private String mName;
     private LocalTimeInterval mInterval;
