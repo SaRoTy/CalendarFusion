@@ -115,11 +115,6 @@ public class CourseListFragment extends Fragment
 
         mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(), model);
 
-        Calendar calendar = Calendar.getInstance();
-
-        calendar.set(Calendar.WEEK_OF_YEAR, 32);
-        calendar.set(Calendar.DAY_OF_WEEK, 0);
-
         mList.setAdapter(mAdapter);
 
     }

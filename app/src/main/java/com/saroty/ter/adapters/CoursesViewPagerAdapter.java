@@ -35,7 +35,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
 
         Bundle args = new Bundle();
         args.putInt("day", i%7);
-        args.putInt("week", this.mPager.getWeek() + this.mDecalWeek + i / 7);
+        args.putInt("week", this.mPager.getWeek()+this.mDecalWeek+i/7);
 
         fragment.setArguments(args);
 
@@ -61,9 +61,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         calendar.set(Calendar.WEEK_OF_YEAR, week);
         calendar.set(Calendar.DAY_OF_WEEK, day);
 
-        String title = new SimpleDateFormat("EEEE dd/MM", Locale.FRENCH).format(calendar.getTime());
-
         //return day + " " + week;
-        return Character.toUpperCase(title.charAt(0)) + title.substring(1);
+        return new SimpleDateFormat("E-d").format(calendar.getTime());
     }
 }
