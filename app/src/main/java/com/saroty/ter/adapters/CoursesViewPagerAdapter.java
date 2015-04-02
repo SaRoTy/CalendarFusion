@@ -45,11 +45,6 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         return 100;
     }
 
-    public int getmDecal()
-    {
-        return this.mDecalWeek;
-    }
-
     @Override
     public CharSequence getPageTitle(int position)
     {

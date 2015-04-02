@@ -31,7 +31,6 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel> {
     public View getView(int position, View convertView, ViewGroup parent)
     {
         ViewHolder holder;
-
         if (convertView == null)
         {
             convertView = mInflater.inflate(R.layout.course_of_day_list_row, null);

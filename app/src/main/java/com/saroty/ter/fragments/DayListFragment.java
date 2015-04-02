@@ -1,6 +1,7 @@
 package com.saroty.ter.fragments;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.saroty.ter.R;
+import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CoursesViewPagerAdapter;
 import com.saroty.ter.schedule.Course;
@@ -34,42 +36,11 @@ public class DayListFragment extends Fragment
     private int mDay;
     private int mWeek;
     private Schedule mSchedule;
+    private Parcelable state;
 
     public DayListFragment()
     {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
-        mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
-
-        return rootView;
-    }
-
-    @Override
-    public void onStart(){
-        super.onStart();
-
-        Log.v("debug romain","appele start");
-
-        if(myViewPagerAdapter == null)
-            myViewPagerAdapter =
-                    new CoursesViewPagerAdapter(getFragmentManager(),this);
-        else
-            myViewPagerAdapter =
-                    new CoursesViewPagerAdapter(getFragmentManager(),this);
-
-        mViewPager.setAdapter(myViewPagerAdapter);
-
-        AdaptScheduleTask a = new AdaptScheduleTask(getActivity().getApplicationContext());
-
-        this.mWeek = 33;
-        this.mDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-
-        //TODO : A changer quand arthur aura fait son job, de meme pour le seet current schedule
-
+        AdaptScheduleTask a = new AdaptScheduleTask(ScheduleApplication.getContext());
         try {
             a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
             this.mSchedule = a.get();
@@ -81,13 +52,45 @@ public class DayListFragment extends Fragment
             e.printStackTrace();
         }
 
-        ((MainActivity)getActivity()).getSchedules().add(this.mSchedule);
-        ((MainActivity)getActivity()).setCurrentSchedule(this.mSchedule);
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        if(!((MainActivity)getActivity()).hasCurrentSchedule())
+        {
+            ((MainActivity)getActivity()).getSchedules().add(this.mSchedule);
+            ((MainActivity)getActivity()).setCurrentSchedule(this.mSchedule);
+        }
+
+        View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
+        mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
+
+        myViewPagerAdapter =
+                new CoursesViewPagerAdapter(getFragmentManager(),this);
+
+        mViewPager.clearDisappearingChildren();
+        mViewPager.setAdapter(myViewPagerAdapter);
+
+
+
+        this.mWeek = 33;
+        this.mDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+
+        //TODO : A changer quand arthur aura fait son job, de meme pour le seet current schedule
+
+
 
         //TODO : HARDCODE DU decal pour le jour souhaite pas top
 
         mViewPager.setCurrentItem(this.mDay+6-1);
+        return rootView;
+    }
 
+    @Override
+    public void onStart(){
+        super.onStart();
+        Log.v("debug romain","appelle start");
     }
 
     @Override
