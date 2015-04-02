@@ -111,6 +111,8 @@ public class CelcatConverter extends Converter
                             curCourseDay = DayOfWeek.getById(Integer.parseInt(text));
                         else if (xpp.getName().equalsIgnoreCase("category"))
                             curCourse.setCategory(text);
+                        else if (xpp.getName().equalsIgnoreCase("room"))
+                            curCourse.setRoom(text);
                         else if (xpp.getName().equalsIgnoreCase("module"))
                             curCourse.setTitle(text);
                         else if (xpp.getName().equalsIgnoreCase("starttime"))

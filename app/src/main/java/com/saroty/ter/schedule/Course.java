@@ -14,6 +14,7 @@ public class Course implements Serializable
     private String title;
     private String category;
     private String room;
+    private Duration duration;
 
     public Course()
     {
@@ -22,6 +23,7 @@ public class Course implements Serializable
     public Course(String title, Duration duration)
     {
         this.title = title;
+        this.duration = duration;
     }
 
     public boolean hasCategory()
@@ -44,15 +46,34 @@ public class Course implements Serializable
         return title;
     }
 
-    public void setTitle(String title){ this.title = title;}
-
-    public String getRoom(){ return this.room; }
-
-    public void setRoom(String room){ this.room = room;}
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
 
     @Override
     public String toString()
     {
         return "[Course] (" + category + ") " + title;
+    }
+
+    public String getRoom()
+    {
+        return room;
+    }
+
+    public void setRoom(String room)
+    {
+        this.room = room;
+    }
+
+    public Duration getDuration()
+    {
+        return duration;
+    }
+
+    public void setDuration(Duration duration)
+    {
+        this.duration = duration;
     }
 }

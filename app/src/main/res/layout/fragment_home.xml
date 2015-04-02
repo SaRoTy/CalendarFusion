@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="96dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/shadow">
+
+        <TextView
+            android:id="@+id/text_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:text="Lundi"
+            android:textColor="@color/black"
+            android:textSize="36dp"/>
+
+        <TextView
+            android:id="@+id/text_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_day"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="18:30, 02/04/2015"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/course_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@null"
+        android:clickable="false"
+        android:divider="@null"
+        android:dividerHeight="5dp"/>
+
+    <!-- <include layout="@layout/home_course_row"/> -->
+
+
+</LinearLayout>

@@ -26,7 +26,7 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Liste des EDT"); //TODO:String support + generalisation de nos fragments
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Liste des calendriers"); //TODO:String support + generalisation de nos fragments
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_list, container, false);
 
@@ -50,7 +50,7 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
 
         mListView.setAdapter(adapter);
         int count = adapter.getGroupCount();
-        for (int i = 0; i <count ; i++)
+        for (int i = 0; i < count; i++)
             mListView.expandGroup(i);//Moche, mais le seul moyen acctuel.
 
         mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
@@ -90,7 +90,7 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     public void onScheduleDownloaded(Schedule schedule)
     {
         ((MainActivity) getActivity()).addSchedule(schedule);
-
+        ((MainActivity) getActivity()).setCurrentSchedule(schedule);
         refreshList();
     }
 
