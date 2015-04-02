@@ -12,36 +12,58 @@ import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
-import com.saroty.ter.fragments.ListCoursesOfDayFragment;
-import com.saroty.ter.fragments.CoursesViewPager;
+import com.saroty.ter.fragments.DayListFragment;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
-import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.tasks.AdaptScheduleTask;
-import com.saroty.ter.time.DayOfWeek;
-import com.saroty.ter.time.LocalTimeInterval;
 
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Calendar;
-import java.util.TreeMap;
-import java.util.concurrent.ExecutionException;
+import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity
 {
     private final NavigationRowModel[] mNavigationModel = {new NavigationRowModel("Accueil"), new NavigationRowModel("Calendriers"), new NavigationRowModel("Cours")};
-    private final Fragment[] mNavigationFragments = { new CoursesViewPager(),new ScheduleListFragment()};
-
-    private int mNavigationPosition = 0;
+    private final Fragment[] mNavigationFragments = {new DayListFragment(), new ScheduleListFragment()};
+    private ArrayList<Schedule> mSchedules = new ArrayList<Schedule>();
+    private int mCurrentSchedule = -1;
+    private int mNavigationPosition = 1;
 
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
 
-    public MainActivity(){
 
+    public MainActivity()
+    {
     }
 
+    public boolean hasCurrentSchedule()
+    {
+        return (mCurrentSchedule == -1);
+    }
+
+    public Schedule getCurrentSchedule()
+    {
+        if (hasCurrentSchedule())
+            return mSchedules.get(mCurrentSchedule);
+        else
+            return null;
+    }
+
+    public void setCurrentSchedule(Schedule s)
+    {
+        for (int i = 0; i < mSchedules.size(); i++)
+        {
+            if (mSchedules.get(i) == s)
+            {
+                mCurrentSchedule = i;
+                return;
+            }
+        }
+    }
+
+    public ArrayList<Schedule> getSchedules()
+    {
+        return mSchedules;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -63,10 +85,9 @@ public class MainActivity extends ActionBarActivity
             }
         });
 
-
-        if(savedInstanceState == null)
+        if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.frame_container, mNavigationFragments[mNavigationPosition],"course_view_pager")
+                    .add(R.id.frame_container, mNavigationFragments[mNavigationPosition])
                     .commit();
     }
 
@@ -75,18 +96,16 @@ public class MainActivity extends ActionBarActivity
         mNavigationPosition = position;
         ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
         mDrawerLayout.closeDrawers();
-
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, mNavigationFragments[position],"course_view_pager")
+                .replace(R.id.frame_container, mNavigationFragments[position])
                 .commit();
-
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_schedules_list, menu);
+        getMenuInflater().inflate(R.menu.menu_schedule_list, menu);
         return true;
     }
 
@@ -95,5 +114,4 @@ public class MainActivity extends ActionBarActivity
     {
         return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
     }
-
 }

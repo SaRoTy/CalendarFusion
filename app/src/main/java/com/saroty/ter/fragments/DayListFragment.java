@@ -3,7 +3,6 @@ package com.saroty.ter.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,14 +18,14 @@ import com.saroty.ter.time.LocalTimeInterval;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 
 /**
  * Created by Romain on 31/03/2015.
  */
-public class CoursesViewPager extends Fragment {
+public class DayListFragment extends Fragment
+{
 
     private CoursesViewPagerAdapter myViewPagerAdapter;
     private ViewPager mViewPager;
@@ -34,7 +33,8 @@ public class CoursesViewPager extends Fragment {
     private int mWeek;
     private Schedule mSchedule;
 
-    public CoursesViewPager() {
+    public DayListFragment()
+    {
 
     }
 

@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import com.saroty.ter.R;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
-import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.util.Calendar;
@@ -25,19 +22,28 @@ import java.util.TreeMap;
 /**
  * Created by Romain on 24/03/2015.
  */
-public class ListCoursesOfDayFragment extends Fragment{
+public class CourseListFragment extends Fragment
+{
 
     private ListView mList;
     private TreeMap<LocalTimeInterval,Course> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
     private int mDay;
     private int mWeek;
-    private CoursesViewPager mViewPager;
+    private DayListFragment mViewPager;
 
 
-    public ListCoursesOfDayFragment() {
+    public CourseListFragment()
+    {
         this.mListDay = null;
         this.mAdapter = null;
+    }
+
+    public static CourseListFragment newInstance()
+    {
+        CourseListFragment f = new CourseListFragment();
+
+        return f;
     }
 
     @Override
@@ -47,7 +53,8 @@ public class ListCoursesOfDayFragment extends Fragment{
         Bundle bundle =  getArguments();
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-        this.mViewPager = (CoursesViewPager)getFragmentManager().findFragmentByTag("course_view_pager");
+        this.mViewPager = (DayListFragment) getFragmentManager().findFragmentByTag("course_view_pager");
+
 
 
         this.mDay = (int)bundle.get("position");

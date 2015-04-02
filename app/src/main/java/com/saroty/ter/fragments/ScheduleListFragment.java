@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,11 +15,13 @@ import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
+import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
 import com.saroty.ter.models.list.ScheduleGroupModel;
 import com.saroty.ter.models.list.ScheduleRowModel;
+import com.saroty.ter.schedule.Schedule;
 
 
-public class ScheduleListFragment extends Fragment
+public class ScheduleListFragment extends Fragment implements AddScheduleDialogFragment.AddScheduleDialogListener
 {
     public ScheduleListFragment()
     {
@@ -32,10 +35,13 @@ public class ScheduleListFragment extends Fragment
         View rootView = inflater.inflate(R.layout.fragment_schedule_list, container, false);
 
         //setContentView(R.layout.fragment_schedule_list);
-        final ScheduleRowModel[] rowList = {new ScheduleRowModel("Emplois du temps L3 2.1", "C", null), new ScheduleRowModel("Emplois du temps L3 4.1", "A", null)};
-        final ScheduleRowModel[] rowList2 = {new ScheduleRowModel("Emplois du temps L1 1.1", "1", null), new ScheduleRowModel("Emplois du temps L1 2.1", "12", null)};
-        final ScheduleGroupModel[] list = {new ScheduleGroupModel("L1", rowList2), new ScheduleGroupModel("L3", rowList)};
-        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(ScheduleApplication.getContext(), list);
+        final ScheduleRowModel[] rowList = new ScheduleRowModel[((MainActivity) getActivity()).getSchedules().size()];
+        for (int i = 0; i < ((MainActivity) getActivity()).getSchedules().size(); i++)
+            rowList[i] = new ScheduleRowModel(((MainActivity) getActivity()).getSchedules().get(i).getName(), "0", null);
+
+        final ScheduleGroupModel groupList[] = {new ScheduleGroupModel("Général", rowList)};
+
+        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(ScheduleApplication.getContext(), groupList);
 
         final AnimatedExpandableListView listView = ((AnimatedExpandableListView) rootView.findViewById(R.id.schedule_list_view));
 
@@ -70,5 +76,33 @@ public class ScheduleListFragment extends Fragment
         });
 
         return rootView;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+
+        if (id == R.id.action_add_schedule)
+        {
+
+            AddScheduleDialogFragment f = AddScheduleDialogFragment.newInstance(this);
+            f.show(getFragmentManager(), "AddScheduleDialogFragment");
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onScheduleDownloaded(Schedule schedule)
+    {
+        Log.v("Downloaded", "ok");
+    }
+
+    @Override
+    public void onScheduleDownloadError(Exception e)
+    {
+        Log.v("Downloaded", e.getMessage());
     }
 }
