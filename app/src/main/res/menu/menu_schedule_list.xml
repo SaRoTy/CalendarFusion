@@ -7,5 +7,5 @@
         android:id="@+id/action_add_schedule"
         android:icon="@drawable/action_plus"
         android:title="@string/add"
-        schedule:showAsAction="ifRoom"/>
+        schedule:showAsAction="always"/>
 </menu>

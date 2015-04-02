@@ -92,9 +92,8 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-        menu.clear();
-        inflater.inflate(R.menu.menu_schedule_list, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+        if (menu.size() == 0)
+            inflater.inflate(R.menu.menu_schedule_list, menu);
     }
 
     @Override
