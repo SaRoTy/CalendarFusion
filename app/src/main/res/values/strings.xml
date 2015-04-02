@@ -14,5 +14,10 @@
     <string name="dialog_add_schedule_label_name">Name : </string>
     <string name="dialog_add_schedule_label_group">Group : </string>
 
+    <!-- Detail -->
+    <string name="label_time">Heure</string>
+    <string name="label_room">Salle</string>
+    <string name="back">Back</string>
+
 
 </resources>

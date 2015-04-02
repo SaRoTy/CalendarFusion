@@ -13,6 +13,7 @@ public class Course implements Serializable
     private static final long serialVersionUID = 5334276957940324970L;
     private String title;
     private String category;
+    private String room;
 
     public Course()
     {
@@ -43,10 +44,11 @@ public class Course implements Serializable
         return title;
     }
 
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
+    public void setTitle(String title){ this.title = title;}
+
+    public String getRoom(){ return this.room; }
+
+    public void setRoom(String room){ this.room = room;}
 
     @Override
     public String toString()

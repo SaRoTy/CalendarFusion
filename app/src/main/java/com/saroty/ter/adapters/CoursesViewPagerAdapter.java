@@ -1,6 +1,7 @@
 package com.saroty.ter.adapters;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
@@ -44,6 +45,10 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     {
         return 100;
     }
+
+    //Empêche le call du super par défaut, sinon pas d'affichage
+    @Override
+    public void restoreState(Parcelable state, ClassLoader loader) {}
 
     @Override
     public CharSequence getPageTitle(int position)

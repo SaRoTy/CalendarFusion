@@ -68,6 +68,9 @@ public class MainActivity extends ActionBarActivity
     public void addSchedule(Schedule s)
     {
         mSchedules.add(s);
+        if(!hasCurrentSchedule())
+            setCurrentSchedule(s);
+
     }
 
     @Override
