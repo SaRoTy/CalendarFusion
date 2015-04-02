@@ -21,7 +21,7 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
 
     public ListCourseOfDayRowAdapter(Context context, CourseRowModel[] modelsArrayList)
     {
-        super(context, R.layout.course_of_day_list_row, modelsArrayList);
+        super(context, R.layout.home_course_row, modelsArrayList);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         DATA = modelsArrayList;
     }
@@ -32,11 +32,12 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
         ViewHolder holder;
         if (convertView == null)
         {
-            convertView = mInflater.inflate(R.layout.course_of_day_list_row, null);
+            convertView = mInflater.inflate(R.layout.home_course_row, null);
 
             holder = new ViewHolder();
-            holder.nom = (TextView) convertView.findViewById(R.id.course_list_row_title);
-            holder.type = (TextView) convertView.findViewById(R.id.course_list_row_type);
+            holder.name = (TextView) convertView.findViewById(R.id.text_name);
+            holder.interval = (TextView) convertView.findViewById(R.id.text_interval);
+            holder.room = (TextView) convertView.findViewById(R.id.text_room);
 
             convertView.setTag(holder);
         } else
@@ -44,15 +45,18 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
             holder = (ViewHolder) convertView.getTag();
         }
 
-        holder.type.setText(DATA[position].getInterval().toString());
-        holder.nom.setText(DATA[position].getName());
+        holder.interval.setText(DATA[position].getInterval().toString());
+        holder.name.setText(DATA[position].getName());
+        holder.room.setText(DATA[position].getRoom());
+
 
         return convertView;
     }
 
     private static class ViewHolder //Lié à la performence, trick refilé par google.
     {
-        TextView nom;
-        TextView type;
+        TextView name;
+        TextView interval;
+        TextView room;
     }
 }
