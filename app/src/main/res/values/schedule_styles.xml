@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Local copy of android:Theme.Holo.Dialog.Alert -->
+    <style name="Theme_Holo_Light_Dialog_Alert" parent="@android:style/Theme.Holo.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle_Holo_Light</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Local copy of android:DialogWindowTitle.Holo -->
+    <style name="DialogWindowTitle_Holo_Light">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Holo.DialogWindowTitle
+        </item>
+    </style>
+
+    <style name="DialogWindowTitle.Schedule" parent="@style/DialogWindowTitle_Holo_Light">
+        <item name="android:textAppearance">@style/TextAppearance.Schedule.DialogWindowTitle</item>
+    </style>
+
+    <style name="TextAppearance.Schedule.DialogWindowTitle" parent="@android:style/TextAppearance.Holo.DialogWindowTitle">
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="Widget.Schedule.Button.Borderless" parent="@android:style/Widget.Holo.Button.Borderless">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextAppearance.Schedule.DialogButton" parent="@android:style/TextAppearance.Holo.Medium"></style>
+
+    <style name="Schedule.ButtonBar.AlertDialog" parent="@android:style/Holo.Light.ButtonBar.AlertDialog">
+        <item name="android:background">@color/blue</item>
+    </style>
+</resources>

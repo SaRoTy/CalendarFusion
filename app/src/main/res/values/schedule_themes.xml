@@ -1,9 +1,14 @@
 <resources>
-    <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/BlueActionBarTheme</item>
         <item name="actionBarStyle">@style/BlueActionBarTheme</item>
+        <item name="android:alertDialogTheme">@style/Theme_Schedule_Dialog_Alert</item>
+    </style>
 
+    <style name="Theme_Schedule_Dialog_Alert" parent="@style/Theme_Holo_Light_Dialog_Alert">
+        <item name="android:windowTitleStyle">@style/DialogWindowTitle.Schedule</item>
+        <item name="android:borderlessButtonStyle">@style/Widget.Schedule.Button.Borderless</item>
+        <item name="android:buttonBarStyle">@style/Schedule.ButtonBar.AlertDialog</item>
     </style>
 
     <style name="BlueActionBarTheme" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">

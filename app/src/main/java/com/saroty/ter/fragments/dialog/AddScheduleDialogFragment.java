@@ -2,15 +2,14 @@ package com.saroty.ter.fragments.dialog;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.saroty.ter.R;
@@ -28,8 +27,6 @@ import java.net.URL;
 public class AddScheduleDialogFragment extends DialogFragment
 {
     private ProgressBar mProgressBar;
-    private LinearLayout mContentLayout;
-    private Button mDownloadButton;
     private EditText mEditText;
     private AdaptScheduleTask mDownloadTask;
 
@@ -47,13 +44,21 @@ public class AddScheduleDialogFragment extends DialogFragment
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View v = inflater.inflate(R.layout.dialog_add_schedule, null);
 
-        mContentLayout = (LinearLayout) v.findViewById(R.id.content_layout);
         mProgressBar = (ProgressBar) v.findViewById(R.id.progress_bar);
-        mDownloadButton = (Button) v.findViewById(R.id.button_download);
         mEditText = (EditText) v.findViewById(R.id.dialog_add_schedule_url);
 
+        builder.setView(v).setTitle(R.string.dialog_add_schedule_title).setPositiveButton("Download", null);
 
-        mDownloadButton.setOnClickListener(new View.OnClickListener()
+        AlertDialog dialog = builder.create();// On a besoin d'empecher le dialog de se fermer.
+
+        dialog.show();
+
+        int titleDividerId = getResources().getIdentifier("titleDivider", "id", "android"); //Encore une fois, seul moyen de modifier la couleur du divider...
+        View titleDivider = dialog.findViewById(titleDividerId);
+        if (titleDivider != null)
+            titleDivider.setBackgroundColor(getResources().getColor(R.color.blue));
+
+        dialog.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -62,13 +67,18 @@ public class AddScheduleDialogFragment extends DialogFragment
             }
         });
 
-        builder.setView(v);
-        return builder.create();
+        return dialog;
     }
 
     private void onUrlValidate(String url)
     {
-        mContentLayout.setVisibility(View.GONE);
+        if (mDownloadTask != null)
+            return;
+        if (!url.toLowerCase().matches("^\\w+://.*"))
+        {
+            url = "http://" + url;
+        }
+        mEditText.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
         mDownloadTask = new AdaptScheduleTask();
         try
@@ -110,17 +120,20 @@ public class AddScheduleDialogFragment extends DialogFragment
         @Override
         public void onPostExecute(Schedule table)
         {
-            try
-            {
-                ScheduleFileUtil.saveSchedule(table);
-            } catch (IOException e)
-            {
-                mException = e;
-            }
             if (mException != null)
                 ((AddScheduleDialogListener) getTargetFragment()).onScheduleDownloadError(mException);
             else
+            {
+                try
+                {
+                    ScheduleFileUtil.saveSchedule(table);
+                } catch (IOException e)
+                {
+                    mException = e;
+                }
                 ((AddScheduleDialogListener) getTargetFragment()).onScheduleDownloaded(table);
+            }
+            AddScheduleDialogFragment.this.dismiss();
         }
     }
 

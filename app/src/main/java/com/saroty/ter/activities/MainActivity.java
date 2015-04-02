@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity
 
     public boolean hasCurrentSchedule()
     {
-        return (mCurrentSchedule == -1);
+        return (mCurrentSchedule != -1);
     }
 
     public Schedule getCurrentSchedule()
@@ -63,6 +63,11 @@ public class MainActivity extends ActionBarActivity
     public ArrayList<Schedule> getSchedules()
     {
         return mSchedules;
+    }
+
+    public void addSchedule(Schedule s)
+    {
+        mSchedules.add(s);
     }
 
     @Override

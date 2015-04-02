@@ -81,6 +81,8 @@ public class CelcatConverter extends Converter
                 {
                     if (xpp.getName().equalsIgnoreCase("span"))
                         curWeek = null;
+                    else if (xpp.getName().equalsIgnoreCase("subheading"))
+                        table.setName(text);
                     else if (xpp.getName().equalsIgnoreCase("event"))
                     {
                         curCourse = null;

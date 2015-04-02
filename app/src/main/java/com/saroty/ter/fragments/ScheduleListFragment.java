@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 
 import com.idunnololz.widgets.AnimatedExpandableListView;
@@ -23,9 +22,7 @@ import com.saroty.ter.schedule.Schedule;
 
 public class ScheduleListFragment extends Fragment implements AddScheduleDialogFragment.AddScheduleDialogListener
 {
-    public ScheduleListFragment()
-    {
-    }
+    private AnimatedExpandableListView mListView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -34,6 +31,15 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_list, container, false);
 
+        mListView = ((AnimatedExpandableListView) rootView.findViewById(R.id.schedule_list_view));
+
+        refreshList();
+
+        return rootView;
+    }
+
+    private void refreshList()
+    {
         //setContentView(R.layout.fragment_schedule_list);
         final ScheduleRowModel[] rowList = new ScheduleRowModel[((MainActivity) getActivity()).getSchedules().size()];
         for (int i = 0; i < ((MainActivity) getActivity()).getSchedules().size(); i++)
@@ -43,39 +49,26 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
 
         ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(ScheduleApplication.getContext(), groupList);
 
-        final AnimatedExpandableListView listView = ((AnimatedExpandableListView) rootView.findViewById(R.id.schedule_list_view));
-
-        listView.setAdapter(adapter);
-        int count =  adapter.getGroupCount(); //Moche, mais le seul moyen acctuel.
+        mListView.setAdapter(adapter);
+        int count = adapter.getGroupCount();
         for (int i = 0; i <count ; i++)
-            listView.expandGroup(i);
+            mListView.expandGroup(i);//Moche, mais le seul moyen acctuel.
 
-        listView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
+        mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
         {
             @Override
             public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id)
             {
-                if (listView.isGroupExpanded(groupPosition))
+                if (mListView.isGroupExpanded(groupPosition))
                 {
-                    listView.collapseGroupWithAnimation(groupPosition);
+                    mListView.collapseGroupWithAnimation(groupPosition);
                 } else
                 {
-                    listView.expandGroupWithAnimation(groupPosition);
+                    mListView.expandGroupWithAnimation(groupPosition);
                 }
                 return true;
             }
         });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Log.v("OnClick", "okok");
-            }
-        });
-
-        return rootView;
     }
 
     @Override
@@ -97,12 +90,14 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     @Override
     public void onScheduleDownloaded(Schedule schedule)
     {
+        ((MainActivity) getActivity()).addSchedule(schedule);
+        refreshList();
         Log.v("Downloaded", "ok");
     }
 
     @Override
     public void onScheduleDownloadError(Exception e)
     {
-        Log.v("Downloaded", e.getMessage());
+        Log.v("Downloaded", e.toString());
     }
 }
