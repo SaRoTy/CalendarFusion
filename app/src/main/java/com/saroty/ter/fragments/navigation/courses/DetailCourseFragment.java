@@ -42,12 +42,12 @@ public class DetailCourseFragment extends Fragment {
         //this.mBack = (Button)rootView.findViewById(R.id.back);
         Bundle bundle = getArguments();
 
-        this.mBack.setOnClickListener(new View.OnClickListener() {
+        /*this.mBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((MainActivity)getActivity()).fragmentBack();
             }
-        });
+        });*/
 
         //((TextView) rootView.findViewById(R.id.detail_title)).setText((String) bundle.get("title"));
         ((TextView)rootView.findViewById(R.id.detail_time)).setText((String)bundle.get("time"));
