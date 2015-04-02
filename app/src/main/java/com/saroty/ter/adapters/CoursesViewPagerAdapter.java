@@ -31,8 +31,8 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         Fragment fragment = new CourseListFragment();
 
         Bundle args = new Bundle();
-        args.putInt("position", i);
-        args.putInt("decal", this.mDecalWeek);
+        args.putInt("day", i%7);
+        args.putInt("week", this.mPager.getmWeek()+this.mDecalWeek+i/7);
 
         fragment.setArguments(args);
 

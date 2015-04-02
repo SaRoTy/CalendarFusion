@@ -3,11 +3,13 @@ package com.saroty.ter.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.saroty.ter.R;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CoursesViewPagerAdapter;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
@@ -41,17 +43,32 @@ public class DayListFragment extends Fragment
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
-
-        myViewPagerAdapter =
-                new CoursesViewPagerAdapter(getFragmentManager(),this);
-
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
+
+        return rootView;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        Log.v("debug romain","appele start");
+
+        if(myViewPagerAdapter == null)
+            myViewPagerAdapter =
+                    new CoursesViewPagerAdapter(getFragmentManager(),this);
+        else
+            myViewPagerAdapter =
+                    new CoursesViewPagerAdapter(getChildFragmentManager(),this);
+
         mViewPager.setAdapter(myViewPagerAdapter);
 
         AdaptScheduleTask a = new AdaptScheduleTask(getActivity().getApplicationContext());
 
         this.mWeek = 33;
         this.mDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+
+        //TODO : A changer quand arthur aura fait son job, de meme pour le seet current schedule
 
         try {
             a.execute(new URL("https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"));
@@ -64,21 +81,19 @@ public class DayListFragment extends Fragment
             e.printStackTrace();
         }
 
+        ((MainActivity)getActivity()).getSchedules().add(this.mSchedule);
+        ((MainActivity)getActivity()).setCurrentSchedule(this.mSchedule);
+
         //TODO : HARDCODE DU decal pour le jour souhaite pas top
+
         mViewPager.setCurrentItem(this.mDay+6-1);
 
-
-        return rootView;
     }
 
-
-    public TreeMap<LocalTimeInterval, Course> getCours(int day, int week)
-    {
-        try{
-            return this.mSchedule.getWeekByWeekNumber(week).getDay(DayOfWeek.getById(day)).getCourses();
-        }catch(NullPointerException e){
-            return null;
-        }
+    @Override
+    public void onStop(){
+        super.onStop();
+        Log.v("debug romain","appelle stop");
     }
 
     public int getmWeek()

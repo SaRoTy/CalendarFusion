@@ -10,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
+import com.saroty.ter.schedule.Schedule;
+import com.saroty.ter.time.DayOfWeek;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.util.Calendar;
@@ -30,7 +33,7 @@ public class CourseListFragment extends Fragment
     private ListCourseOfDayRowAdapter mAdapter;
     private int mDay;
     private int mWeek;
-    private DayListFragment mViewPager;
+    private Schedule mSchedule;
 
 
     public CourseListFragment()
@@ -53,20 +56,16 @@ public class CourseListFragment extends Fragment
         Bundle bundle =  getArguments();
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
-        this.mViewPager = (DayListFragment) getFragmentManager().findFragmentByTag("course_view_pager");
 
+        mSchedule = ((MainActivity)getActivity()).getCurrentSchedule();
 
+        this.mDay = (int)bundle.get("day");
 
-        this.mDay = (int)bundle.get("position");
-
-        this.mWeek = mViewPager.getmWeek()+(int)bundle.get("decal")
-                    + this.mDay/7;
-
-        this.mDay = this.mDay%7;
+        this.mWeek = (int)bundle.get("week");
 
         loadEDT();
 
-        setHasOptionsMenu(true);
+        //setHasOptionsMenu(true);
 
         return rootView;
     }
@@ -87,12 +86,10 @@ public class CourseListFragment extends Fragment
         CourseRowModel[] model;
         int i=0;
 
-        mListDay = this.mViewPager.getCours(this.mDay, this.mWeek);
-
-        if(this.mListDay == null)
-            Log.v("debug romain","listday null");
-
-        if(mListDay == null){
+        try{
+            mListDay = mSchedule
+                    .getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
+        }catch(NullPointerException e){
             return;
         }
 
