@@ -69,9 +69,7 @@ public class CourseListFragment extends Fragment
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CourseRowModel course = (CourseRowModel) mList.getItemAtPosition(position);
 
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.frame_container,new DetailCourse())
-                        .commit();
+                ((MainActivity)getActivity()).setCurrentFragment(new DetailCourse(),true);
             }
         });
 

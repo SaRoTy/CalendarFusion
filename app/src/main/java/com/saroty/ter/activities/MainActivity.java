@@ -13,6 +13,7 @@ import android.widget.ListView;
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.fragments.DayListFragment;
+import com.saroty.ter.fragments.DetailCourse;
 import com.saroty.ter.fragments.ScheduleListFragment;
 import com.saroty.ter.models.list.NavigationRowModel;
 import com.saroty.ter.schedule.Schedule;
@@ -104,9 +105,8 @@ public class MainActivity extends ActionBarActivity
         mNavigationPosition = position;
         ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
         mDrawerLayout.closeDrawers();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, mNavigationFragments[position])
-                .commit();
+
+        setCurrentFragment(mNavigationFragments[position],false);
     }
 
     @Override
@@ -115,6 +115,24 @@ public class MainActivity extends ActionBarActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_schedule_list, menu);
         return true;
+    }
+
+    public void setCurrentFragment(Fragment fragment, boolean backStack)
+    {
+        if(backStack)
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+        else
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frame_container, fragment)
+                    .commit();
+
+    }
+
+    public void fragmentBack(){
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override

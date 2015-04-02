@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
@@ -23,6 +24,8 @@ public class DetailCourse extends Fragment {
     private static final String DESCRIBABLE_KEY_COURSE = "describable_key_course";
     private static final String DESCRIBABLE_KEY_LOCALTIME = "describable_key_localtime";
 
+    private Button mBack;
+
     public static DetailCourse newInstance(Serializable course, Serializable localtime) {
         DetailCourse fragment = new DetailCourse();
         Bundle bundle = new Bundle();
@@ -39,16 +42,24 @@ public class DetailCourse extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_detail_course, container, false);
+        this.mBack = (Button)rootView.findViewById(R.id.back);
         Bundle bundle = getArguments();
 
         Schedule schedule = ((MainActivity)getActivity()).getCurrentSchedule();
 
-        Course course = (Course)bundle.getSerializable("describable_key_course");
-        LocalTime localTime = (LocalTime)bundle.getSerializable("describable_key_localtime");
+        this.mBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).fragmentBack();
+            }
+        });
 
-        ((TextView)rootView.findViewById(R.id.detail_title)).setText(course.getTitle());
+        //Course course = (Course)bundle.getSerializable("describable_key_course");
+        //LocalTime localTime = (LocalTime)bundle.getSerializable("describable_key_localtime");
+
+        /*((TextView)rootView.findViewById(R.id.detail_title)).setText(course.getTitle());
         ((TextView)rootView.findViewById(R.id.detail_time)).setText(localTime.toString());
-        ((TextView)rootView.findViewById(R.id.detail_room)).setText(course.getRoom());
+        ((TextView)rootView.findViewById(R.id.detail_room)).setText(course.getRoom());*/
 
         return rootView;
     }
