@@ -20,7 +20,7 @@
 
         <TextView
             android:id="@+id/text_interval"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="10:00 - 11:00"
             android:textColor="@android:color/darker_gray"
@@ -28,7 +28,7 @@
 
         <TextView
             android:id="@+id/text_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/text_room"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="U3-103"
             android:textColor="@android:color/darker_gray"
