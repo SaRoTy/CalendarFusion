@@ -61,7 +61,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         calendar.set(Calendar.WEEK_OF_YEAR, week);
         calendar.set(Calendar.DAY_OF_WEEK, day);
 
-        //return day + " " + week;
-        return new SimpleDateFormat("E-d").format(calendar.getTime());
+        return day + " " + week;
+        //return new SimpleDateFormat("E-d").format(calendar.getTime());
     }
 }
