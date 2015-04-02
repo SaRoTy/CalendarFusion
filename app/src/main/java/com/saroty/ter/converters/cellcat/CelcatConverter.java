@@ -16,6 +16,10 @@ import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Arthur on 09/03/2015.
@@ -51,6 +55,9 @@ public class CelcatConverter extends Converter
 
             Schedule table = new Schedule();
 
+            DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            int weekShift = -1;
+
             CourseWeek curWeek = null;
 
             Course curCourse = null;
@@ -66,8 +73,17 @@ public class CelcatConverter extends Converter
                 {
                     if (xpp.getName().equalsIgnoreCase("span"))//TODO: Switch ?
                     {
+                        int rawix = Integer.parseInt(xpp.getAttributeValue(null, "rawix"));
                         curWeek = new CourseWeek();
-                        table.addWeek(Integer.parseInt(xpp.getAttributeValue(null, "rawix")), curWeek);
+                        if (weekShift == -1)
+                        {
+
+                            Date date = format.parse(xpp.getAttributeValue(null, "date"));
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTime(date);
+                            weekShift = rawix - cal.get(Calendar.WEEK_OF_YEAR);
+                        }
+                        table.addWeek((rawix - weekShift) % 52, curWeek);
                     } else if (xpp.getName().equalsIgnoreCase("event"))
                     {
                         curCourse = new Course();
@@ -106,7 +122,7 @@ public class CelcatConverter extends Converter
                             //TODO : Je suis pas sûr a 100%, mais je pense qu'il peut y avoir plusieurs "Y"
                             for (int index = text.indexOf("Y"); index >= 0; index = text.indexOf("Y", index + 1))
                             {
-                                table.getWeekByWeekNumber(index + 1).getDay(curCourseDay).addCourse(new LocalTimeInterval(curCourseStart, curCourseEnd), curCourse);
+                                table.getWeekByWeekNumber((index + 1 - weekShift) % 52).getDay(curCourseDay).addCourse(new LocalTimeInterval(curCourseStart, curCourseEnd), curCourse);
                             }
                         }
                     }
