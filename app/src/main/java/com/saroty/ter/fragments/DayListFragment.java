@@ -59,7 +59,7 @@ public class DayListFragment extends Fragment
                     new CoursesViewPagerAdapter(getFragmentManager(),this);
         else
             myViewPagerAdapter =
-                    new CoursesViewPagerAdapter(getChildFragmentManager(),this);
+                    new CoursesViewPagerAdapter(getFragmentManager(),this);
 
         mViewPager.setAdapter(myViewPagerAdapter);
 
