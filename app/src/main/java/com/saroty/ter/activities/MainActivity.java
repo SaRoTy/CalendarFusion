@@ -1,7 +1,9 @@
 package com.saroty.ter.activities;
 
+import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
@@ -119,12 +121,16 @@ public class MainActivity extends ActionBarActivity
 
     public void setCurrentFragment(Fragment fragment, boolean backStack)
     {
-        if(backStack)
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, fragment)
+        FragmentTransaction fragmentTransaction;
+        if(backStack) {
+            fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+
+
+            fragmentTransaction.replace(R.id.frame_container, fragment)
                     .addToBackStack(null)
                     .commit();
-        else
+        }else
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_container, fragment)
                     .commit();
