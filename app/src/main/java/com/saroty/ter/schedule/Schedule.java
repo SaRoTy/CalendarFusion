@@ -72,8 +72,8 @@ public class Schedule implements Serializable
         String result = "[Schedule]\n";
         for (Map.Entry<Integer, CourseWeek> entry : weeks.entrySet())
         {
-            //result += "(" + entry.getKey() + ")\n" + entry.getValue();
-            result += "(" + entry.getKey()+ ")\n";
+            result += "(" + entry.getKey() + ")\n" + entry.getValue();
+            //result += "(" + entry.getKey()+ ")\n";
         }
         return result;
     }

@@ -2,7 +2,6 @@ package com.saroty.ter.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -91,13 +90,13 @@ public class ScheduleListFragment extends Fragment implements AddScheduleDialogF
     public void onScheduleDownloaded(Schedule schedule)
     {
         ((MainActivity) getActivity()).addSchedule(schedule);
+
         refreshList();
-        Log.v("Downloaded", "ok");
     }
 
     @Override
     public void onScheduleDownloadError(Exception e)
     {
-        Log.v("Downloaded", e.toString());
+
     }
 }
