@@ -57,11 +57,12 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     {
         Calendar calendar = Calendar.getInstance();
         int week = this.mPager.getWeek() + this.mDecalWeek + position / 7;
-        int day = (position % 7) +2;
+        int day = ((position + 1) % 7) + 1;
         calendar.set(Calendar.WEEK_OF_YEAR, week);
         calendar.set(Calendar.DAY_OF_WEEK, day);
 
-        return day + " " + week;
-        //return new SimpleDateFormat("E-d").format(calendar.getTime());
+        String title = new SimpleDateFormat("EEEE", Locale.FRENCH).format(calendar.getTime());
+
+        return "Semaine " + week + " - " + Character.toUpperCase(title.charAt(0)) + title.substring(1);
     }
 }
