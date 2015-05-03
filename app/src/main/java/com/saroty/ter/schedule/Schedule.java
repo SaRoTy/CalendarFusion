@@ -1,14 +1,16 @@
 package com.saroty.ter.schedule;
 
-import android.util.Log;
+import android.util.Pair;
 
-import com.saroty.ter.time.DayOfWeek;
+import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Arthur on 09/03/2015.
@@ -17,21 +19,12 @@ public class Schedule implements Serializable
 {
     private static final long serialVersionUID = -7151757052818244043L;
     private String name = "defaultSchedule";
-    private TreeMap<Integer, CourseWeek> weeks;
+
+    private Map<DateTime, List<Pair<LocalTimeInterval, Course>>> mSchedule;
 
     public Schedule()
     {
-        weeks = new TreeMap<Integer, CourseWeek>();
-    }
-
-    public void addWeek(int weekNumber, CourseWeek week)
-    {
-        weeks.put(weekNumber, week);
-    }
-
-    public int weekCount()
-    {
-        return weeks.size();
+        mSchedule = new TreeMap<>();
     }
 
     public String getName()
@@ -44,37 +37,28 @@ public class Schedule implements Serializable
         this.name = name;
     }
 
-    public CourseWeek getWeekByWeekNumber(int weekNumber){ return weeks.get(weekNumber); }
-
-    public CourseDay getDayByDate(Date date)
+    public void addCourse(Course course, DateTime date, LocalTimeInterval interval)
     {
-        CourseWeek week;
-        DayOfWeek day;
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
+        if (!mSchedule.containsKey(date))
+            mSchedule.put(date, new ArrayList<Pair<LocalTimeInterval, Course>>());
+        mSchedule.get(date).add(new Pair<>(interval, course));
+    }
 
-        if( !weeks.containsKey(cal.get(Calendar.WEEK_OF_YEAR)) )
-            Log.v("debug romain","nok contain");
-
-        if( (week = getWeekByWeekNumber(cal.get(Calendar.WEEK_OF_YEAR))) == null )
-            Log.v("debug romain","probleme week");
-
-        if( (day = DayOfWeek.getById(cal.get(Calendar.DAY_OF_WEEK))) == null )
-            Log.v("deug romain","probleme day");
-
-        return week.getDay(day);
-
+    public List<Pair<LocalTimeInterval, Course>> getDailyCourses(DateTime day)
+    {
+        for (Map.Entry<DateTime, List<Pair<LocalTimeInterval, Course>>> c : mSchedule.entrySet())
+        {
+            if (c.getKey().isSameDayAs(day))
+                return c.getValue();
+        }
+        return new ArrayList<>();
     }
 
     @Override
     public String toString()
     {
         String result = "[Schedule]\n";
-        for (Map.Entry<Integer, CourseWeek> entry : weeks.entrySet())
-        {
-            result += "(" + entry.getKey() + ")\n" + entry.getValue();
-            //result += "(" + entry.getKey()+ ")\n";
-        }
+
         return result;
     }
 }

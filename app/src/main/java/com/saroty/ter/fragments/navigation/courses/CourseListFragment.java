@@ -2,6 +2,7 @@ package com.saroty.ter.fragments.navigation.courses;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,11 @@ import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.time.DayOfWeek;
 import com.saroty.ter.time.LocalTimeInterval;
 
-import java.util.Calendar;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.List;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Romain on 24/03/2015.
@@ -28,10 +28,9 @@ public class CourseListFragment extends Fragment
 {
 
     private ListView mList;
-    private TreeMap<LocalTimeInterval, Course> mListDay;
+    private List<Pair<LocalTimeInterval, Course>> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
-    private int mDay;
-    private int mWeek;
+    private DateTime mDay;
     private Schedule mSchedule;
 
 
@@ -53,9 +52,7 @@ public class CourseListFragment extends Fragment
 
         Bundle bundle = getArguments();
 
-        this.mDay = (int) bundle.get("day");
-
-        this.mWeek = (int) bundle.get("week");
+        this.mDay = new DateTime(bundle.getString("day"));
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
 
@@ -92,24 +89,13 @@ public class CourseListFragment extends Fragment
         CourseRowModel[] model;
         int i = 0;
 
-        if (mSchedule.getWeekByWeekNumber(this.mWeek) == null)
-        {
-            return;
-        }
-
-        if (mSchedule.getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)) == null)
-            return;
-
-        mListDay = mSchedule
-                .getWeekByWeekNumber(this.mWeek).getDay(DayOfWeek.getById(this.mDay)).getCourses();
-
+        mListDay = mSchedule.getDailyCourses(mDay);
 
         model = new CourseRowModel[mListDay.size()];
 
-        for (Map.Entry<LocalTimeInterval, Course> cours : mListDay.entrySet())
+        for (Pair<LocalTimeInterval, Course> cours : mListDay)
         {
-            model[i] = new CourseRowModel(cours.getValue().getTitle()
-                    , cours.getKey(), cours.getValue().getRoom());
+            model[i] = new CourseRowModel(cours.second.getTitle(), cours.first, cours.second.getRoom());
             i++;
         }
 

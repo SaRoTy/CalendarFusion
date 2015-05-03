@@ -9,23 +9,17 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.CourseListFragment;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Locale;
-
 /**
  * Created by Romain on 31/03/2015.
  */
 public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
 {
-
-    private int mDecalWeek = -1;
     private DaysNavigationFragment mPager;
 
     public CoursesViewPagerAdapter(FragmentManager fm, DaysNavigationFragment pager)
     {
         super(fm);
-        this.mPager = pager;
+        mPager = pager;
     }
 
     @Override
@@ -34,9 +28,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         Fragment fragment = new CourseListFragment();
 
         Bundle args = new Bundle();
-        args.putInt("day", i%7);
-        args.putInt("week", this.mPager.getWeek()+this.mDecalWeek+i/7);
-
+        args.putString("day", mPager.getBaseDay().plusDays(i).format("YYYY-MM-DD"));
         fragment.setArguments(args);
 
         return fragment;
@@ -50,18 +42,13 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
 
     //Empêche le call du super par défaut, sinon pas d'affichage
     @Override
-    public void restoreState(Parcelable state, ClassLoader loader) {}
+    public void restoreState(Parcelable state, ClassLoader loader)
+    {
+    }
 
     @Override
     public CharSequence getPageTitle(int position)
     {
-        Calendar calendar = Calendar.getInstance();
-        int week = this.mPager.getWeek() + this.mDecalWeek + position / 7;
-        int day = (position % 7) +2;
-        calendar.set(Calendar.WEEK_OF_YEAR, week);
-        calendar.set(Calendar.DAY_OF_WEEK, day);
-
-        return day + " " + week;
-        //return new SimpleDateFormat("E-d").format(calendar.getTime());
+        return mPager.getBaseDay().plusDays(position).format("YYYY-MM-DD");
     }
 }

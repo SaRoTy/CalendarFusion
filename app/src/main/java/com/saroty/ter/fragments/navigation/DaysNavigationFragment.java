@@ -9,7 +9,9 @@ import android.view.ViewGroup;
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.CoursesViewPagerAdapter;
 
-import java.util.Calendar;
+import java.util.TimeZone;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Romain on 31/03/2015.
@@ -19,48 +21,31 @@ public class DaysNavigationFragment extends NavigationFragment
 
     private CoursesViewPagerAdapter myViewPagerAdapter;
     private ViewPager mViewPager;
-    private int mDay;
-    private int mWeek;
+    private DateTime mBaseDay;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
 
         View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
 
         myViewPagerAdapter =
-                new CoursesViewPagerAdapter(getChildFragmentManager(),this);
+                new CoursesViewPagerAdapter(getChildFragmentManager(), this);
 
         mViewPager.setAdapter(myViewPagerAdapter);
 
-        this.mWeek = Calendar.getInstance().get(Calendar.WEEK_OF_YEAR);
-        this.mDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        this.mBaseDay = DateTime.today(TimeZone.getDefault());
 
-        mViewPager.setCurrentItem(mDay+6-1);
+        mViewPager.setCurrentItem(0);//TODO:Check
 
         return rootView;
     }
 
-    public int getWeek()
+    public DateTime getBaseDay()
     {
-        return this.mWeek;
+        return this.mBaseDay;
     }
-
-    public void setWeek(int week)
-    {
-        this.mWeek = week;
-    }
-
-    public int getDay()
-    {
-        return this.mDay;
-    }
-
-    public void setDay(int day)
-    {
-        this.mDay = day;
-    }
-
 
     @Override
     public String getNavigationTitle()

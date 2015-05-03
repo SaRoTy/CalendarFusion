@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity
 {
     private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment()};
 
-    private ArrayList<Schedule> mSchedules = new ArrayList<Schedule>();
+    private ArrayList<Schedule> mSchedules = new ArrayList<>();
     private int mCurrentSchedule = -1;
     private int mNavigationPosition;
 
@@ -65,7 +65,7 @@ public class MainActivity extends ActionBarActivity
     public void addSchedule(Schedule s)
     {
         mSchedules.add(s);
-        if(!hasCurrentSchedule())
+        if (!hasCurrentSchedule())
             setCurrentSchedule(s);
 
     }
@@ -104,7 +104,7 @@ public class MainActivity extends ActionBarActivity
         ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
         mDrawerLayout.closeDrawers();
 
-        setCurrentFragment(mNavigationFragments[position],false);
+        setCurrentFragment(mNavigationFragments[position], false);
         invalidateOptionsMenu();
     }
 
@@ -118,7 +118,8 @@ public class MainActivity extends ActionBarActivity
     public void setCurrentFragment(Fragment fragment, boolean backStack)
     {
         FragmentTransaction fragmentTransaction;
-        if(backStack) {
+        if (backStack)
+        {
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
@@ -126,7 +127,7 @@ public class MainActivity extends ActionBarActivity
             fragmentTransaction.replace(R.id.frame_container, fragment)
                     .addToBackStack(null)
                     .commit();
-        }else
+        } else
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_container, fragment)
                     .commit();

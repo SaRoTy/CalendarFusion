@@ -1,6 +1,7 @@
 package com.saroty.ter.fragments.navigation;
 
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,15 @@ import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CourseRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
-import com.saroty.ter.time.DayOfWeek;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.TimeZone;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Arthur on 02/04/2015.
@@ -41,32 +43,29 @@ public class HomeNavigationFragment extends NavigationFragment
         mDayText = (TextView) rootView.findViewById(R.id.text_day);
         mDateText = (TextView) rootView.findViewById(R.id.text_date);
 
-        Calendar cal = Calendar.getInstance();
-        int weekNumber = cal.get(Calendar.WEEK_OF_YEAR);
-        String day = new SimpleDateFormat("EEEE", Locale.FRENCH).format(cal.getTime());
+        DateTime today = DateTime.today(TimeZone.getDefault());
 
-        mDayText.setText(Character.toUpperCase(day.charAt(0)) + day.substring(1));
+        String dayString = today.format("WWWW", Locale.getDefault());
+
+        mDayText.setText(Character.toUpperCase(dayString.charAt(0)) + dayString.substring(1));
         updateDate();
 
-
-        if (mainActivity.hasCurrentSchedule() && mainActivity.getCurrentSchedule().getWeekByWeekNumber(weekNumber) != null &&
-                mainActivity.getCurrentSchedule().getWeekByWeekNumber(weekNumber).getDay(DayOfWeek.getByCalendar(cal)) != null)
+        if (mainActivity.hasCurrentSchedule())
         {
+            List<Pair<LocalTimeInterval, Course>> courses = mainActivity.getCurrentSchedule().getDailyCourses(today);
 
-
-            TreeMap<LocalTimeInterval, Course> courses = mainActivity.getCurrentSchedule().getWeekByWeekNumber(weekNumber).getDay(DayOfWeek.getByCalendar(cal)).getCourses();
-            int i = 0;
             CourseRowModel[] data = new CourseRowModel[courses.size()];
 
-            for (Map.Entry<LocalTimeInterval, Course> entry : courses.entrySet())
+            int i = 0;
+
+            for (Pair<LocalTimeInterval, Course> c : courses)
             {
-                data[i] = new CourseRowModel(entry.getValue().getTitle(), entry.getKey(), entry.getValue().getRoom());
+                data[i] = new CourseRowModel(c.second.getTitle(), c.first, c.second.getRoom());
                 i++;
             }
 
             mCourseList.setAdapter(new CourseRowAdapter(getActivity().getApplicationContext(), data));
         }
-
 
         mThread = new Thread()
         {

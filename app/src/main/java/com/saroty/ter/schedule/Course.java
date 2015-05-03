@@ -3,8 +3,6 @@ package com.saroty.ter.schedule;
 
 import java.io.Serializable;
 
-import javax.xml.datatype.Duration;
-
 /**
  * Created by Arthur on 09/03/2015.
  */
@@ -14,16 +12,14 @@ public class Course implements Serializable
     private String title;
     private String category;
     private String room;
-    private Duration duration;
 
     public Course()
     {
     }
 
-    public Course(String title, Duration duration)
+    public Course(String title)
     {
         this.title = title;
-        this.duration = duration;
     }
 
     public boolean hasCategory()
@@ -65,15 +61,5 @@ public class Course implements Serializable
     public void setRoom(String room)
     {
         this.room = room;
-    }
-
-    public Duration getDuration()
-    {
-        return duration;
-    }
-
-    public void setDuration(Duration duration)
-    {
-        this.duration = duration;
     }
 }
