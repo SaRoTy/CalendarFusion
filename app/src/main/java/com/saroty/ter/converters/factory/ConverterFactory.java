@@ -19,6 +19,7 @@ public class ConverterFactory implements IConverterFactory
     {
         if (TrustedCelcatHostsEnum.contains(url.getHost()))
             return makeCelcat(url, true);
+
         throw new NoConverterFoundException(url);
     }
 
