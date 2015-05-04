@@ -38,6 +38,7 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
             holder.name = (TextView) convertView.findViewById(R.id.text_name);
             holder.interval = (TextView) convertView.findViewById(R.id.text_interval);
             holder.room = (TextView) convertView.findViewById(R.id.text_room);
+            holder.color = convertView.findViewById(R.id.course_color);
 
             convertView.setTag(holder);
         } else
@@ -48,13 +49,14 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
         holder.interval.setText(DATA[position].getInterval().toString());
         holder.name.setText(DATA[position].getName());
         holder.room.setText(DATA[position].getRoom());
-
+        holder.color.setBackgroundColor(DATA[position].getColor());
 
         return convertView;
     }
 
     private static class ViewHolder //Lié à la performence, trick refilé par google.
     {
+        View color;
         TextView name;
         TextView interval;
         TextView room;

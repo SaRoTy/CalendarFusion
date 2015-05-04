@@ -12,6 +12,7 @@ public class Course implements Serializable
     private String title;
     private String category;
     private String room;
+    private int color;
 
     public Course()
     {
@@ -61,5 +62,15 @@ public class Course implements Serializable
     public void setRoom(String room)
     {
         this.room = room;
+    }
+
+    public int getColor()
+    {
+        return color;
+    }
+
+    public void setColor(int color)
+    {
+        this.color = color;
     }
 }

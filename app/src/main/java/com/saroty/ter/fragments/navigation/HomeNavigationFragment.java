@@ -60,7 +60,7 @@ public class HomeNavigationFragment extends NavigationFragment
 
             for (Pair<LocalTimeInterval, Course> c : courses)
             {
-                data[i] = new CourseRowModel(c.second.getTitle(), c.first, c.second.getRoom());
+                data[i] = new CourseRowModel(c.second.getTitle(), c.first, c.second.getRoom(), c.second.getColor());
                 i++;
             }
 

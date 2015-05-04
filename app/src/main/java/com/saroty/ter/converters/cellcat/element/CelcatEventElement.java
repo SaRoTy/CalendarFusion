@@ -1,5 +1,7 @@
 package com.saroty.ter.converters.cellcat.element;
 
+import android.graphics.Color;
+
 import com.saroty.ter.converters.cellcat.element.enums.CelcatElementEnum;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
@@ -22,6 +24,7 @@ public class CelcatEventElement extends CelcatElement
     private final List<CelcatSpanElement> mSpanList;
 
     private int mDay;
+    private String mColor;
     private String mStartTime;
     private String mEndTime;
     private String mCategory;
@@ -39,6 +42,8 @@ public class CelcatEventElement extends CelcatElement
     @Override
     public boolean parse(XmlPullParser pullParser) throws IOException, XmlPullParserException
     {
+        mColor = pullParser.getAttributeValue(null, "colour");
+
         int event = pullParser.getEventType();
 
         String curText = "";
@@ -89,6 +94,8 @@ public class CelcatEventElement extends CelcatElement
 
                 if (mRooms.hasItems())
                     course.setRoom(mRooms.getItems().get(0));
+
+                course.setColor(Color.parseColor(mColor));
 
                 table.addCourse(course, date, interval);
             }

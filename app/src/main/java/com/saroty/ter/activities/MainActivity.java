@@ -120,6 +120,7 @@ public class MainActivity extends ActionBarActivity
         FragmentTransaction fragmentTransaction;
         if (backStack)
         {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
 
@@ -128,20 +129,34 @@ public class MainActivity extends ActionBarActivity
                     .addToBackStack(null)
                     .commit();
         } else
+        {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_container, fragment)
                     .commit();
+        }
+
 
     }
 
-    public void fragmentBack()
+    public boolean popBackStack()
     {
-        getSupportFragmentManager().popBackStack();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0)
+        {
+            getSupportFragmentManager().popBackStack();
+            return true;
+        }
+        return false;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
+        if (item.getItemId() == android.R.id.home)
+        {
+            return popBackStack();
+        } else
+            return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
     }
 }

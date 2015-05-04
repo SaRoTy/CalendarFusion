@@ -38,13 +38,6 @@ public class CourseListFragment extends Fragment
     {
     }
 
-    public static CourseListFragment newInstance()
-    {
-        CourseListFragment f = new CourseListFragment();
-
-        return f;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
@@ -67,16 +60,7 @@ public class CourseListFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                CourseRowModel courseModel = (CourseRowModel) mList.getItemAtPosition(position);
-                DetailCourseFragment fragment = new DetailCourseFragment();
-                Bundle bundle = new Bundle();
-
-                bundle.putString("title", courseModel.getName());
-                bundle.putString("time", courseModel.getInterval().toString());
-                bundle.putString("room", courseModel.getRoom());
-
-                fragment.setArguments(bundle);
-
+                DetailCourseFragment fragment = DetailCourseFragment.newInstance(mListDay.get(position));
                 ((MainActivity) getActivity()).setCurrentFragment(fragment, true);
             }
         });
@@ -93,9 +77,9 @@ public class CourseListFragment extends Fragment
 
         model = new CourseRowModel[mListDay.size()];
 
-        for (Pair<LocalTimeInterval, Course> cours : mListDay)
+        for (Pair<LocalTimeInterval, Course> course : mListDay)
         {
-            model[i] = new CourseRowModel(cours.second.getTitle(), cours.first, cours.second.getRoom());
+            model[i] = new CourseRowModel(course.second.getTitle(), course.first, course.second.getRoom(), course.second.getColor());
             i++;
         }
 

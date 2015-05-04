@@ -1,6 +1,5 @@
 package com.saroty.ter.models.list;
 
-import com.saroty.ter.time.LocalTime;
 import com.saroty.ter.time.LocalTimeInterval;
 
 /**
@@ -11,12 +10,14 @@ public class CourseRowModel {
     private String mName;
     private LocalTimeInterval mInterval;
     private String mRoom;
+    private int mColor;
 
-    public CourseRowModel(String name, LocalTimeInterval interval, String room)
+    public CourseRowModel(String name, LocalTimeInterval interval, String room, int color)
     {
         mName = name;
         mInterval = interval;
         mRoom = room;
+        mColor = color;
     }
 
     public String getName()
@@ -34,18 +35,13 @@ public class CourseRowModel {
         return mInterval;
     }
 
-    public void setInterval(LocalTimeInterval mInterval)
-    {
-        this.mInterval = mInterval;
-    }
-
     public String getRoom()
     {
         return mRoom;
     }
 
-    public void setRoom(String mRoom)
+    public int getColor()
     {
-        this.mRoom = mRoom;
+        return mColor;
     }
 }

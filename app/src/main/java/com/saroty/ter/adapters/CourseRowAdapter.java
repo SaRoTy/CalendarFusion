@@ -35,6 +35,7 @@ public class CourseRowAdapter extends ArrayAdapter<CourseRowModel>
 
             holder = new ViewHolder();
 
+            holder.color = convertView.findViewById(R.id.course_color);
             holder.interval = (TextView) convertView.findViewById(R.id.text_interval);
             holder.name = (TextView) convertView.findViewById(R.id.text_name);
             holder.room = (TextView) convertView.findViewById(R.id.text_room);
@@ -48,12 +49,14 @@ public class CourseRowAdapter extends ArrayAdapter<CourseRowModel>
         holder.interval.setText(DATA[position].getInterval().toString());
         holder.name.setText(DATA[position].getName());
         holder.room.setText(DATA[position].getRoom());
+        holder.color.setBackgroundColor(DATA[position].getColor());
 
         return convertView;
     }
 
     private static class ViewHolder
     {
+        View color;
         TextView interval;
         TextView name;
         TextView room;
