@@ -39,9 +39,15 @@ public class Schedule implements Serializable
 
     public void addCourse(Course course, DateTime date, LocalTimeInterval interval)
     {
-        if (!mSchedule.containsKey(date))
-            mSchedule.put(date, new ArrayList<Pair<LocalTimeInterval, Course>>());
-        mSchedule.get(date).add(new Pair<>(interval, course));
+        for (Map.Entry<DateTime, List<Pair<LocalTimeInterval, Course>>> c : mSchedule.entrySet())
+        {
+            if (c.getKey().isSameDayAs(date))
+            {
+                c.getValue().add(new Pair<>(interval, course));
+                return;
+            }
+        }
+        mSchedule.put(date, new ArrayList<Pair<LocalTimeInterval, Course>>());
     }
 
     public List<Pair<LocalTimeInterval, Course>> getDailyCourses(DateTime day)

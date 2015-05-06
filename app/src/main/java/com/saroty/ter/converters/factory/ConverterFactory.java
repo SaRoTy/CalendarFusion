@@ -1,8 +1,10 @@
 package com.saroty.ter.converters.factory;
 
 import com.saroty.ter.converters.Converter;
+import com.saroty.ter.converters.ade.ical.AdeIcalConverter;
 import com.saroty.ter.converters.cellcat.CelcatConverter;
 import com.saroty.ter.converters.exception.NoConverterFoundException;
+import com.saroty.ter.converters.factory.enums.TrustedAdeHostsEnum;
 import com.saroty.ter.converters.factory.enums.TrustedCelcatHostsEnum;
 
 import java.net.MalformedURLException;
@@ -19,6 +21,8 @@ public class ConverterFactory implements IConverterFactory
     {
         if (TrustedCelcatHostsEnum.contains(url.getHost()))
             return makeCelcat(url, true);
+        else if (TrustedAdeHostsEnum.contains(url.getHost()))
+            return makeAde(url, true);
 
         throw new NoConverterFoundException(url);
     }
@@ -37,5 +41,11 @@ public class ConverterFactory implements IConverterFactory
             }
         }
         throw new NoConverterFoundException(url);
+    }
+
+    private Converter makeAde(URL url, boolean trusted) throws NoConverterFoundException
+    {
+        //TODO: More deep check
+        return new AdeIcalConverter(url, trusted);
     }
 }

@@ -13,7 +13,7 @@
         android:hint="@string/text_url"
         android:inputType="textWebEmailAddress"
         android:padding="20dp"
-        android:text="https://celcatfsi.ups-tlse.fr/FSIpargroupes/g558.xml"/>
+        android:text="https://edt.inp-toulouse.fr/jsp/custom/modules/plannings/anonymous_cal.jsp?resources=124&amp;projectId=4&amp;calType=vcal&amp;nbWeeks=20"/>
     <!-- TODO : Remove the default text (Test) -->
 
     <ProgressBar

@@ -1,6 +1,7 @@
 package com.saroty.ter.time;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by Arthur on 09/03/2015.
@@ -22,6 +23,13 @@ public class LocalTime implements Comparable<LocalTime>, Serializable
     public LocalTime(int hour, int minute)
     {
         this(hour, minute, 0);
+    }
+
+    public LocalTime(Date date)
+    {
+        hour = date.getHours();
+        minute = date.getMinutes();
+        second = date.getSeconds();
     }
 
     public LocalTime(String rawLocalTime, String token)

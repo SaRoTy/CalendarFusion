@@ -1,6 +1,8 @@
 package com.saroty.ter.schedule;
 
 
+import android.graphics.Color;
+
 import java.io.Serializable;
 
 /**
@@ -12,11 +14,7 @@ public class Course implements Serializable
     private String title;
     private String category;
     private String room;
-    private int color;
-
-    public Course()
-    {
-    }
+    private int color = Color.rgb(255, 0, 0);
 
     public Course(String title)
     {

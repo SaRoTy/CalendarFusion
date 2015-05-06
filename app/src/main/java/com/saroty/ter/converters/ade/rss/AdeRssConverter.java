@@ -60,6 +60,7 @@ public class AdeRssConverter extends Converter
         } catch (Exception e)
         {
             e.printStackTrace();
+            throw new ConverterParsingException(url);
         }
         return table;
     }
