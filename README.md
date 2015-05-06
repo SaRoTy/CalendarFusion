@@ -1,7 +1,9 @@
 ### Format des fichiers de configs
 #### Concepts :
-+ Gérer les expression régulières
-+ On vas gérer un blacklist 
++ Blacklist
++ Expression régulières (On laisseras le choix sur le logiciel / site)
++ XML
++ ...
 
 #### Exemple possible (XML) :
 
