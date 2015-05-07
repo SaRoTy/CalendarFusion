@@ -15,9 +15,14 @@
     <string name="dialog_add_schedule_label_group">Group : </string>
 
     <!-- Detail -->
-    <string name="label_time">Heure</string>
-    <string name="label_room">Salle</string>
+    <string name="label_desc">Description :</string>
+    <string name="label_start_time">Start at :</string>
+    <string name="label_end_time">End at :</string>
+    <string name="label_room">Location : </string>
     <string name="back">Back</string>
+
+    <!-- Titres -->
+    <string name="title_course_details">Course details</string>
 
 
 </resources>

@@ -92,8 +92,8 @@ public class CelcatEventElement extends CelcatElement
                 LocalTimeInterval interval = new LocalTimeInterval(new LocalTime(Integer.parseInt(mStartTime.split(":")[0]), Integer.parseInt(mStartTime.split(":")[1])), new LocalTime(Integer.parseInt(mEndTime.split(":")[0]), Integer.parseInt(mEndTime.split(":")[1])));
                 Course course = new Course(mModules.hasItems() ? mModules.getItems().get(0) : "");
 
-                if (mRooms.hasItems())
-                    course.setRoom(mRooms.getItems().get(0));
+                for (String room : mRooms.getItems())
+                    course.setRoom(course.getRoom() + ", " + room);
 
                 course.setColor(Color.parseColor(mColor));
 

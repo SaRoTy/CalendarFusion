@@ -1,7 +1,5 @@
 package com.saroty.ter.converters.ade.ical;
 
-import android.util.Log;
-
 import com.saroty.ter.converters.Converter;
 import com.saroty.ter.converters.exception.ConverterException;
 import com.saroty.ter.converters.exception.ConverterParsingException;
@@ -49,12 +47,13 @@ public class AdeIcalConverter extends Converter
             {
                 Course course = new Course(event.getSummary().getValue());
                 course.setRoom(event.getLocation().getValue());
+                course.setDescription(event.getDescription().getValue().trim());
+                course.setColor(course.getTitle().hashCode()); //Pseudo-random, les même cours auront la même couleur par défault
                 table.addCourse(course, DateTime.forInstant(event.getDateStart().getValue().getTime(),
                         TimeZone.getDefault()), new LocalTimeInterval(new LocalTime(event.getDateStart().getValue()), new LocalTime(event.getDateEnd().getValue())));
             }
         } catch (Exception e)
         {
-            Log.d("a", e.getMessage());
             e.printStackTrace();
             throw new ConverterParsingException(url);
         }

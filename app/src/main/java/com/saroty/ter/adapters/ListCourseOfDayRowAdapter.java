@@ -54,6 +54,11 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
         return convertView;
     }
 
+    public CourseRowModel[] getModel()
+    {
+        return DATA;
+    }
+
     private static class ViewHolder //Lié à la performence, trick refilé par google.
     {
         View color;

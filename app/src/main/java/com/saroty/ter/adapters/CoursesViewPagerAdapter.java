@@ -9,6 +9,8 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.CourseListFragment;
 
+import java.util.Locale;
+
 /**
  * Created by Romain on 31/03/2015.
  */
@@ -49,6 +51,6 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     @Override
     public CharSequence getPageTitle(int position)
     {
-        return mPager.getBaseDay().plusDays(position).format("YYYY-MM-DD");
+        return mPager.getBaseDay().plusDays(position).format("WWWW DD/MM", Locale.getDefault());
     }
 }

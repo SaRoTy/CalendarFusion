@@ -16,9 +16,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="10dp"
-            android:text="Lundi"
             android:textColor="@color/black"
-            android:textSize="36dp"/>
+            android:textSize="36sp"/>
 
         <TextView
             android:id="@+id/text_date"
@@ -27,7 +26,6 @@
             android:layout_below="@id/text_day"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
-            android:text="18:30, 02/04/2015"
             android:textColor="@color/black"/>
     </RelativeLayout>
 

@@ -13,6 +13,7 @@ public class Course implements Serializable
     private static final long serialVersionUID = 5334276957940324970L;
     private String title;
     private String category;
+    private String description;
     private String room;
     private int color = Color.rgb(255, 0, 0);
 
@@ -24,6 +25,16 @@ public class Course implements Serializable
     public boolean hasCategory()
     {
         return !category.equals("");
+    }
+
+    public boolean hasDescription()
+    {
+        return !description.equals("");
+    }
+
+    public boolean hasRoom()
+    {
+        return !room.equals("");
     }
 
     public String getCategory()
@@ -70,5 +81,15 @@ public class Course implements Serializable
     public void setColor(int color)
     {
         this.color = color;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(String description)
+    {
+        this.description = description;
     }
 }

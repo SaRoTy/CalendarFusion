@@ -2,7 +2,6 @@ package com.saroty.ter.fragments.navigation.courses;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,7 @@ import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.time.LocalTimeInterval;
 
-import java.util.List;
+import java.util.Map;
 
 import hirondelle.date4j.DateTime;
 
@@ -28,7 +27,7 @@ public class CourseListFragment extends Fragment
 {
 
     private ListView mList;
-    private List<Pair<LocalTimeInterval, Course>> mListDay;
+    private Map<LocalTimeInterval, Course> mListDay;
     private ListCourseOfDayRowAdapter mAdapter;
     private DateTime mDay;
     private Schedule mSchedule;
@@ -60,7 +59,7 @@ public class CourseListFragment extends Fragment
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id)
             {
-                DetailCourseFragment fragment = DetailCourseFragment.newInstance(mListDay.get(position));
+                DetailCourseFragment fragment = DetailCourseFragment.newInstance(mAdapter.getModel()[position].getInterval(), mListDay.get(mAdapter.getModel()[position].getInterval()));
                 ((MainActivity) getActivity()).setCurrentFragment(fragment, true);
             }
         });
@@ -77,9 +76,9 @@ public class CourseListFragment extends Fragment
 
         model = new CourseRowModel[mListDay.size()];
 
-        for (Pair<LocalTimeInterval, Course> course : mListDay)
+        for (Map.Entry<LocalTimeInterval, Course> course : mListDay.entrySet())
         {
-            model[i] = new CourseRowModel(course.second.getTitle(), course.first, course.second.getRoom(), course.second.getColor());
+            model[i] = new CourseRowModel(course.getValue().getTitle(), course.getKey(), course.getValue().getRoom(), course.getValue().getColor());
             i++;
         }
 

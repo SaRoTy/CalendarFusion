@@ -2,13 +2,12 @@ package com.saroty.ter.fragments.navigation.courses;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.activities.MainActivity;
@@ -26,16 +25,22 @@ public class DetailCourseFragment extends Fragment
 
     private Bundle mBundle;
 
+    private TextView mTimeStartView;
+    private TextView mTimeEndView;
+    private TextView mRoomView;
+    private TextView mDescriptionView;
+    private TextView mCourseTitleView;
+    private View mColorView;
+
     private LocalTimeInterval mInterval;
     private Course mCourse;
 
-    public static DetailCourseFragment newInstance(Pair<LocalTimeInterval, Course> course)
+    public static DetailCourseFragment newInstance(LocalTimeInterval interval, Course course)
     {
         DetailCourseFragment fragment = new DetailCourseFragment();
         Bundle bundle = new Bundle();
-        Log.d("a", course.first.toString());
-        bundle.putSerializable(DESCRIBABLE_KEY_INTERVAL, course.first);
-        bundle.putSerializable(DESCRIBABLE_KEY_COURSE, course.second);
+        bundle.putSerializable(DESCRIBABLE_KEY_INTERVAL, interval);
+        bundle.putSerializable(DESCRIBABLE_KEY_COURSE, course);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -45,14 +50,25 @@ public class DetailCourseFragment extends Fragment
     {
         View rootView = inflater.inflate(R.layout.fragment_detail_course, container, false);
 
+
         mBundle = getArguments();
 
         mCourse = (Course) mBundle.getSerializable(DESCRIBABLE_KEY_COURSE);
         mInterval = (LocalTimeInterval) mBundle.getSerializable(DESCRIBABLE_KEY_INTERVAL);
 
-        //((TextView) rootView.findViewById(R.id.detail_title)).setText((String) bundle.get("title"));
-        //((TextView) rootView.findViewById(R.id.detail_time)).setText(mInterval.toString());
-        //((TextView) rootView.findViewById(R.id.detail_room)).setText(mCourse.getRoom());
+        mCourseTitleView = (TextView) rootView.findViewById(R.id.text_name);
+        mTimeStartView = (TextView) rootView.findViewById(R.id.text_time_start);
+        mTimeEndView = (TextView) rootView.findViewById(R.id.text_time_end);
+        mRoomView = (TextView) rootView.findViewById(R.id.text_room);
+        mDescriptionView = (TextView) rootView.findViewById(R.id.text_desc);
+        mColorView = rootView.findViewById(R.id.course_color);
+
+        mCourseTitleView.setText(mCourse.getTitle());
+        mTimeStartView.setText(mInterval.getStart().toString());
+        mTimeEndView.setText(mInterval.getEnd().toString());
+        mRoomView.setText(mCourse.getRoom());
+        mDescriptionView.setText(mCourse.getDescription());
+        mColorView.setBackgroundColor(mCourse.getColor());
 
         setHasOptionsMenu(true);
 
@@ -62,7 +78,7 @@ public class DetailCourseFragment extends Fragment
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle((String) mBundle.get("title"));
+        ((MainActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_course_details);
         super.onCreateOptionsMenu(menu, inflater);
     }
 }

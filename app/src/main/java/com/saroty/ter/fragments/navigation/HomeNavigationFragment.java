@@ -1,7 +1,6 @@
 package com.saroty.ter.fragments.navigation;
 
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,8 @@ import com.saroty.ter.time.LocalTimeInterval;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
@@ -52,15 +51,15 @@ public class HomeNavigationFragment extends NavigationFragment
 
         if (mainActivity.hasCurrentSchedule())
         {
-            List<Pair<LocalTimeInterval, Course>> courses = mainActivity.getCurrentSchedule().getDailyCourses(today);
+            Map<LocalTimeInterval, Course> courses = mainActivity.getCurrentSchedule().getDailyCourses(today);
 
             CourseRowModel[] data = new CourseRowModel[courses.size()];
 
             int i = 0;
 
-            for (Pair<LocalTimeInterval, Course> c : courses)
+            for (Map.Entry<LocalTimeInterval, Course> c : courses.entrySet())
             {
-                data[i] = new CourseRowModel(c.second.getTitle(), c.first, c.second.getRoom(), c.second.getColor());
+                data[i] = new CourseRowModel(c.getValue().getTitle(), c.getKey(), c.getValue().getRoom(), c.getValue().getColor());
                 i++;
             }
 
