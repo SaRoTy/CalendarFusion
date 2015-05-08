@@ -1,6 +1,6 @@
 package com.saroty.ter.models.list;
 
-import android.graphics.Color;
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Arthur on 12/03/2015.
@@ -8,19 +8,14 @@ import android.graphics.Color;
 public class ScheduleRowModel
 {
     private String mTitle;
-    private String mType;
-    private Color mTypeColor;
+    private int mEventCount;
+    private DateTime mLastModification;
 
-    public ScheduleRowModel(String title, String type, Color typeColor)
+    public ScheduleRowModel(String title, int eventCount, DateTime lastModification)
     {
         mTitle = title;
-        mTypeColor = typeColor;
-        mType = type;
-    }
-
-    public Color getTypeColor()
-    {
-        return mTypeColor;
+        mEventCount = eventCount;
+        mLastModification = lastModification;
     }
 
     public String getTitle()
@@ -28,8 +23,13 @@ public class ScheduleRowModel
         return mTitle;
     }
 
-    public String getType()
+    public int getEventCount()
     {
-        return mType;
+        return mEventCount;
+    }
+
+    public DateTime getLastModification()
+    {
+        return mLastModification;
     }
 }

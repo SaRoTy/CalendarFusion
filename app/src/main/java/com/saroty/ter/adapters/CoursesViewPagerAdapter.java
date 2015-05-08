@@ -51,6 +51,7 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
     @Override
     public CharSequence getPageTitle(int position)
     {
-        return mPager.getBaseDay().plusDays(position).format("WWWW DD/MM", Locale.getDefault());
+        String dateString = mPager.getBaseDay().plusDays(position).format("WWWW DD/MM", Locale.getDefault());
+        return Character.toUpperCase(dateString.charAt(0)) + dateString.substring(1);
     }
 }

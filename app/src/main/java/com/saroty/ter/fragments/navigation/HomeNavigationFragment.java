@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
+import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CourseRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
@@ -113,13 +114,13 @@ public class HomeNavigationFragment extends NavigationFragment
     @Override
     public String getNavigationTitle()
     {
-        return "Accueil";
+        return ScheduleApplication.getContext().getString(R.string.title_navigation_home);
     }
 
     @Override
     public String getActionbarTitle()
     {
-        return "Accueil";
+        return ScheduleApplication.getContext().getString(R.string.title_home);
     }
 
 }

@@ -1,18 +1,27 @@
 <resources>
     <string name="app_name">Schedule</string>
-    <string name="add">Ajouter</string>
+    <string name="add">Add</string>
     <string name="text_url">URL</string>
     <string name="title_activity_schedules_list">List of your schedules</string>
     <string name="title_activity_main">Schedule</string>
 
     <!-- Titles -->
-    <string name="fragment_title_schedule_list">Calendriers</string>
+    <string name="fragment_title_schedule_list">Calendars</string>
 
     <!-- Calendar list -->
-    <string name="dialog_add_schedule_title">Nouveau calendrier</string>
-    <string name="dialog_add_schedule_desc">Enter the URL :</string>
+    <string name="dialog_add_schedule_title">New calendar</string>
+    <string name="dialog_add_schedule_desc">Enter an URL :</string>
     <string name="dialog_add_schedule_label_name">Name : </string>
     <string name="dialog_add_schedule_label_group">Group : </string>
+    <string name="label_schedule_course_number">Event : </string>
+
+    <!-- Dialog OptionsSchedule -->
+    <string name="dialog_options_schedule_title">Choose</string>
+    <string-array name="dialog_options_schedule_menu">
+        <item>Refresh</item>
+        <item>Disable</item>
+        <item>Delete</item>
+    </string-array>
 
     <!-- Detail -->
     <string name="label_desc">Description :</string>
@@ -23,6 +32,12 @@
 
     <!-- Titres -->
     <string name="title_course_details">Course details</string>
+    <string name="title_navigation_home">Home</string>
+    <string name="title_navigation_days">Courses</string>
+    <string name="title_navigation_schedule">Calendars</string>
+    <string name="title_days">Course list</string>
+    <string name="title_home">Schedule</string>
+    <string name="title_schedule">Calendars</string>
 
 
 </resources>

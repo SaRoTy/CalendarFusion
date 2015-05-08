@@ -1,5 +1,7 @@
 package com.saroty.ter.time;
 
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
 /**
@@ -28,9 +30,11 @@ public class LocalTimeInterval implements Comparable<LocalTimeInterval>, Seriali
     }
 
     @Override
-    public int compareTo(LocalTimeInterval another)
+    public int compareTo(@NonNull LocalTimeInterval another)
     {
-        return start.compareTo(another.getStart());
+        if (start.compareTo(another.getStart()) == 0 && end.compareTo(another.getEnd()) == 0)
+            return 0;
+        return -1;
     }
 
     @Override

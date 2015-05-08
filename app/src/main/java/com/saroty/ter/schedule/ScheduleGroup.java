@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Arthur on 24/03/2015.
  */
-public class ScheduleGroup implements Serializable
+public class ScheduleGroup extends Schedule implements Serializable
 {
     private static final long serialVersionUID = 2624645387219206093L;
 

@@ -15,8 +15,6 @@ import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
 import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
-import com.saroty.ter.models.list.ScheduleGroupModel;
-import com.saroty.ter.models.list.ScheduleRowModel;
 import com.saroty.ter.schedule.Schedule;
 
 
@@ -41,13 +39,8 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     private void refreshList()
     {
         //setContentView(R.layout.fragment_schedule_list);
-        final ScheduleRowModel[] rowList = new ScheduleRowModel[((MainActivity) getActivity()).getSchedules().size()];
-        for (int i = 0; i < ((MainActivity) getActivity()).getSchedules().size(); i++)
-            rowList[i] = new ScheduleRowModel(((MainActivity) getActivity()).getSchedules().get(i).getName(), "0", null);
 
-        final ScheduleGroupModel groupList[] = {new ScheduleGroupModel("Général", rowList)};
-
-        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(ScheduleApplication.getContext(), groupList);
+        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(getActivity(), ((MainActivity) getActivity()).getSchedules());
 
         mListView.setAdapter(adapter);
         int count = adapter.getGroupCount();
@@ -99,7 +92,7 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     @Override
     public void onScheduleDownloaded(Schedule schedule)
     {
-        ((MainActivity) getActivity()).addSchedule(schedule);
+        ((MainActivity) getActivity()).addSchedule(schedule, true);
         ((MainActivity) getActivity()).setCurrentSchedule(schedule);
         refreshList();
     }
@@ -113,12 +106,12 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     @Override
     public String getNavigationTitle()
     {
-        return "Calendriers";
+        return ScheduleApplication.getContext().getString(R.string.title_navigation_schedule);
     }
 
     @Override
     public String getActionbarTitle()
     {
-        return "Liste des calendriers";
+        return ScheduleApplication.getContext().getString(R.string.title_schedule);
     }
 }

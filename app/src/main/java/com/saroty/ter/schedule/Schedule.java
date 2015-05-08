@@ -4,6 +4,7 @@ import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
 import java.util.Map;
+import java.util.TimeZone;
 import java.util.TreeMap;
 
 import hirondelle.date4j.DateTime;
@@ -15,12 +16,14 @@ public class Schedule implements Serializable
 {
     private static final long serialVersionUID = -7151757052818244043L;
     private String name = "defaultSchedule";
+    private DateTime lastUpdate;
 
-    private Map<DateTime, TreeMap<LocalTimeInterval, Course>> mSchedule;
+    private TreeMap<DateTime, TreeMap<LocalTimeInterval, Course>> mSchedule;
 
     public Schedule()
     {
         mSchedule = new TreeMap<>();
+        lastUpdate = DateTime.now(TimeZone.getDefault());
     }
 
     public String getName()
@@ -46,6 +49,7 @@ public class Schedule implements Serializable
         TreeMap<LocalTimeInterval, Course> newMap = new TreeMap<>();
         newMap.put(interval, course);
         mSchedule.put(date, newMap);
+        lastUpdate = DateTime.now(TimeZone.getDefault());
     }
 
     public Map<LocalTimeInterval, Course> getDailyCourses(DateTime day)
@@ -58,11 +62,21 @@ public class Schedule implements Serializable
         return new TreeMap<>();
     }
 
+    public int getEventCount()
+    {
+        return mSchedule.size();
+    }
+
     @Override
     public String toString()
     {
         String result = "[Schedule]\n";
 
         return result;
+    }
+
+    public DateTime getLastUpdate()
+    {
+        return lastUpdate;
     }
 }

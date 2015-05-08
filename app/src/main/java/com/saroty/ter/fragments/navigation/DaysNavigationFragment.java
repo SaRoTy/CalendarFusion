@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.saroty.ter.R;
+import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.adapters.CoursesViewPagerAdapter;
 
 import java.util.TimeZone;
@@ -50,12 +51,12 @@ public class DaysNavigationFragment extends NavigationFragment
     @Override
     public String getNavigationTitle()
     {
-        return "Cours";
+        return ScheduleApplication.getContext().getString(R.string.title_navigation_days);
     }
 
     @Override
     public String getActionbarTitle()
     {
-        return "Liste des cours";
+        return ScheduleApplication.getContext().getString(R.string.title_days);
     }
 }

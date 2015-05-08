@@ -1,8 +1,32 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Emplois du temps</string>
-    <string name="title_activity_schedules_list">Liste des emplois du temps</string>
-    <string name="label_heure">Heure</string>
-    <string name="label_salle">Salle</string>
+    <string name="app_name">Schedule</string>
+    <string name="add">Ajouter</string>
+    <string name="text_url">URL</string>
+    <string name="title_activity_main">Schedule</string>
+
+    <!-- Titles -->
+    <string name="fragment_title_schedule_list">Calendriers</string>
+
+    <!-- Calendar list -->
+    <string name="dialog_add_schedule_title">Nouveau calendrier</string>
+    <string name="dialog_add_schedule_desc">Entrez une URL :</string>
+    <string name="dialog_add_schedule_label_name">Nom : </string>
+    <string name="dialog_add_schedule_label_group">Groupe : </string>
+
+    <!-- Detail -->
+    <string name="label_desc">Description :</string>
+    <string name="label_start_time">Débute à :</string>
+    <string name="label_end_time">Fini à :</string>
+    <string name="label_room">Lieu : </string>
+    <string name="back">Retour</string>
+
+    <!-- Titres -->
+    <string name="title_course_details">Détails du cours</string>
+    <string name="title_navigation_home">Accueil</string>
+    <string name="title_navigation_days">Cours</string>
+    <string name="title_navigation_schedule">Calendriers</string>
+    <string name="title_days">Liste des cours</string>
+    <string name="title_home">Accueil</string>
+    <string name="title_schedule">Calendriers</string>
 
 </resources>

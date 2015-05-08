@@ -13,6 +13,8 @@ import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
+import com.saroty.ter.database.DatabaseHelper;
+import com.saroty.ter.database.schedule.ScheduleTable;
 import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
@@ -24,6 +26,8 @@ import java.util.ArrayList;
 public class MainActivity extends ActionBarActivity
 {
     private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment()};
+
+    private DatabaseHelper mDatabaseHelper;
 
     private ArrayList<Schedule> mSchedules = new ArrayList<>();
     private int mCurrentSchedule = -1;
@@ -62,18 +66,33 @@ public class MainActivity extends ActionBarActivity
         return mSchedules;
     }
 
-    public void addSchedule(Schedule s)
+    public void addSchedule(Schedule s, boolean save)
     {
         mSchedules.add(s);
+
+        if (save)
+            ((ScheduleTable) mDatabaseHelper.getTable(ScheduleTable.class)).insertOne(s);
+
         if (!hasCurrentSchedule())
             setCurrentSchedule(s);
+    }
 
+    private void loadSchedules()
+    {
+        for (Schedule s : ((ScheduleTable) mDatabaseHelper.getTable(ScheduleTable.class)).readAll())
+        {
+            addSchedule(s, false);
+        }
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
+        mDatabaseHelper = DatabaseHelper.getInstance(getApplicationContext());
+
+        loadSchedules();
 
         setContentView(R.layout.activity_main);
 
