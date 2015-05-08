@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by Arthur on 07/05/2015.
  */
-public abstract class DatabaseTable<T>
+public abstract class DatabaseTable<T, I>
 {
     protected final String TABLE_NAME;
     protected final String TABLE_CREATE_SQL;
@@ -41,7 +41,7 @@ public abstract class DatabaseTable<T>
         throw new UnsupportedOperationException();
     }
 
-    public T readOne()
+    public T readOne(I i)
     {
         throw new UnsupportedOperationException();
     }

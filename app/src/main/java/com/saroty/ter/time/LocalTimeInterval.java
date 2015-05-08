@@ -32,9 +32,14 @@ public class LocalTimeInterval implements Comparable<LocalTimeInterval>, Seriali
     @Override
     public int compareTo(@NonNull LocalTimeInterval another)
     {
-        if (start.compareTo(another.getStart()) == 0 && end.compareTo(another.getEnd()) == 0)
-            return 0;
-        return -1;
+        if (start.compareTo(another.getStart()) == 0)
+        {
+            if (end.compareTo(another.getEnd()) == 0)
+                return -1;
+            else
+                return 1;
+        }
+        return start.compareTo(another.getStart());
     }
 
     @Override

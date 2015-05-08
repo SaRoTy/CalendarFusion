@@ -16,7 +16,8 @@ import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
 import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
 import com.saroty.ter.schedule.Schedule;
-
+import com.saroty.ter.schedule.ScheduleGroup;
+import com.saroty.ter.schedule.ScheduleManager;
 
 public class SchedulesNavigationFragment extends NavigationFragment implements AddScheduleDialogFragment.AddScheduleDialogListener
 {
@@ -40,12 +41,16 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     {
         //setContentView(R.layout.fragment_schedule_list);
 
-        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(getActivity(), ((MainActivity) getActivity()).getSchedules());
+        ScheduleGroup[] groups = ScheduleManager.getInstance().getGroups();
+
+        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(getActivity(), groups);
 
         mListView.setAdapter(adapter);
         int count = adapter.getGroupCount();
+
         for (int i = 0; i < count; i++)
-            mListView.expandGroup(i);//Moche, mais le seul moyen acctuel.
+            if (groups[i].isEnabled())
+                mListView.expandGroup(i);
 
         mListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener()
         {
@@ -92,8 +97,7 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     @Override
     public void onScheduleDownloaded(Schedule schedule)
     {
-        ((MainActivity) getActivity()).addSchedule(schedule, true);
-        ((MainActivity) getActivity()).setCurrentSchedule(schedule);
+        ScheduleManager.getInstance().addSchedule(schedule, true);
         refreshList();
     }
 

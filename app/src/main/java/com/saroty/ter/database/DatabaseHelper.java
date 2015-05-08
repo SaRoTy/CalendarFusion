@@ -1,10 +1,10 @@
 package com.saroty.ter.database;
 
-import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.database.schedule.ScheduleTable;
 
 /**
@@ -17,15 +17,15 @@ public class DatabaseHelper extends SQLiteOpenHelper
     private static DatabaseHelper mInstance;
     private final DatabaseTable[] mTables = {new ScheduleTable()};
 
-    private DatabaseHelper(Context context)
+    private DatabaseHelper()
     {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(ScheduleApplication.getContext(), DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static DatabaseHelper getInstance(Context context)
+    public static DatabaseHelper getInstance()
     {
         if (mInstance == null)
-            mInstance = new DatabaseHelper(context.getApplicationContext());
+            mInstance = new DatabaseHelper();
 
         return mInstance;
     }

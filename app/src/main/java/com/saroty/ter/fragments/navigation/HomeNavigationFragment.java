@@ -9,10 +9,10 @@ import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
-import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CourseRowAdapter;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
+import com.saroty.ter.schedule.ScheduleManager;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.text.SimpleDateFormat;
@@ -37,7 +37,6 @@ public class HomeNavigationFragment extends NavigationFragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        MainActivity mainActivity = (MainActivity) getActivity();
 
         mCourseList = (ListView) rootView.findViewById(R.id.course_list);
         mDayText = (TextView) rootView.findViewById(R.id.text_day);
@@ -50,17 +49,17 @@ public class HomeNavigationFragment extends NavigationFragment
         mDayText.setText(Character.toUpperCase(dayString.charAt(0)) + dayString.substring(1));
         updateDate();
 
-        if (mainActivity.hasCurrentSchedule())
-        {
-            Map<LocalTimeInterval, Course> courses = mainActivity.getCurrentSchedule().getDailyCourses(today);
+        Map<LocalTimeInterval, Course> courses = ScheduleManager.getInstance().getDailyCourses(today);
 
+        if (courses.size() > 0)
+        {
             CourseRowModel[] data = new CourseRowModel[courses.size()];
 
             int i = 0;
 
             for (Map.Entry<LocalTimeInterval, Course> c : courses.entrySet())
             {
-                data[i] = new CourseRowModel(c.getValue().getTitle(), c.getKey(), c.getValue().getRoom(), c.getValue().getColor());
+                data[i] = new CourseRowModel(c.getKey(), c.getValue());
                 i++;
             }
 

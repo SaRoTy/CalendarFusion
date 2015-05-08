@@ -1,11 +1,14 @@
 package com.saroty.ter.schedule;
 
+import com.saroty.ter.R;
+import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.TreeMap;
+import java.util.UUID;
 
 import hirondelle.date4j.DateTime;
 
@@ -15,25 +18,29 @@ import hirondelle.date4j.DateTime;
 public class Schedule implements Serializable
 {
     private static final long serialVersionUID = -7151757052818244043L;
-    private String name = "defaultSchedule";
-    private DateTime lastUpdate;
-
+    private final String DEFAULT_GROUP_NAME = ScheduleApplication.getContext().getString(R.string.schedule_group_default);
+    private String mGroupName = DEFAULT_GROUP_NAME;
+    private String mName = "defaultSchedule";
+    private DateTime mLastUpdate;
+    private UUID mUUID;
+    private boolean mEnabled = true;
     private TreeMap<DateTime, TreeMap<LocalTimeInterval, Course>> mSchedule;
 
     public Schedule()
     {
+        mUUID = UUID.randomUUID();
         mSchedule = new TreeMap<>();
-        lastUpdate = DateTime.now(TimeZone.getDefault());
+        mLastUpdate = DateTime.now(TimeZone.getDefault());
     }
 
     public String getName()
     {
-        return name;
+        return mName;
     }
 
-    public void setName(String name)
+    public void setName(String mName)
     {
-        this.name = name;
+        this.mName = mName;
     }
 
     public void addCourse(Course course, DateTime date, LocalTimeInterval interval)
@@ -49,7 +56,7 @@ public class Schedule implements Serializable
         TreeMap<LocalTimeInterval, Course> newMap = new TreeMap<>();
         newMap.put(interval, course);
         mSchedule.put(date, newMap);
-        lastUpdate = DateTime.now(TimeZone.getDefault());
+        mLastUpdate = DateTime.now(TimeZone.getDefault());
     }
 
     public Map<LocalTimeInterval, Course> getDailyCourses(DateTime day)
@@ -77,6 +84,31 @@ public class Schedule implements Serializable
 
     public DateTime getLastUpdate()
     {
-        return lastUpdate;
+        return mLastUpdate;
+    }
+
+    public UUID getUUID()
+    {
+        return mUUID;
+    }
+
+    public boolean isEnabled()
+    {
+        return mEnabled;
+    }
+
+    public void setEnabled(boolean mEnabled)
+    {
+        this.mEnabled = mEnabled;
+    }
+
+    public String getGroupName()
+    {
+        return mGroupName;
+    }
+
+    public void setGroupName(String mGroupName)
+    {
+        this.mGroupName = mGroupName;
     }
 }

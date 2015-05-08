@@ -47,9 +47,9 @@ public class ListCourseOfDayRowAdapter extends ArrayAdapter<CourseRowModel>
         }
 
         holder.interval.setText(DATA[position].getInterval().toString());
-        holder.name.setText(DATA[position].getName());
-        holder.room.setText(DATA[position].getRoom());
-        holder.color.setBackgroundColor(DATA[position].getColor());
+        holder.name.setText(DATA[position].getCourse().getTitle());
+        holder.room.setText(DATA[position].getCourse().getRoom());
+        holder.color.setBackgroundColor(DATA[position].getCourse().getColor());
 
         return convertView;
     }

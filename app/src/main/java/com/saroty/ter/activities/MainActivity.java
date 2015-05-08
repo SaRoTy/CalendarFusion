@@ -14,85 +14,30 @@ import android.widget.ListView;
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.database.DatabaseHelper;
-import com.saroty.ter.database.schedule.ScheduleTable;
 import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.SchedulesNavigationFragment;
-import com.saroty.ter.schedule.Schedule;
-
-import java.util.ArrayList;
+import com.saroty.ter.schedule.ScheduleManager;
 
 public class MainActivity extends ActionBarActivity
 {
     private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment()};
 
     private DatabaseHelper mDatabaseHelper;
+    private ScheduleManager mScheduleManager;
 
-    private ArrayList<Schedule> mSchedules = new ArrayList<>();
-    private int mCurrentSchedule = -1;
     private int mNavigationPosition;
 
     private ListView mNavigationListView;
     private DrawerLayout mDrawerLayout;
-
-    public boolean hasCurrentSchedule()
-    {
-        return (mCurrentSchedule != -1);
-    }
-
-    public Schedule getCurrentSchedule()
-    {
-        if (hasCurrentSchedule())
-            return mSchedules.get(mCurrentSchedule);
-        else
-            return null;
-    }
-
-    public void setCurrentSchedule(Schedule s)
-    {
-        for (int i = 0; i < mSchedules.size(); i++)
-        {
-            if (mSchedules.get(i) == s)
-            {
-                mCurrentSchedule = i;
-                return;
-            }
-        }
-    }
-
-    public ArrayList<Schedule> getSchedules()
-    {
-        return mSchedules;
-    }
-
-    public void addSchedule(Schedule s, boolean save)
-    {
-        mSchedules.add(s);
-
-        if (save)
-            ((ScheduleTable) mDatabaseHelper.getTable(ScheduleTable.class)).insertOne(s);
-
-        if (!hasCurrentSchedule())
-            setCurrentSchedule(s);
-    }
-
-    private void loadSchedules()
-    {
-        for (Schedule s : ((ScheduleTable) mDatabaseHelper.getTable(ScheduleTable.class)).readAll())
-        {
-            addSchedule(s, false);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        mDatabaseHelper = DatabaseHelper.getInstance(getApplicationContext());
-
-        loadSchedules();
+        mDatabaseHelper = DatabaseHelper.getInstance();
 
         setContentView(R.layout.activity_main);
 

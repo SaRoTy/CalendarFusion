@@ -12,35 +12,28 @@ import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.fragments.dialog.OptionsScheduleDialogFragment;
-import com.saroty.ter.models.list.ScheduleGroupModel;
-import com.saroty.ter.models.list.ScheduleRowModel;
-import com.saroty.ter.schedule.Schedule;
+import com.saroty.ter.schedule.ScheduleGroup;
+import com.saroty.ter.schedule.ScheduleManager;
 
-import java.util.ArrayList;
+import java.util.Locale;
+import java.util.Observable;
+import java.util.Observer;
 
 /**
  * Created by Arthur on 12/03/2015.
  */
-public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExpandableListAdapter
+public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExpandableListAdapter implements Observer
 {
-    private final ScheduleGroupModel[] DATA;
-    private final ArrayList<Schedule> mSchedules;
+    private final ScheduleGroup[] DATA;
     private LayoutInflater mInflater;
     private Context mContext;
 
-    public ScheduleGroupAdapter(Context context, ArrayList<Schedule> schedules)
+    public ScheduleGroupAdapter(Context context, ScheduleGroup[] groupList)
     {
         super();
-
-        final ScheduleRowModel[] rowList = new ScheduleRowModel[schedules.size()];
-        for (int i = 0; i < schedules.size(); i++)
-            rowList[i] = new ScheduleRowModel(schedules.get(i).getName(), schedules.get(i).getEventCount(), schedules.get(i).getLastUpdate());
-
-        final ScheduleGroupModel groupList[] = {new ScheduleGroupModel("Général", rowList)};
-
+        ScheduleManager.getInstance().addObserver(this);
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         DATA = groupList;
-        mSchedules = schedules;
         mContext = context;
     }
 
@@ -59,7 +52,7 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
     @Override
     public Object getChild(int groupPosition, int childPosition)
     {
-        return DATA[groupPosition].getRow(childPosition);
+        return DATA[groupPosition].getScheduleList().get(childPosition);
     }
 
     @Override
@@ -98,13 +91,13 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
             holder = (GroupViewHolder) convertView.getTag();
         }
 
-        holder.title.setText(DATA[groupPosition].getName());
+        holder.title.setText(DATA[groupPosition].getGroupName());
 
         return convertView;
     }
 
     @Override
-    public View getRealChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
+    public View getRealChildView(final int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent)
     {
         ChildViewHolder holder;
 
@@ -115,6 +108,7 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
             holder = new ChildViewHolder();
             holder.title = (TextView) convertView.findViewById(R.id.schedule_title);
             holder.eventCount = (TextView) convertView.findViewById(R.id.schedule_event_number);
+            holder.lastUpdate = (TextView) convertView.findViewById(R.id.schedule_last_update);
             holder.iconOptions = convertView.findViewById(R.id.icon_dropdown);
 
             convertView.setTag(holder);
@@ -122,16 +116,19 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
         {
             holder = (ChildViewHolder) convertView.getTag();
         }
+        if (!DATA[groupPosition].getScheduleList().get(childPosition).isEnabled())
+            holder.title.setTextColor(mContext.getResources().getColor(android.R.color.darker_gray));
 
-        holder.title.setText(DATA[groupPosition].getRow(childPosition).getTitle());
-        holder.eventCount.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_course_number) + " " + DATA[groupPosition].getRow(childPosition).getEventCount());
+        holder.title.setText(DATA[groupPosition].getScheduleList().get(childPosition).getName());
+        holder.eventCount.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_course_number) + " " + DATA[groupPosition].getScheduleList().get(childPosition).getEventCount());
+        holder.lastUpdate.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_last_update) + " " + DATA[groupPosition].getScheduleList().get(childPosition).getLastUpdate().format("DD/MM hh:mm", Locale.getDefault()));
 
         holder.iconOptions.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                DialogFragment fragment = new OptionsScheduleDialogFragment();
+                DialogFragment fragment = OptionsScheduleDialogFragment.newInstance(DATA[groupPosition].getScheduleList().get(childPosition));
                 fragment.show(((FragmentActivity) mContext).getFragmentManager(), "options");
             }
         });
@@ -142,13 +139,19 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
     @Override
     public int getRealChildrenCount(int groupPosition)
     {
-        return DATA[groupPosition].getRowCount();
+        return DATA[groupPosition].getScheduleList().size();
     }
 
     @Override
     public boolean isChildSelectable(int groupPosition, int childPosition)
     {
         return true;
+    }
+
+    @Override
+    public void update(Observable observable, Object data)
+    {
+        notifyDataSetChanged();
     }
 
     private static class GroupViewHolder
@@ -160,6 +163,7 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
     {
         TextView title;
         TextView eventCount;
+        TextView lastUpdate;
         View iconOptions;
     }
 }

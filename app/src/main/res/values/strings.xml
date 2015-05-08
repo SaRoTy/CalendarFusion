@@ -14,12 +14,14 @@
     <string name="dialog_add_schedule_label_name">Name : </string>
     <string name="dialog_add_schedule_label_group">Group : </string>
     <string name="label_schedule_course_number">Event : </string>
+    <string name="label_schedule_last_update">Last update : </string>
 
     <!-- Dialog OptionsSchedule -->
-    <string name="dialog_options_schedule_title">Choose</string>
+    <string name="dialog_options_schedule_title">Choose one :</string>
     <string-array name="dialog_options_schedule_menu">
         <item>Refresh</item>
-        <item>Disable</item>
+        <item>Rename</item>
+        <item>Enable/Disable</item>
         <item>Delete</item>
     </string-array>
 
@@ -38,6 +40,7 @@
     <string name="title_days">Course list</string>
     <string name="title_home">Schedule</string>
     <string name="title_schedule">Calendars</string>
+    <string name="schedule_group_default">General</string>
 
 
 </resources>
