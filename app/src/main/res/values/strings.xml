@@ -34,6 +34,7 @@
 
     <!-- Titres -->
     <string name="title_course_details">Course details</string>
+    <string name="title_navigation_week">Weeks Calendar</string>
     <string name="title_navigation_home">Home</string>
     <string name="title_navigation_days">Courses</string>
     <string name="title_navigation_schedule">Calendars</string>

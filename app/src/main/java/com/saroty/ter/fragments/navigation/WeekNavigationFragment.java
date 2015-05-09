@@ -50,9 +50,16 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     @Override
+    public void onResume(){
+        super.onResume();
+
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+    }
+
+    @Override
     public String getNavigationTitle()
     {
-        return  "Affichage semaine";
+        return  ScheduleApplication.getContext().getString(R.string.title_navigation_week);
     }
 
     @Override
