@@ -1,4 +1,4 @@
-package com.saroty.ter.fragments.navigation;
+package com.saroty.ter.fragments.navigation.courses;
 
 import android.content.pm.ActivityInfo;
 import android.graphics.RectF;
@@ -11,6 +11,10 @@ import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.activities.MainActivity;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
+import com.saroty.ter.schedule.ScheduleManager;
+import com.saroty.ter.utils.ScheduleToEvents;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,10 +54,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
-
-        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
     }
 
     @Override
@@ -65,7 +67,7 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     @Override
     public String getActionbarTitle()
     {
-        return ScheduleApplication.getContext().getString(R.string.title_days);
+        return ScheduleApplication.getContext().getString(R.string.title_navigation_week);
     }
 
     @Override
@@ -81,6 +83,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+
+        events = ScheduleToEvents.getEvents(newMonth,newYear);
 
         return events;
     }

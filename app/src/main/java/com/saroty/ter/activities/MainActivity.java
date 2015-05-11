@@ -1,13 +1,10 @@
 package com.saroty.ter.activities;
 
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,7 +18,7 @@ import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.SchedulesNavigationFragment;
-import com.saroty.ter.fragments.navigation.WeekNavigationFragment;
+import com.saroty.ter.fragments.navigation.courses.WeekNavigationFragment;
 import com.saroty.ter.schedule.ScheduleManager;
 
 public class MainActivity extends ActionBarActivity
@@ -84,13 +81,6 @@ public class MainActivity extends ActionBarActivity
 
     public void setCurrentFragment(Fragment fragment, boolean backStack)
     {
-
-        if(fragment instanceof WeekNavigationFragment)
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        else
-            if( getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
         FragmentTransaction fragmentTransaction;
         if (backStack)
         {

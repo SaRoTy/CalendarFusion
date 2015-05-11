@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".com.saroty.ter.fragments.navigation.WeekNavigationFragment"
+    tools:context=".com.saroty.ter.fragments.navigation.courses.WeekNavigationFragment"
     android:background="#fff">
 
     <com.alamkanak.weekview.WeekView
@@ -17,8 +17,8 @@
         app:headerColumnPadding="8dp"
         app:headerColumnTextColor="#8f000000"
         app:headerRowPadding="12dp"
-        app:columnGap="8dp"
-        app:noOfVisibleDays="7"
+        app:columnGap="5dp"
+        app:noOfVisibleDays="5"
         app:headerRowBackgroundColor="#ffefefef"
         app:dayBackgroundColor="#05000000"
         app:todayBackgroundColor="#1848adff"
