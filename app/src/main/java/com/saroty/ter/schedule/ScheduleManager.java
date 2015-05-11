@@ -1,7 +1,10 @@
 package com.saroty.ter.schedule;
 
+import android.os.AsyncTask;
+
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.converters.factory.ConverterFactory;
 import com.saroty.ter.database.DatabaseHelper;
 import com.saroty.ter.database.schedule.ScheduleTable;
 import com.saroty.ter.time.LocalTimeInterval;
@@ -119,7 +122,7 @@ public class ScheduleManager extends Observable
         return mScheduleGroups.values().toArray(new ScheduleGroup[mScheduleGroups.values().size()]);
     }
 
-    public void disableSchedule(UUID uuid)
+    public Schedule getSchedule(UUID uuid)
     {
         for (ScheduleGroup group : mScheduleGroups.values())
         {
@@ -129,12 +132,100 @@ public class ScheduleManager extends Observable
                 Schedule curSchedule = iter.next();
                 if (curSchedule.getUUID().equals(uuid))
                 {
-                    curSchedule.setEnabled(false);
-                    ((ScheduleTable) DatabaseHelper.getInstance().getTable(ScheduleTable.class)).updateOne(curSchedule);
+                    return curSchedule;
                 }
             }
         }
+        return null;
+    }
+
+    public void disableSchedule(UUID uuid)
+    {
+        Schedule schedule = getSchedule(uuid);
+        schedule.setEnabled(true);
+        ((ScheduleTable) DatabaseHelper.getInstance().getTable(ScheduleTable.class)).updateOne(schedule);
+
         setChanged();
         notifyObservers();
+    }
+
+    public void enableSchedule(UUID uuid)
+    {
+        Schedule schedule = getSchedule(uuid);
+        schedule.setEnabled(true);
+        ((ScheduleTable) DatabaseHelper.getInstance().getTable(ScheduleTable.class)).updateOne(schedule);
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public void renameSchedule(UUID uuid, String text)
+    {
+        getSchedule(uuid).setName(text);
+
+        setChanged();
+        notifyObservers();
+    }
+
+    public void updateSchedule(UUID uuid)
+    {
+        UpdateScheduleTask updateScheduleTask = new UpdateScheduleTask();
+        Schedule schedule = getSchedule(uuid);
+        schedule.setUpdating(true);
+        updateScheduleTask.execute(schedule);
+
+        setChanged();
+        notifyObservers();
+    }
+
+    private void onUpdateSchedule(Schedule oldSchedule, Schedule newSchedule)
+    {
+        newSchedule.setName(oldSchedule.getName());
+        newSchedule.setUUID(oldSchedule.getUUID());
+
+        for (ScheduleGroup group : mScheduleGroups.values())
+        {
+            if (group.getScheduleList().contains(oldSchedule))
+            {
+                group.getScheduleList().set(group.getScheduleList().indexOf(oldSchedule), newSchedule);
+            }
+        }
+
+        setChanged();
+        notifyObservers();
+    }
+
+    private class UpdateScheduleTask extends AsyncTask<Schedule, Void, Schedule>
+    {
+        private Schedule mOldSchedule;
+        private ConverterFactory mFactory = new ConverterFactory();
+        private Exception mException;
+
+        @Override
+        protected Schedule doInBackground(Schedule... schedule)
+        {
+            try
+            {
+                mOldSchedule = schedule[0];
+                return mFactory.makeConverter(schedule[0].getBaseUrl()).convert();
+            } catch (Exception e)
+            {
+                this.mException = e;
+            }
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(Schedule table)
+        {
+            if (mException == null)
+                onUpdateSchedule(mOldSchedule, table);
+            else
+            {
+                mOldSchedule.setUpdating(false);
+                setChanged();
+                notifyObservers();
+            }
+        }
     }
 }

@@ -1,8 +1,10 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/BlueActionBarTheme</item>
         <item name="actionBarStyle">@style/BlueActionBarTheme</item>
         <item name="android:alertDialogTheme">@style/Theme_Schedule_Dialog_Alert</item>
+        <item name="android:textColorPrimary">@color/black</item>
     </style>
 
     <style name="Theme_Schedule_Dialog_Alert" parent="@style/Theme_Holo_Light_Dialog_Alert">

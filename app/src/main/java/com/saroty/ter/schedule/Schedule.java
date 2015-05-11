@@ -5,6 +5,7 @@ import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
+import java.net.URL;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.TreeMap;
@@ -22,12 +23,17 @@ public class Schedule implements Serializable
     private String mGroupName = DEFAULT_GROUP_NAME;
     private String mName = "defaultSchedule";
     private DateTime mLastUpdate;
+
     private UUID mUUID;
     private boolean mEnabled = true;
+    private URL mBaseUrl;
+    private transient boolean mUpdating;
+
     private TreeMap<DateTime, TreeMap<LocalTimeInterval, Course>> mSchedule;
 
-    public Schedule()
+    public Schedule(URL baseUrl)
     {
+        mBaseUrl = baseUrl;
         mUUID = UUID.randomUUID();
         mSchedule = new TreeMap<>();
         mLastUpdate = DateTime.now(TimeZone.getDefault());
@@ -92,6 +98,11 @@ public class Schedule implements Serializable
         return mUUID;
     }
 
+    public void setUUID(UUID mUUID)
+    {
+        this.mUUID = mUUID;
+    }
+
     public boolean isEnabled()
     {
         return mEnabled;
@@ -110,5 +121,20 @@ public class Schedule implements Serializable
     public void setGroupName(String mGroupName)
     {
         this.mGroupName = mGroupName;
+    }
+
+    public URL getBaseUrl()
+    {
+        return mBaseUrl;
+    }
+
+    public boolean isUpdating()
+    {
+        return mUpdating;
+    }
+
+    public void setUpdating(boolean mUpdating)
+    {
+        this.mUpdating = mUpdating;
     }
 }

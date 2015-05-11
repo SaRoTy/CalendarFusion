@@ -6,12 +6,14 @@ import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.fragments.dialog.OptionsScheduleDialogFragment;
+import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleGroup;
 import com.saroty.ter.schedule.ScheduleManager;
 
@@ -101,6 +103,8 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
     {
         ChildViewHolder holder;
 
+        final Schedule schedule = DATA[groupPosition].getScheduleList().get(childPosition);
+
         if (convertView == null)
         {
             convertView = mInflater.inflate(R.layout.schedules_list_row, null);
@@ -109,7 +113,7 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
             holder.title = (TextView) convertView.findViewById(R.id.schedule_title);
             holder.eventCount = (TextView) convertView.findViewById(R.id.schedule_event_number);
             holder.lastUpdate = (TextView) convertView.findViewById(R.id.schedule_last_update);
-            holder.iconOptions = convertView.findViewById(R.id.icon_dropdown);
+            holder.iconOptions = (ImageView) convertView.findViewById(R.id.icon_dropdown);
 
             convertView.setTag(holder);
         } else
@@ -118,20 +122,31 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
         }
         if (!DATA[groupPosition].getScheduleList().get(childPosition).isEnabled())
             holder.title.setTextColor(mContext.getResources().getColor(android.R.color.darker_gray));
+        else
+            holder.title.setTextColor(mContext.getResources().getColor(android.R.color.black));
 
         holder.title.setText(DATA[groupPosition].getScheduleList().get(childPosition).getName());
-        holder.eventCount.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_course_number) + " " + DATA[groupPosition].getScheduleList().get(childPosition).getEventCount());
-        holder.lastUpdate.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_last_update) + " " + DATA[groupPosition].getScheduleList().get(childPosition).getLastUpdate().format("DD/MM hh:mm", Locale.getDefault()));
+        holder.eventCount.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_course_number) + " " + schedule.getEventCount());
+        holder.lastUpdate.setText(ScheduleApplication.getContext().getText(R.string.label_schedule_last_update) + " " + schedule.getLastUpdate().format("DD/MM hh:mm", Locale.getDefault()));
 
-        holder.iconOptions.setOnClickListener(new View.OnClickListener()
+        if (schedule.isUpdating())
         {
-            @Override
-            public void onClick(View v)
+            holder.iconOptions.setImageResource(R.drawable.ic_updating);
+        } else
+        {
+            holder.iconOptions.setImageResource(R.drawable.ic_dropdown);
+            holder.iconOptions.setOnClickListener(new View.OnClickListener()
             {
-                DialogFragment fragment = OptionsScheduleDialogFragment.newInstance(DATA[groupPosition].getScheduleList().get(childPosition));
-                fragment.show(((FragmentActivity) mContext).getFragmentManager(), "options");
-            }
-        });
+                @Override
+                public void onClick(View v)
+                {
+                    DialogFragment fragment = OptionsScheduleDialogFragment.newInstance(schedule);
+                    fragment.show(((FragmentActivity) mContext).getFragmentManager(), "options");
+                }
+            });
+        }
+        if (isLastChild)
+            convertView.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.shadow)); //Obligatoire en API 15, la nouvelle fonction est dans l'API 16
 
         return convertView;
     }
@@ -164,6 +179,6 @@ public class ScheduleGroupAdapter extends AnimatedExpandableListView.AnimatedExp
         TextView title;
         TextView eventCount;
         TextView lastUpdate;
-        View iconOptions;
+        ImageView iconOptions;
     }
 }

@@ -33,7 +33,7 @@ public class CelcatConverter extends Converter
         if (!response.getEntity().getContentType().getValue().endsWith("/xml"))
             throw new ConverterParsingException(url);
 
-        Schedule table = new Schedule();
+        Schedule table = new Schedule(url);
 
         try
         {
