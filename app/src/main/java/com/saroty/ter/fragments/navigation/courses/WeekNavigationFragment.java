@@ -11,6 +11,7 @@ import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.utils.ScheduleToEventsUtils;
 
@@ -55,6 +56,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
         mWeekView.goToHour(6);
 
+
+        //TODO : peut etre passer ça en anglais à voir
         mWeekView.setDateTimeInterpreter(new DateTimeInterpreter() {
             @Override
             public String interpretDate(Calendar date) {
@@ -100,7 +103,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
     @Override
     public void onEventClick(WeekViewEvent event, RectF eventRect) {
-
+        DetailCourseFragment fragment = ((ScheduleToEventsUtils)event).goToDetail();
+        ((MainActivity) getActivity()).setCurrentFragment(fragment, true);
     }
 
     @Override

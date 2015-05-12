@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
+import com.saroty.ter.activities.MainActivity;
+import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleManager;
@@ -21,7 +23,26 @@ import hirondelle.date4j.DateTime;
 /**
  * Created by Romain on 11/05/2015.
  */
-public class ScheduleToEventsUtils {
+public class ScheduleToEventsUtils extends WeekViewEvent {
+
+    private Course course;
+    private LocalTimeInterval inter;
+
+    public ScheduleToEventsUtils(long id, String name, int startYear, int startMonth, int startDay, int startHour, int startMinute, int endYear, int endMonth, int endDay, int endHour, int endMinute){
+        super(id, name,  startYear,  startMonth,  startDay,  startHour,  startMinute,  endYear,  endMonth,  endDay,  endHour,  endMinute);
+    }
+
+    public void setDetails(Course course, LocalTimeInterval inter){
+        this.course = course;
+        this.inter = inter;
+    }
+
+    public DetailCourseFragment goToDetail(){
+        return DetailCourseFragment.newInstance(inter,course);
+    }
+
+
+
 
     /**
      * Converti nos events en events gerer par l'almanak
@@ -47,7 +68,7 @@ public class ScheduleToEventsUtils {
            for (Map.Entry entry : ScheduleManager.getInstance().getDailyCourses(date).entrySet()) {
                start = ((LocalTimeInterval) entry.getKey()).getStart();
                end = ((LocalTimeInterval) entry.getKey()).getEnd();
-               e = new WeekViewEvent(id, ((Course) entry.getValue()).getTitle(),
+               e = new ScheduleToEventsUtils(id, ((Course) entry.getValue()).getTitle(),
                        date.getYear(),
                        date.getMonth(),
                        date.getDay(),
@@ -60,6 +81,7 @@ public class ScheduleToEventsUtils {
                        end.getMinute()
                );
 
+               ((ScheduleToEventsUtils)e).setDetails((Course)entry.getValue(),(LocalTimeInterval)entry.getKey());
                e.setColor(((Course) entry.getValue()).getColor());
 
                events.add(e);
