@@ -1,6 +1,7 @@
 package com.alamkanak.weekview;
 
 import java.util.Calendar;
+import java.util.UUID;
 
 /**
  * Created by Raquib-ul-Alam Kanak on 7/21/2014.
@@ -38,7 +39,6 @@ public class WeekViewEvent
     public WeekViewEvent(long id, String name, int startYear, int startMonth, int startDay, int startHour, int startMinute, int endYear, int endMonth, int endDay, int endHour, int endMinute)
     {
         this.mId = id;
-
         this.mStartTime = Calendar.getInstance();
         this.mStartTime.set(Calendar.YEAR, startYear);
         this.mStartTime.set(Calendar.MONTH, startMonth - 1);

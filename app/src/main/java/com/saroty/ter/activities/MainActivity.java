@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.CalendarView;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
@@ -45,6 +46,9 @@ public class MainActivity extends ActionBarActivity
         mDrawerLayout = ((DrawerLayout) findViewById(R.id.drawer_layout));
 
         mNavigationListView = ((ListView) findViewById(R.id.drawer_list));
+
+        //mNavigationListView.addFooterView(getLayoutInflater().inflate(R.layout.drawer_list_footer,null));
+
         mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationFragments));
 
         mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -53,6 +57,8 @@ public class MainActivity extends ActionBarActivity
                 onDrawerListItemClick(position);
             }
         });
+
+       // mNavigationListView.addFooterView(findViewById(R.id.list_footer));
 
         if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction()

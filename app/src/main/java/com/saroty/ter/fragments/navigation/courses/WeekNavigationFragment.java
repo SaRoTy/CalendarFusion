@@ -1,22 +1,22 @@
 package com.saroty.ter.fragments.navigation.courses;
 
-import android.content.pm.ActivityInfo;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alamkanak.weekview.DateTimeInterpreter;
 import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
-import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
-import com.saroty.ter.schedule.ScheduleManager;
-import com.saroty.ter.utils.ScheduleToEvents;
+import com.saroty.ter.utils.ScheduleToEventsUtils;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -30,6 +30,10 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     private static final int TYPE_WEEK_VIEW = 3;
     private int mWeekViewType = TYPE_WEEK_VIEW;
     private WeekView mWeekView;
+
+    private final int LENGTH_SHORT = 1;
+    private final int LENGTH_LONG = 2;
+    private int mDayNameLength = LENGTH_SHORT;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -48,6 +52,30 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
         // Set long press listener for events.
         mWeekView.setEventLongPressListener(this);
+
+        mWeekView.goToHour(6);
+
+        mWeekView.setDateTimeInterpreter(new DateTimeInterpreter() {
+            @Override
+            public String interpretDate(Calendar date) {
+                SimpleDateFormat sdf;
+                sdf = mDayNameLength == LENGTH_SHORT ? new SimpleDateFormat("EEE") : new SimpleDateFormat("EEEE");
+                try
+                {
+                    String dayName = sdf.format(date.getTime()).toUpperCase();
+                    return String.format("%s %d/%02d", dayName, date.get(Calendar.MONTH) + 1, date.get(Calendar.DAY_OF_MONTH));
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                    return "";
+                }
+            }
+
+            @Override
+            public String interpretTime(int hour) {
+                return String.format("%02d h", hour);
+            }
+        });
 
 
         return rootView;
@@ -84,7 +112,7 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
-        events = ScheduleToEvents.getEvents(newMonth,newYear);
+        events = ScheduleToEventsUtils.getEvents(newMonth, newYear);
 
         return events;
     }

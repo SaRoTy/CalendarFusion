@@ -21,15 +21,15 @@ import hirondelle.date4j.DateTime;
 /**
  * Created by Romain on 11/05/2015.
  */
-public class ScheduleToEvents {
+public class ScheduleToEventsUtils {
 
     /**
-     * Converti nos events en events gérer par l'almanak
+     * Converti nos events en events gerer par l'almanak
      * @return liste des events contenu dans le schedule
      *
      *
      */
-    //TODO : demander à Arthur pour la gestion de l'id
+    //TODO : demander a Arthur pour la gestion de l'id
     public static List<WeekViewEvent> getEvents(int _month, int _year){
         List<WeekViewEvent> events = new ArrayList<>();
         DateTime date = DateTime.forDateOnly(_year, _month,1);
@@ -41,10 +41,6 @@ public class ScheduleToEvents {
 
         //date = date.minusDays(date.getNumDaysInMonth());
         month = date.getMonth();
-
-
-
-        Log.d("debug romain",date.toString());
 
        while(date.getMonth() == month) {
 
@@ -63,6 +59,8 @@ public class ScheduleToEvents {
                        end.getHour(),
                        end.getMinute()
                );
+
+               e.setColor(((Course) entry.getValue()).getColor());
 
                events.add(e);
                id++;
