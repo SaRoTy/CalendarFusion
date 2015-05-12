@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
             android:layout_marginTop="2dp"
-            android:text="Programmation évènementielle"
             android:textColor="@color/black"
             android:textSize="16dp"/>
 

@@ -31,7 +31,7 @@ public class AdeRssConverter extends Converter
         if (!response.getEntity().getContentType().getValue().endsWith("/rss+xml"))
             throw new ConverterParsingException(url);
 
-        Schedule table = new Schedule();
+        Schedule table = new Schedule(url);
 
         try
         {

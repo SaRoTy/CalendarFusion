@@ -19,7 +19,7 @@
     <!-- Dialog OptionsSchedule -->
     <string name="dialog_options_schedule_title">Choose one :</string>
     <string-array name="dialog_options_schedule_menu">
-        <item>Refresh</item>
+        <item>Update</item>
         <item>Rename</item>
         <item>Enable/Disable</item>
         <item>Delete</item>

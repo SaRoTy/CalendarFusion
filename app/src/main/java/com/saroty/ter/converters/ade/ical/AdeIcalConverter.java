@@ -37,7 +37,7 @@ public class AdeIcalConverter extends Converter
         if (!response.getEntity().getContentType().getValue().contains("/calendar"))
             throw new ConverterParsingException(url);
 
-        Schedule table = new Schedule();
+        Schedule table = new Schedule(url);
 
         try
         {
