@@ -56,6 +56,13 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
         mWeekView.goToHour(6);
 
+        mWeekView.setEmptyViewClickListener(new WeekView.EmptyViewClickListener() {
+            @Override
+            public void onEmptyViewClicked(Calendar time) {
+                //Todo : Ajout cours de l'utilisateur
+            }
+        });
+
 
         //TODO : peut etre passer ça en anglais à voir
         mWeekView.setDateTimeInterpreter(new DateTimeInterpreter() {

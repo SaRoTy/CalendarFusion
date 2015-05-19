@@ -43,5 +43,9 @@
     <string name="title_schedule">Calendars</string>
     <string name="schedule_group_default">General</string>
 
+    <!-- Buttons -->
+    <string name="ok_button">Ok</string>
+    <string name="cancel_button">Cancel</string>
+
 
 </resources>

@@ -2,6 +2,7 @@ package com.saroty.ter.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -9,12 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.CalendarView;
 import android.widget.ListView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.database.DatabaseHelper;
+import com.saroty.ter.fragments.dialog.CalendarDialog;
 import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
@@ -47,8 +48,6 @@ public class MainActivity extends ActionBarActivity
 
         mNavigationListView = ((ListView) findViewById(R.id.drawer_list));
 
-        //mNavigationListView.addFooterView(getLayoutInflater().inflate(R.layout.drawer_list_footer,null));
-
         mNavigationListView.setAdapter(new NavigationRowAdapter(this, mNavigationFragments));
 
         mNavigationListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,8 +56,6 @@ public class MainActivity extends ActionBarActivity
                 onDrawerListItemClick(position);
             }
         });
-
-       // mNavigationListView.addFooterView(findViewById(R.id.list_footer));
 
         if (savedInstanceState == null)
             getSupportFragmentManager().beginTransaction()
@@ -127,5 +124,11 @@ public class MainActivity extends ActionBarActivity
             return popBackStack();
         } else
             return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
+    }
+
+    public void openCalendar(View v){
+        FragmentManager fm = getSupportFragmentManager();
+        CalendarDialog calendarDialog = new CalendarDialog();
+        calendarDialog.show(fm, "Calendar");
     }
 }
