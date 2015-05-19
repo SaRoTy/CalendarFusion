@@ -6,8 +6,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
-import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.CourseListFragment;
+import com.saroty.ter.fragments.navigation.day.DaysNavigationFragment;
 
 import java.util.Locale;
 

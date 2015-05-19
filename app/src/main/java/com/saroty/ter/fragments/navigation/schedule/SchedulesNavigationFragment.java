@@ -1,4 +1,4 @@
-package com.saroty.ter.fragments.navigation;
+package com.saroty.ter.fragments.navigation.schedule;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,9 +12,9 @@ import android.widget.ExpandableListView;
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
-import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
 import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleGroup;
 import com.saroty.ter.schedule.ScheduleManager;
@@ -26,7 +26,6 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        ((MainActivity) getActivity()).getSupportActionBar().setTitle("Liste des calendriers"); //TODO:String support + generalisation de nos fragments
 
         View rootView = inflater.inflate(R.layout.fragment_schedule_list, container, false);
 

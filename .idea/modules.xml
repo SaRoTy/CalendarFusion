@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TER-L3.iml" filepath="$PROJECT_DIR$/TER-L3.iml" />
       <module fileurl="file://$PROJECT_DIR$/TER-L3.iml" filepath="$PROJECT_DIR$/TER-L3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Ter.iml" filepath="$PROJECT_DIR$/Ter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
       <module fileurl="file://$PROJECT_DIR$/libraries/week_view/week_view.iml" filepath="$PROJECT_DIR$/libraries/week_view/week_view.iml" />

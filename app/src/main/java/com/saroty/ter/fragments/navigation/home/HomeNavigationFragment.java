@@ -1,16 +1,16 @@
-package com.saroty.ter.fragments.navigation;
+package com.saroty.ter.fragments.navigation.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.adapters.CourseRowAdapter;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.ScheduleManager;

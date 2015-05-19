@@ -2,7 +2,7 @@
              xmlns:tools="http://schemas.android.com/tools"
              android:layout_width="match_parent"
              android:layout_height="match_parent"
-             tools:context="com.saroty.ter.fragments.navigation.SchedulesNavigationFragment">
+             tools:context="com.saroty.ter.fragments.navigation.schedule.SchedulesNavigationFragment">
 
     <com.idunnololz.widgets.AnimatedExpandableListView
         android:id="@+id/schedule_list_view"

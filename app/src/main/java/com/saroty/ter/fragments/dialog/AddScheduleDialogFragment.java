@@ -15,9 +15,7 @@ import android.widget.ProgressBar;
 import com.saroty.ter.R;
 import com.saroty.ter.converters.factory.ConverterFactory;
 import com.saroty.ter.schedule.Schedule;
-import com.saroty.ter.schedule.util.ScheduleFileUtil;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -124,13 +122,6 @@ public class AddScheduleDialogFragment extends DialogFragment
                 ((AddScheduleDialogListener) getTargetFragment()).onScheduleDownloadError(mException);
             else
             {
-                try
-                {
-                    ScheduleFileUtil.saveSchedule(table);
-                } catch (IOException e)
-                {
-                    mException = e;
-                }
                 ((AddScheduleDialogListener) getTargetFragment()).onScheduleDownloaded(table);
             }
             AddScheduleDialogFragment.this.dismiss();

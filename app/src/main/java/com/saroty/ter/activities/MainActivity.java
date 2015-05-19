@@ -16,16 +16,17 @@ import com.saroty.ter.R;
 import com.saroty.ter.adapters.NavigationRowAdapter;
 import com.saroty.ter.database.DatabaseHelper;
 import com.saroty.ter.fragments.dialog.CalendarDialog;
-import com.saroty.ter.fragments.navigation.DaysNavigationFragment;
-import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
-import com.saroty.ter.fragments.navigation.SchedulesNavigationFragment;
-import com.saroty.ter.fragments.navigation.courses.WeekNavigationFragment;
+import com.saroty.ter.fragments.navigation.day.DaysNavigationFragment;
+import com.saroty.ter.fragments.navigation.home.HomeNavigationFragment;
+import com.saroty.ter.fragments.navigation.schedule.SchedulesNavigationFragment;
+import com.saroty.ter.fragments.navigation.setting.SettingsNavigationFragment;
+import com.saroty.ter.fragments.navigation.week.WeekNavigationFragment;
 import com.saroty.ter.schedule.ScheduleManager;
 
 public class MainActivity extends ActionBarActivity
 {
-    private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment(), new WeekNavigationFragment()};
+    private final NavigationFragment[] mNavigationFragments = {new HomeNavigationFragment(), new SchedulesNavigationFragment(), new DaysNavigationFragment(), new WeekNavigationFragment(), new SettingsNavigationFragment()};
 
     private DatabaseHelper mDatabaseHelper;
     private ScheduleManager mScheduleManager;

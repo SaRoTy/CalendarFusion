@@ -1,4 +1,4 @@
-package com.saroty.ter.fragments.navigation.courses;
+package com.saroty.ter.fragments.navigation.week;
 
 import android.graphics.RectF;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
+import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.utils.ScheduleToEventsUtils;
 
 import java.text.SimpleDateFormat;
@@ -30,11 +31,10 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     private static final int TYPE_THREE_DAY_VIEW = 2;
     private static final int TYPE_WEEK_VIEW = 3;
     private int mWeekViewType = TYPE_WEEK_VIEW;
-    private WeekView mWeekView;
-
     private final int LENGTH_SHORT = 1;
-    private final int LENGTH_LONG = 2;
     private int mDayNameLength = LENGTH_SHORT;
+    private final int LENGTH_LONG = 2;
+    private WeekView mWeekView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -56,18 +56,22 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
         mWeekView.goToHour(6);
 
-        mWeekView.setEmptyViewClickListener(new WeekView.EmptyViewClickListener() {
+        mWeekView.setEmptyViewClickListener(new WeekView.EmptyViewClickListener()
+        {
             @Override
-            public void onEmptyViewClicked(Calendar time) {
+            public void onEmptyViewClicked(Calendar time)
+            {
                 //Todo : Ajout cours de l'utilisateur
             }
         });
 
 
-        //TODO : peut etre passer ça en anglais à voir
-        mWeekView.setDateTimeInterpreter(new DateTimeInterpreter() {
+        //TODO : peut etre passer ï¿½a en anglais ï¿½ voir
+        mWeekView.setDateTimeInterpreter(new DateTimeInterpreter()
+        {
             @Override
-            public String interpretDate(Calendar date) {
+            public String interpretDate(Calendar date)
+            {
                 SimpleDateFormat sdf;
                 sdf = mDayNameLength == LENGTH_SHORT ? new SimpleDateFormat("EEE") : new SimpleDateFormat("EEEE");
                 try
@@ -82,7 +86,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
             }
 
             @Override
-            public String interpretTime(int hour) {
+            public String interpretTime(int hour)
+            {
                 return String.format("%02d h", hour);
             }
         });
@@ -92,14 +97,15 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     @Override
-    public void onResume() {
+    public void onResume()
+    {
         super.onResume();
     }
 
     @Override
     public String getNavigationTitle()
     {
-        return  ScheduleApplication.getContext().getString(R.string.title_navigation_week);
+        return ScheduleApplication.getContext().getString(R.string.title_navigation_week);
     }
 
     @Override
@@ -109,18 +115,21 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     @Override
-    public void onEventClick(WeekViewEvent event, RectF eventRect) {
-        DetailCourseFragment fragment = ((ScheduleToEventsUtils)event).goToDetail();
+    public void onEventClick(WeekViewEvent event, RectF eventRect)
+    {
+        DetailCourseFragment fragment = ((ScheduleToEventsUtils) event).goToDetail();
         ((MainActivity) getActivity()).setCurrentFragment(fragment, true);
     }
 
     @Override
-    public void onEventLongPress(WeekViewEvent event, RectF eventRect) {
+    public void onEventLongPress(WeekViewEvent event, RectF eventRect)
+    {
 
     }
 
     @Override
-    public List<WeekViewEvent> onMonthChange(int newYear, int newMonth) {
+    public List<WeekViewEvent> onMonthChange(int newYear, int newMonth)
+    {
         List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
 
         events = ScheduleToEventsUtils.getEvents(newMonth, newYear);
