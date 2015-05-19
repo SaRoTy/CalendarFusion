@@ -1,17 +1,20 @@
-package com.saroty.ter.fragments.navigation;
+package com.saroty.ter.fragments.navigation.day;
 
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.adapters.CoursesViewPagerAdapter;
+import com.saroty.ter.fragments.dialog.AddItemDialogFragment;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
 
-import java.util.Date;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
@@ -19,7 +22,7 @@ import hirondelle.date4j.DateTime;
 /**
  * Created by Romain on 31/03/2015.
  */
-public class DaysNavigationFragment extends NavigationFragment
+public class DaysNavigationFragment extends NavigationFragment implements AddItemDialogFragment.AddItemDialogListener
 {
 
     private CoursesViewPagerAdapter myViewPagerAdapter;

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 
 import com.saroty.ter.R;
-import com.saroty.ter.fragments.navigation.HomeNavigationFragment;
+import com.saroty.ter.fragments.navigation.home.HomeNavigationFragment;
 
 import java.util.Calendar;
 

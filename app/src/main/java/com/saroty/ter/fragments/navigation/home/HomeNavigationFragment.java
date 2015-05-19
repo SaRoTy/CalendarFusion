@@ -1,6 +1,7 @@
-package com.saroty.ter.fragments.navigation;
+package com.saroty.ter.fragments.navigation.home;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,10 @@ import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.CourseRowAdapter;
+import com.saroty.ter.fragments.dialog.CalendarDialogFragment;
+import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.ScheduleManager;
@@ -27,7 +31,7 @@ import hirondelle.date4j.DateTime;
 /**
  * Created by Arthur on 02/04/2015.
  */
-public class HomeNavigationFragment extends NavigationFragment
+public class HomeNavigationFragment extends NavigationFragment implements CalendarDialogFragment.CalendarDialogListener
 {
     private ListView mCourseList;
     private TextView mDayText;
