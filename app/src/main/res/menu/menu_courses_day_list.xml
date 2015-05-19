@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:schedule="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.saroty.ter.activities.SchedulesListActivity">
+
+    <item
+        android:id="@+id/action_add_schedule"
+        android:icon="@drawable/action_plus"
+        android:title="@string/add"
+        schedule:showAsAction="always"/>
+</menu>

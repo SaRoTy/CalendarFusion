@@ -41,8 +41,7 @@
             android:layout_weight=".30"
             android:layout_height="match_parent"
             android:src="@drawable/ic_action_search"
-            android:id="@+id/calendar"
-            android:onClick="openCalendar"/>
+            android:id="@+id/calendar"/>
 
     </LinearLayout>
 

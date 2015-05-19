@@ -1,16 +1,16 @@
-package com.saroty.ter.fragments.navigation.home;
+package com.saroty.ter.fragments.navigation;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.adapters.CourseRowAdapter;
-import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.ScheduleManager;
@@ -32,12 +32,15 @@ public class HomeNavigationFragment extends NavigationFragment
     private ListView mCourseList;
     private TextView mDayText;
     private TextView mDateText;
+    private CalendarDialogFragment mCalendarDialog;
     private Thread mThread;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
+        Button CalendarButton = (Button)rootView.findViewById(R.id.calendar);
+        mCalendarDialog = CalendarDialogFragment.newInstance(this);
 
         mCourseList = (ListView) rootView.findViewById(R.id.course_list);
         mDayText = (TextView) rootView.findViewById(R.id.text_day);
@@ -48,6 +51,16 @@ public class HomeNavigationFragment extends NavigationFragment
         String dayString = today.format("WWWW", Locale.getDefault());
 
         mDayText.setText(Character.toUpperCase(dayString.charAt(0)) + dayString.substring(1));
+        CalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager fm = getActivity().getSupportFragmentManager();
+
+                mCalendarDialog.show(fm, "Calendar");
+            }
+        });
+
+
         updateDate();
 
         Map<LocalTimeInterval, Course> courses = ScheduleManager.getInstance().getDailyCourses(today);
@@ -123,4 +136,9 @@ public class HomeNavigationFragment extends NavigationFragment
         return ScheduleApplication.getContext().getString(R.string.title_home);
     }
 
+    @Override
+    public void onButtonOkClick() {
+        ((MainActivity) getActivity()).setCurrentFragment(2,mCalendarDialog.getBundle());
+        mCalendarDialog.getDialog().dismiss();
+    }
 }

@@ -42,7 +42,9 @@ public class CourseListFragment extends Fragment
 
         Bundle bundle = getArguments();
 
-        this.mDay = new DateTime(bundle.getString("day"));
+        if(bundle != null)
+            this.mDay = new DateTime(bundle.getString("day"));
+
 
         this.mList = (ListView) rootView.findViewById(R.id.list_courses_of_day);
         loadDailyCourses();
