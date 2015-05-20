@@ -1,6 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="300dp"
     android:layout_height="match_parent">
+
+    <EditText
+        style="@style/edit_text_style"
+        android:id="@+id/item_name"
+        android:hint="@string/item_name"
+        android:inputType="text"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            style="@style/edit_text_style"
+            android:layout_width="0dp"
+            android:layout_weight="0.6"
+            android:id="@+id/item_location"
+            android:hint="@string/item_location"
+            android:inputType="text"/>
+
+        <EditText
+            style="@style/edit_text_style"
+            android:layout_width="0dp"
+            android:layout_weight="0.4"
+            android:id="@+id/item_duration"
+            android:hint="@string/item_duration"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            style="@style/edit_text_style"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/item_hour"
+            android:hint="@string/item_hour"
+            android:inputType="text"/>
+
+        <EditText
+            style="@style/edit_text_style"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:id="@+id/item_date"
+            android:hint="@string/item_date"
+            android:inputType="text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/ok_button"/>
+
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/cancel_button"/>
+
+    </LinearLayout>
 
 </LinearLayout>

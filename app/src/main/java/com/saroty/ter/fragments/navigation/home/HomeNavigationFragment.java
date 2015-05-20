@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -43,7 +44,7 @@ public class HomeNavigationFragment extends NavigationFragment implements Calend
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        Button CalendarButton = (Button)rootView.findViewById(R.id.calendar);
+        ImageButton CalendarButton = (ImageButton)rootView.findViewById(R.id.calendar);
         mCalendarDialog = CalendarDialogFragment.newInstance(this);
 
         mCourseList = (ListView) rootView.findViewById(R.id.course_list);

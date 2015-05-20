@@ -34,7 +34,7 @@ public class CalendarDialogFragment extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.calendar_dialog, container);
+        View view = inflater.inflate(R.layout.dialog_calendar, container);
 
         mCalendar = (CalendarView) view.findViewById(R.id.calendar);
 

@@ -4,7 +4,7 @@
     tools:context="com.saroty.ter.activities.SchedulesListActivity">
 
     <item
-        android:id="@+id/action_add_schedule"
+        android:id="@+id/action_add_item"
         android:icon="@drawable/action_plus"
         android:title="@string/add"
         schedule:showAsAction="always"/>
