@@ -45,7 +45,8 @@
             android:layout_weight="0.5"
             android:id="@+id/item_hour"
             android:hint="@string/item_hour"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:imeOptions="actionGo"/>
 
         <EditText
             style="@style/edit_text_style"
@@ -53,7 +54,8 @@
             android:layout_weight="0.5"
             android:id="@+id/item_date"
             android:hint="@string/item_date"
-            android:inputType="text"/>
+            android:inputType="text"
+            />
 
     </LinearLayout>
 

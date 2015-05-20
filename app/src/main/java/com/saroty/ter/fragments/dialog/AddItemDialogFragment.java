@@ -1,5 +1,6 @@
 package com.saroty.ter.fragments.dialog;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -7,13 +8,17 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.saroty.ter.R;
@@ -51,6 +56,28 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
 
         date = (EditText)view.findViewById(R.id.item_date);
 
+        hour.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    hour.setFocusable(false);
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                }
+            }
+        });
+
+        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    date.setFocusable(false);
+                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
+                }
+            }
+        });
+
         hour.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -72,29 +99,22 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
         });
 
         date.setText(myCalendar.get(Calendar.YEAR) + "/"
-                +String.format("%02d/%02d",
+                + String.format("%02d/%02d",
                 myCalendar.get(Calendar.MONTH),
                 myCalendar.get(Calendar.DAY_OF_MONTH)));
-
-
-
-
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(date.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
-        imm.hideSoftInputFromWindow(hour.getWindowToken(), InputMethodManager.HIDE_IMPLICIT_ONLY);
 
         return view;
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        hour.setText(hourOfDay + ":" + String.format("%02d", minute));
+        hour.setText(String.format("%02d:%02d", hourOfDay, minute));
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
         //TODO stocker la date dans un date time
-        date.setText(year+"/"+String.format("%02d/%02d",monthOfYear,dayOfMonth));
+        date.setText(year + "/" + String.format("%02d/%02d", monthOfYear, dayOfMonth));
     }
 
     private void showTimeDialog(){
@@ -111,7 +131,17 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    public void setTime(Calendar time){
+        //TODO en fonction de la manière de stockage mettre les données ou il faut
+        hour.setText(String.format("%02d:%02d", time.get(Calendar.HOUR_OF_DAY),
+                time.get(Calendar.MINUTE)));
+
+        date.setText(String.format("%d/%02d/%02d", time.get(Calendar.YEAR),
+                time.get(Calendar.MONTH),time.get(Calendar.DAY_OF_MONTH)));
+    }
+
     public interface AddItemDialogListener{
         public void validate();
     }
+
 }

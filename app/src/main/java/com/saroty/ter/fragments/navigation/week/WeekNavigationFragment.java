@@ -12,6 +12,7 @@ import com.alamkanak.weekview.WeekViewEvent;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
+import com.saroty.ter.fragments.dialog.AddItemDialogFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.utils.ScheduleToEventsUtils;
@@ -25,7 +26,7 @@ import java.util.List;
  * Created by Romain on 09/05/2015.
  */
 public class WeekNavigationFragment extends NavigationFragment implements WeekView.MonthChangeListener,
-        WeekView.EventClickListener, WeekView.EventLongPressListener
+        WeekView.EventClickListener, WeekView.EventLongPressListener, AddItemDialogFragment.AddItemDialogListener
 {
     private static final int TYPE_DAY_VIEW = 1;
     private static final int TYPE_THREE_DAY_VIEW = 2;
@@ -61,7 +62,7 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
             @Override
             public void onEmptyViewClicked(Calendar time)
             {
-                //Todo : Ajout cours de l'utilisateur
+                showAddItemDialog(time);
             }
         });
 
@@ -135,5 +136,16 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
         events = ScheduleToEventsUtils.getEvents(newMonth, newYear);
 
         return events;
+    }
+
+    private void showAddItemDialog(Calendar time){
+        AddItemDialogFragment dialog = new AddItemDialogFragment().newInstance(this);
+        dialog.setTime(time);
+        dialog.show(getFragmentManager(),"Additem");
+    }
+
+    @Override
+    public void validate() {
+
     }
 }
