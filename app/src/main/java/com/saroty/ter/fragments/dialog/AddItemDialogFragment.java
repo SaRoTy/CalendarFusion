@@ -56,31 +56,14 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
 
         date = (EditText)view.findViewById(R.id.item_date);
 
-        hour.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
-                    hour.setFocusable(false);
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                }
-            }
-        });
+        date.setFocusable(false);
 
-        date.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus) {
-                    date.setFocusable(false);
-                    InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
-                    imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0);
-                }
-            }
-        });
+        hour.setFocusable(false);
 
         hour.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
                 if (v == hour && event.getAction() == MotionEvent.ACTION_UP)
                     showTimeDialog();
                 return false;
