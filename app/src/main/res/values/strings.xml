@@ -33,7 +33,7 @@
     <!-- Dialog ItemOption -->
     <string-array name="dialog_item_option_penu">
         <item>Delete</item>
-        <item>Add</item>Z
+        <item>Insert</item>Z
     </string-array>
 
     <!-- Detail -->
