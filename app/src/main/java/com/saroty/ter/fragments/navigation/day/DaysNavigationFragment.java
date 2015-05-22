@@ -1,16 +1,13 @@
 package com.saroty.ter.fragments.navigation.day;
 
-import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TimePicker;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
@@ -18,7 +15,6 @@ import com.saroty.ter.adapters.CoursesViewPagerAdapter;
 import com.saroty.ter.fragments.dialog.AddItemDialogFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 
-import java.util.Calendar;
 import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
@@ -54,9 +50,18 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 
-        View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_courses_view_pager, container, false);
 
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
+
+        setHasOptionsMenu(true);
+
+        return rootView;
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
 
         myViewPagerAdapter =
                 new CoursesViewPagerAdapter(getChildFragmentManager(), this);
@@ -69,10 +74,6 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
                 mViewPager.setCurrentItem(current, true);
             }
         });
-
-        setHasOptionsMenu(true);
-
-        return rootView;
     }
 
     @Override

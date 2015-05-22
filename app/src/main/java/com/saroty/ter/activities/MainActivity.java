@@ -20,6 +20,7 @@ import com.saroty.ter.fragments.navigation.home.HomeNavigationFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.schedule.SchedulesNavigationFragment;
 import com.saroty.ter.fragments.navigation.week.WeekNavigationFragment;
+import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleManager;
 
 public class MainActivity extends ActionBarActivity
