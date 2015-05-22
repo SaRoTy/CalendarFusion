@@ -13,27 +13,27 @@ import com.saroty.ter.R;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ListCourseOfDayRowAdapter;
 import com.saroty.ter.fragments.dialog.AddItemDialogFragment;
-import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
 import com.saroty.ter.fragments.dialog.ItemMenuDialog;
+import com.saroty.ter.fragments.dialog.ItemMenuDialog.ItemMenuActionListener;
 import com.saroty.ter.models.list.CourseRowModel;
 import com.saroty.ter.schedule.Course;
-import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleManager;
 import com.saroty.ter.time.LocalTimeInterval;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.TreeMap;
 
-import biweekly.property.Timezone;
 import hirondelle.date4j.DateTime;
 
 /**
  * Created by Romain on 24/03/2015.
  */
-public class CourseListFragment extends Fragment implements ItemMenuDialog.ItemMenuActionListener,
+public class CourseListFragment extends Fragment implements ItemMenuActionListener,
         AddItemDialogFragment.AddItemDialogListener
 {
 
@@ -89,27 +89,26 @@ public class CourseListFragment extends Fragment implements ItemMenuDialog.ItemM
 
     private void loadDailyCourses()
     {
-        CourseRowModel[] model;
-        int i = 0;
+        List<CourseRowModel> model = new ArrayList<>();
 
-        TreeMap<LocalTimeInterval, Course> listDay = ScheduleManager.getInstance().getDailyCourses(mDay);
+        TreeMap<LocalTimeInterval, List<Course>> listDay = ScheduleManager.getInstance().getDailyCourses(mDay);
 
-        model = new CourseRowModel[listDay.size()];
-
-        for (Map.Entry<LocalTimeInterval, Course> course : listDay.entrySet())
+        for (Map.Entry<LocalTimeInterval, List<Course>> course : listDay.entrySet())
         {
-            model[i] = new CourseRowModel(course.getKey(), course.getValue());
-            i++;
+            for (Course c : course.getValue())
+            {
+                model.add(new CourseRowModel(course.getKey(), c));
+            }
         }
 
-        mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(), model);
+        mAdapter = new ListCourseOfDayRowAdapter(getActivity().getApplicationContext(), model.toArray(new CourseRowModel[model.size()]));
 
         mList.setAdapter(mAdapter);
 
     }
 
     public void showItemOptionMenu(){
-        Dialog dialogMenu = ItemMenuDialog.newInstance(getActivity(),this);
+        Dialog dialogMenu = ItemMenuDialog.newInstance(getActivity(), this);
         dialogMenu.show();
     }
 

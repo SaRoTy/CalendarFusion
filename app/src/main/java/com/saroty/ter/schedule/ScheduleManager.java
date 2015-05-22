@@ -10,6 +10,7 @@ import com.saroty.ter.database.schedule.ScheduleTable;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Observable;
 import java.util.TreeMap;
@@ -78,9 +79,9 @@ public class ScheduleManager extends Observable
         notifyObservers();
     }
 
-    public TreeMap<LocalTimeInterval, Course> getDailyCourses(DateTime day)
+    public TreeMap<LocalTimeInterval, List<Course>> getDailyCourses(DateTime day)
     {
-        TreeMap<LocalTimeInterval, Course> map = new TreeMap<>();
+        TreeMap<LocalTimeInterval, List<Course>> map = new TreeMap<>();
         for (ScheduleGroup group : mScheduleGroups.values())
         {
             if (group.isEnabled())
@@ -142,9 +143,8 @@ public class ScheduleManager extends Observable
     public void disableSchedule(UUID uuid)
     {
         Schedule schedule = getSchedule(uuid);
-        schedule.setEnabled(true);
+        schedule.setEnabled(false);
         ((ScheduleTable) DatabaseHelper.getInstance().getTable(ScheduleTable.class)).updateOne(schedule);
-
         setChanged();
         notifyObservers();
     }

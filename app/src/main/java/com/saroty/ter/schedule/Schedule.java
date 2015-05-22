@@ -2,10 +2,13 @@ package com.saroty.ter.schedule;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.schedule.filter.IScheduleFilter;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.TreeMap;
@@ -29,7 +32,7 @@ public class Schedule implements Serializable
     private URL mBaseUrl;
     private transient boolean mUpdating;
 
-    private TreeMap<DateTime, TreeMap<LocalTimeInterval, Course>> mSchedule;
+    private TreeMap<DateTime, TreeMap<LocalTimeInterval, List<Course>>> mSchedule;
 
     public Schedule(URL baseUrl)
     {
@@ -51,26 +54,60 @@ public class Schedule implements Serializable
 
     public void addCourse(Course course, DateTime date, LocalTimeInterval interval)
     {
-        for (Map.Entry<DateTime, TreeMap<LocalTimeInterval, Course>> c : mSchedule.entrySet())
+        for (Map.Entry<DateTime, TreeMap<LocalTimeInterval, List<Course>>> c : mSchedule.entrySet())
         {
             if (c.getKey().isSameDayAs(date))
             {
-                c.getValue().put(interval, course);
+                if (c.getValue().containsKey(interval))
+                    c.getValue().get(interval).add(course);
+                else
+                {
+                    List<Course> newList = new ArrayList<>();
+                    newList.add(course);
+                    c.getValue().put(interval, newList);
+                }
                 return;
             }
         }
-        TreeMap<LocalTimeInterval, Course> newMap = new TreeMap<>();
-        newMap.put(interval, course);
+        TreeMap<LocalTimeInterval, List<Course>> newMap = new TreeMap<>();
+        List<Course> newList = new ArrayList<>();
+        newList.add(course);
+        newMap.put(interval, newList);
         mSchedule.put(date, newMap);
         mLastUpdate = DateTime.now(TimeZone.getDefault());
     }
 
-    public Map<LocalTimeInterval, Course> getDailyCourses(DateTime day)
+    public Map<LocalTimeInterval, List<Course>> getDailyCourses(DateTime day)
     {
-        for (Map.Entry<DateTime, TreeMap<LocalTimeInterval, Course>> c : mSchedule.entrySet())
+        for (Map.Entry<DateTime, TreeMap<LocalTimeInterval, List<Course>>> c : mSchedule.entrySet())
         {
             if (c.getKey().isSameDayAs(day))
                 return c.getValue();
+        }
+        return new TreeMap<>();
+    }
+
+    public Map<LocalTimeInterval, List<Course>> getDailyCourses(DateTime day, IScheduleFilter filter)
+    {
+        for (Map.Entry<DateTime, TreeMap<LocalTimeInterval, List<Course>>> c : mSchedule.entrySet())
+        {
+            if (c.getKey().isSameDayAs(day))
+            {
+                Map<LocalTimeInterval, List<Course>> newMap = new TreeMap<>();
+
+                for (Map.Entry<LocalTimeInterval, List<Course>> course : c.getValue().entrySet())
+                {
+                    List<Course> filteredCourses = new ArrayList<>();
+
+                    for (Course i : course.getValue())
+                        if (filter.filter(course.getKey(), i))
+                            filteredCourses.add(i);
+                    newMap.put(course.getKey(), filteredCourses);
+
+                }
+
+                return newMap;
+            }
         }
         return new TreeMap<>();
     }

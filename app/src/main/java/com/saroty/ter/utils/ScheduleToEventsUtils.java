@@ -1,24 +1,16 @@
 package com.saroty.ter.utils;
 
-import android.util.Log;
-
-import com.alamkanak.weekview.WeekView;
 import com.alamkanak.weekview.WeekViewEvent;
-import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.schedule.Course;
-import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleManager;
 import com.saroty.ter.time.LocalTime;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
-import biweekly.property.Timezone;
 import hirondelle.date4j.DateTime;
 
 /**
@@ -34,29 +26,16 @@ public class ScheduleToEventsUtils extends WeekViewEvent {
         super(id, name,  startYear,  startMonth,  startDay,  startHour,  startMinute,  endYear,  endMonth,  endDay,  endHour,  endMinute);
     }
 
-    public void setDetails(Course course, LocalTimeInterval inter, DateTime time){
-        this.mCourse = course;
-        this.mInter = inter;
-        this.mTime = time;
-    }
-
-    public DetailCourseFragment goToDetail(){
-        return DetailCourseFragment.newInstance(mInter,mCourse,mTime);
-    }
-
-
-
-
     /**
      * Converti nos events en events gerer par l'almanak
+     *
      * @return liste des events contenu dans le schedule
-     *
-     *
      */
     //TODO : demander a Arthur pour la gestion de l'id
-    public static List<WeekViewEvent> getEvents(int _month, int _year){
+    public static List<WeekViewEvent> getEvents(int _month, int _year)
+    {
         List<WeekViewEvent> events = new ArrayList<>();
-        DateTime date = DateTime.forDateOnly(_year, _month,1);
+        DateTime date = DateTime.forDateOnly(_year, _month, 1);
         Integer id = 0;
         WeekViewEvent e;
         LocalTime start;
@@ -66,35 +45,54 @@ public class ScheduleToEventsUtils extends WeekViewEvent {
         //date = date.minusDays(date.getNumDaysInMonth());
         month = date.getMonth();
 
-       while(date.getMonth() == month) {
+        while (date.getMonth() == month)
+        {
 
-           for (Map.Entry entry : ScheduleManager.getInstance().getDailyCourses(date).entrySet()) {
-               start = ((LocalTimeInterval) entry.getKey()).getStart();
-               end = ((LocalTimeInterval) entry.getKey()).getEnd();
-               e = new ScheduleToEventsUtils(id, ((Course) entry.getValue()).getTitle(),
-                       date.getYear(),
-                       date.getMonth(),
-                       date.getDay(),
-                       start.getHour(),
-                       start.getMinute(),
-                       date.getYear(),
-                       date.getMonth(),
-                       date.getDay(),
-                       end.getHour(),
-                       end.getMinute()
-               );
+            for (Map.Entry<LocalTimeInterval, List<Course>> entry : ScheduleManager.getInstance().getDailyCourses(date).entrySet())
+            {
+                start = entry.getKey().getStart();
+                end = entry.getKey().getEnd();
 
-               ((ScheduleToEventsUtils)e).setDetails((Course)entry.getValue(),(LocalTimeInterval)entry.getKey(),date);
-               e.setColor(((Course) entry.getValue()).getColor());
+                for (Course c : entry.getValue())
+                {
+                    //TODO:Faire une classe private ^_^
+                    e = new ScheduleToEventsUtils(id, (c).getTitle(),
+                            date.getYear(),
+                            date.getMonth(),
+                            date.getDay(),
+                            start.getHour(),
+                            start.getMinute(),
+                            date.getYear(),
+                            date.getMonth(),
+                            date.getDay(),
+                            end.getHour(),
+                            end.getMinute()
+                    );
 
-               events.add(e);
-               id++;
-           }
+                    ((ScheduleToEventsUtils) e).setDetails(c, entry.getKey(), date);
+                    e.setColor(c.getColor());
 
-           date = date.plusDays(1);
+                    events.add(e);
+                    id++;
+                }
+            }
 
-       }
+            date = date.plusDays(1);
+
+        }
 
         return events;
+    }
+
+    public void setDetails(Course course, LocalTimeInterval inter, DateTime time)
+    {
+        this.mCourse = course;
+        this.mInter = inter;
+        this.mTime = time;
+    }
+
+    public DetailCourseFragment goToDetail()
+    {
+        return DetailCourseFragment.newInstance(mInter, mCourse, mTime);
     }
 }

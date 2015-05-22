@@ -5,7 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -22,7 +21,9 @@ import com.saroty.ter.schedule.ScheduleManager;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.TimeZone;
@@ -44,7 +45,7 @@ public class HomeNavigationFragment extends NavigationFragment implements Calend
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
-        ImageButton CalendarButton = (ImageButton)rootView.findViewById(R.id.calendar);
+        ImageButton CalendarButton = (ImageButton) rootView.findViewById(R.id.calendar);
         mCalendarDialog = CalendarDialogFragment.newInstance(this);
 
         mCourseList = (ListView) rootView.findViewById(R.id.course_list);
@@ -56,9 +57,11 @@ public class HomeNavigationFragment extends NavigationFragment implements Calend
         String dayString = today.format("WWWW", Locale.getDefault());
 
         mDayText.setText(Character.toUpperCase(dayString.charAt(0)) + dayString.substring(1));
-        CalendarButton.setOnClickListener(new View.OnClickListener() {
+        CalendarButton.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 FragmentManager fm = getActivity().getSupportFragmentManager();
 
                 mCalendarDialog.show(fm, "Calendar");
@@ -68,21 +71,22 @@ public class HomeNavigationFragment extends NavigationFragment implements Calend
 
         updateDate();
 
-        Map<LocalTimeInterval, Course> courses = ScheduleManager.getInstance().getDailyCourses(today);
+        Map<LocalTimeInterval, List<Course>> courses = ScheduleManager.getInstance().getDailyCourses(today);
 
         if (courses.size() > 0)
         {
-            CourseRowModel[] data = new CourseRowModel[courses.size()];
+            List<CourseRowModel> model = new ArrayList<>();
 
-            int i = 0;
 
-            for (Map.Entry<LocalTimeInterval, Course> c : courses.entrySet())
+            for (Map.Entry<LocalTimeInterval, List<Course>> course : courses.entrySet())
             {
-                data[i] = new CourseRowModel(c.getKey(), c.getValue());
-                i++;
+                for (Course c : course.getValue())
+                {
+                    model.add(new CourseRowModel(course.getKey(), c));
+                }
             }
 
-            mCourseList.setAdapter(new CourseRowAdapter(getActivity().getApplicationContext(), data));
+            mCourseList.setAdapter(new CourseRowAdapter(getActivity().getApplicationContext(), model.toArray(new CourseRowModel[model.size()])));
         }
 
         mThread = new Thread()
@@ -142,8 +146,9 @@ public class HomeNavigationFragment extends NavigationFragment implements Calend
     }
 
     @Override
-    public void onButtonOkClick() {
-        ((MainActivity) getActivity()).setCurrentFragment(2,mCalendarDialog.getBundle());
+    public void onButtonOkClick()
+    {
+        ((MainActivity) getActivity()).setCurrentFragment(2, mCalendarDialog.getBundle());
         mCalendarDialog.getDialog().dismiss();
     }
 }

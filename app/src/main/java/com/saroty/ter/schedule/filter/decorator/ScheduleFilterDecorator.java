@@ -13,6 +13,4 @@ public abstract class ScheduleFilterDecorator implements IScheduleFilter
     {
         mFilter = filter;
     }
-
-
 }
