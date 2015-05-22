@@ -16,12 +16,14 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.saroty.ter.R;
+import com.saroty.ter.fragments.navigation.day.DaysNavigationFragment;
 
 import java.util.Calendar;
 
@@ -48,6 +50,7 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
                              Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.dialog_add_item, container);
+        Bundle b;
         getDialog().setTitle("Add item");
 
         myCalendar = Calendar.getInstance();
@@ -56,9 +59,22 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
 
         date = (EditText)view.findViewById(R.id.item_date);
 
+        Button okButton = (Button)view.findViewById(R.id.ok_button);
+        Button cancelButton = (Button)view.findViewById(R.id.cancel_button);
+
         date.setFocusable(false);
 
         hour.setFocusable(false);
+
+
+        if((b = getArguments()) != null){
+            Calendar time = (Calendar)b.get("time");
+            hour.setText(String.format("%02d:%02d", time.get(Calendar.HOUR_OF_DAY),
+                    time.get(Calendar.MINUTE)));
+
+            date.setText(String.format("%d/%02d/%02d", time.get(Calendar.YEAR),
+                    time.get(Calendar.MONTH),time.get(Calendar.DAY_OF_MONTH)));
+        }
 
         hour.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -78,6 +94,20 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
                 if (v == date && event.getAction() == MotionEvent.ACTION_UP)
                     showDateDialog();
                 return false;
+            }
+        });
+
+        okButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AddItemDialogListener)getTargetFragment()).validate();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((AddItemDialogListener)getTargetFragment()).cancel();
             }
         });
 
@@ -114,17 +144,10 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
                 myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
-    public void setTime(Calendar time){
-        //TODO en fonction de la manière de stockage mettre les données ou il faut
-        hour.setText(String.format("%02d:%02d", time.get(Calendar.HOUR_OF_DAY),
-                time.get(Calendar.MINUTE)));
-
-        date.setText(String.format("%d/%02d/%02d", time.get(Calendar.YEAR),
-                time.get(Calendar.MONTH),time.get(Calendar.DAY_OF_MONTH)));
-    }
-
     public interface AddItemDialogListener{
         public void validate();
+
+        public void cancel();
     }
 
 }

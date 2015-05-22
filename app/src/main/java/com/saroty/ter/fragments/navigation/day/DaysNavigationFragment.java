@@ -32,19 +32,14 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
     private CoursesViewPagerAdapter myViewPagerAdapter;
     private ViewPager mViewPager;
     private DateTime mBaseDay;
+    private AddItemDialogFragment mAddDialog;
     private int current;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-    {
-
-        View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
-        Bundle b;
-        current=0;
-
-        mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
-
+    public void onCreate(Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
         this.mBaseDay = DateTime.today(TimeZone.getDefault());
+        Bundle b;
 
         if((b = getArguments()) != null) {
             current = mBaseDay.numDaysFrom(
@@ -53,6 +48,15 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
         }else{
             current = 0;
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
+
+        View rootView = inflater.inflate(R.layout.courses_view_pager, container, false);
+
+        mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
 
         myViewPagerAdapter =
                 new CoursesViewPagerAdapter(getChildFragmentManager(), this);
@@ -72,6 +76,12 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
     }
 
     @Override
+    public void onPause(){
+        super.onPause();
+        current = mViewPager.getCurrentItem();
+    }
+
+    @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         if (menu.size() == 0)
@@ -85,8 +95,8 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
         if (id == R.id.action_add_item)
         {
 
-            AddItemDialogFragment f = AddItemDialogFragment.newInstance(this);
-            f.show(getFragmentManager(), "AddScheduleDialogFragment");
+            mAddDialog = AddItemDialogFragment.newInstance(this);
+            mAddDialog.show(getFragmentManager(), "AddScheduleDialogFragment");
 
             return true;
         }
@@ -114,6 +124,11 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
 
     @Override
     public void validate() {
+        mAddDialog.dismiss();
+    }
 
+    @Override
+    public void cancel() {
+        mAddDialog.dismiss();
     }
 }

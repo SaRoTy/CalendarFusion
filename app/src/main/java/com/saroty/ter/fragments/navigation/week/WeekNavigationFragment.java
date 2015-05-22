@@ -1,5 +1,9 @@
 package com.saroty.ter.fragments.navigation.week;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.ClipData;
+import android.content.DialogInterface;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +17,7 @@ import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.fragments.dialog.AddItemDialogFragment;
+import com.saroty.ter.fragments.dialog.ItemMenuDialog;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.utils.ScheduleToEventsUtils;
@@ -26,7 +31,8 @@ import java.util.List;
  * Created by Romain on 09/05/2015.
  */
 public class WeekNavigationFragment extends NavigationFragment implements WeekView.MonthChangeListener,
-        WeekView.EventClickListener, WeekView.EventLongPressListener, AddItemDialogFragment.AddItemDialogListener
+        WeekView.EventClickListener, WeekView.EventLongPressListener, AddItemDialogFragment.AddItemDialogListener,
+        ItemMenuDialog.ItemMenuActionListener
 {
     private static final int TYPE_DAY_VIEW = 1;
     private static final int TYPE_THREE_DAY_VIEW = 2;
@@ -34,15 +40,17 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     private int mWeekViewType = TYPE_WEEK_VIEW;
     private final int LENGTH_SHORT = 1;
     private int mDayNameLength = LENGTH_SHORT;
+    private  AddItemDialogFragment mAddDialog;
     private final int LENGTH_LONG = 2;
     private WeekView mWeekView;
+    private Bundle mBundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
 
         View rootView = inflater.inflate(R.layout.fragment_week_navigation, container, false);
-
+        mBundle = new Bundle();
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
 
         // Show a toast message about the touched event.
@@ -65,7 +73,6 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
                 showAddItemDialog(time);
             }
         });
-
 
         //TODO : peut etre passer �a en anglais � voir
         mWeekView.setDateTimeInterpreter(new DateTimeInterpreter()
@@ -125,6 +132,11 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     @Override
     public void onEventLongPress(WeekViewEvent event, RectF eventRect)
     {
+        mBundle.clear();
+        mBundle.putSerializable("time", event.getStartTime());
+
+        Dialog dialogMenu = ItemMenuDialog.newInstance(getActivity(),this);
+        dialogMenu.show();
 
     }
 
@@ -139,13 +151,34 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     private void showAddItemDialog(Calendar time){
-        AddItemDialogFragment dialog = new AddItemDialogFragment().newInstance(this);
-        dialog.setTime(time);
-        dialog.show(getFragmentManager(),"Additem");
+        mAddDialog = new AddItemDialogFragment().newInstance(this);
+        mBundle.clear();
+        mBundle.putSerializable("time", time);
+        mAddDialog.setArguments(mBundle);
+        mAddDialog.show(getFragmentManager(), "Additem");
     }
 
     @Override
     public void validate() {
+        mBundle.clear();
+        mAddDialog.dismiss();
+    }
+
+    @Override
+    public void cancel() {
+        mBundle.clear();
+        mAddDialog.dismiss();
+    }
+
+    @Override
+    public void add() {
+        mAddDialog = new AddItemDialogFragment().newInstance(this);
+        mAddDialog.setArguments(mBundle);
+        mAddDialog.show(getFragmentManager(), "Additem");
+    }
+
+    @Override
+    public void delete() {
 
     }
 }

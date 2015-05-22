@@ -30,9 +30,16 @@
         <item>Delete</item>
     </string-array>
 
+    <!-- Dialog ItemOption -->
+    <string-array name="dialog_item_option_penu">
+        <item>Delete</item>
+        <item>Add</item>Z
+    </string-array>
+
     <!-- Detail -->
     <string name="label_desc">Description :</string>
     <string name="label_start_time">Start at :</string>
+    <string name="label_date">Date :</string>
     <string name="label_end_time">End at :</string>
     <string name="label_room">Location : </string>
     <string name="back">Back</string>

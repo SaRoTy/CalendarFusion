@@ -13,6 +13,7 @@ import com.saroty.ter.time.LocalTime;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
@@ -25,20 +26,22 @@ import hirondelle.date4j.DateTime;
  */
 public class ScheduleToEventsUtils extends WeekViewEvent {
 
-    private Course course;
-    private LocalTimeInterval inter;
+    private Course mCourse;
+    private LocalTimeInterval mInter;
+    private DateTime mTime;
 
     public ScheduleToEventsUtils(long id, String name, int startYear, int startMonth, int startDay, int startHour, int startMinute, int endYear, int endMonth, int endDay, int endHour, int endMinute){
         super(id, name,  startYear,  startMonth,  startDay,  startHour,  startMinute,  endYear,  endMonth,  endDay,  endHour,  endMinute);
     }
 
-    public void setDetails(Course course, LocalTimeInterval inter){
-        this.course = course;
-        this.inter = inter;
+    public void setDetails(Course course, LocalTimeInterval inter, DateTime time){
+        this.mCourse = course;
+        this.mInter = inter;
+        this.mTime = time;
     }
 
     public DetailCourseFragment goToDetail(){
-        return DetailCourseFragment.newInstance(inter,course);
+        return DetailCourseFragment.newInstance(mInter,mCourse,mTime);
     }
 
 
@@ -81,7 +84,7 @@ public class ScheduleToEventsUtils extends WeekViewEvent {
                        end.getMinute()
                );
 
-               ((ScheduleToEventsUtils)e).setDetails((Course)entry.getValue(),(LocalTimeInterval)entry.getKey());
+               ((ScheduleToEventsUtils)e).setDetails((Course)entry.getValue(),(LocalTimeInterval)entry.getKey(),date);
                e.setColor(((Course) entry.getValue()).getColor());
 
                events.add(e);

@@ -14,6 +14,8 @@ import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.time.LocalTimeInterval;
 
+import hirondelle.date4j.DateTime;
+
 /**
  * Created by Romain on 02/04/2015.
  */
@@ -22,6 +24,7 @@ public class DetailCourseFragment extends Fragment
 
     private static final String DESCRIBABLE_KEY_COURSE = "describable_key_course";
     private static final String DESCRIBABLE_KEY_INTERVAL = "describable_key_interval";
+    private static final String DESCRIBABLE_KEY_TIME = "describable_key_time";
 
     private Bundle mBundle;
 
@@ -30,17 +33,21 @@ public class DetailCourseFragment extends Fragment
     private TextView mRoomView;
     private TextView mDescriptionView;
     private TextView mCourseTitleView;
+    private TextView mDateView;
+    private DateTime mTime;
     private View mColorView;
 
     private LocalTimeInterval mInterval;
     private Course mCourse;
 
-    public static DetailCourseFragment newInstance(LocalTimeInterval interval, Course course)
+    public static DetailCourseFragment newInstance(LocalTimeInterval interval, Course course,
+                                                   DateTime time)
     {
         DetailCourseFragment fragment = new DetailCourseFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(DESCRIBABLE_KEY_INTERVAL, interval);
         bundle.putSerializable(DESCRIBABLE_KEY_COURSE, course);
+        bundle.putSerializable(DESCRIBABLE_KEY_TIME,time);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -55,7 +62,9 @@ public class DetailCourseFragment extends Fragment
 
         mCourse = (Course) mBundle.getSerializable(DESCRIBABLE_KEY_COURSE);
         mInterval = (LocalTimeInterval) mBundle.getSerializable(DESCRIBABLE_KEY_INTERVAL);
+        mTime = (DateTime)mBundle.getSerializable(DESCRIBABLE_KEY_TIME);
 
+        mDateView = (TextView)rootView.findViewById(R.id.text_date);
         mCourseTitleView = (TextView) rootView.findViewById(R.id.text_name);
         mTimeStartView = (TextView) rootView.findViewById(R.id.text_time_start);
         mTimeEndView = (TextView) rootView.findViewById(R.id.text_time_end);
@@ -63,6 +72,7 @@ public class DetailCourseFragment extends Fragment
         mDescriptionView = (TextView) rootView.findViewById(R.id.text_desc);
         mColorView = rootView.findViewById(R.id.course_color);
 
+        mDateView.setText(mTime.toString());
         mCourseTitleView.setText(mCourse.getTitle());
         mTimeStartView.setText(mInterval.getStart().toString());
         mTimeEndView.setText(mInterval.getEnd().toString());
