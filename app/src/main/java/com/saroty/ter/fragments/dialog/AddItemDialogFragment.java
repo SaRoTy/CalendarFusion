@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.saroty.ter.R;
 
 import java.util.Calendar;
+import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
 
@@ -92,6 +93,9 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
             if(b.containsKey("datetime")) {
                 datetime = (DateTime) b.get("datetime");
 
+                mMinute = myCalendar.get(Calendar.MINUTE);
+                mHour = myCalendar.get(Calendar.HOUR_OF_DAY);
+
                 mYear = datetime.getYear();
                 mMonth = datetime.getMonth();
                 mDay = datetime.getDay();
@@ -129,11 +133,6 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                /*int duration = Integer.parseInt(mDurationEditText.getText().toString());
-                Log.v("debug romain",mTitleEditText.getText().toString()+"");
-                Log.v("debug romain", duration+"");*/
-
                 okClickHandler();
             }
         });

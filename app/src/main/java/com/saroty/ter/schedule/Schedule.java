@@ -126,7 +126,15 @@ public class Schedule implements Serializable
 
     public int getEventCount()
     {
-        return mSchedule.size();
+        int size = 0;
+
+        for(Map.Entry<DateTime,TreeMap<LocalTimeInterval,List<Course>>> entry : mSchedule.entrySet()){
+            for(Map.Entry<LocalTimeInterval,List<Course>> entrymap : entry.getValue().entrySet()){
+                size = size + entrymap.getValue().size();
+            }
+        }
+
+        return size;
     }
 
     @Override

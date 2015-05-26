@@ -181,6 +181,10 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
                 Toast.LENGTH_LONG).show();
 
         mAddDialog.dismiss();
+
+        manager.notifyObservers();
+
+        myViewPagerAdapter.notifyDataSetChanged();
     }
 
     @Override

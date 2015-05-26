@@ -42,6 +42,11 @@ public class CoursesViewPagerAdapter extends FragmentStatePagerAdapter
         return 100;
     }
 
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
     //Empêche le call du super par défaut, sinon pas d'affichage
     @Override
     public void restoreState(Parcelable state, ClassLoader loader)
