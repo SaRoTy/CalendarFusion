@@ -23,6 +23,7 @@ import com.saroty.ter.schedule.ScheduleManager;
 import com.saroty.ter.time.LocalTime;
 import com.saroty.ter.time.LocalTimeInterval;
 
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.TimeZone;
 
@@ -106,6 +107,12 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
         {
 
             mAddDialog = AddItemDialogFragment.newInstance(this);
+            Bundle bundle = new Bundle();
+
+            bundle.putSerializable("datetime",mBaseDay.plusDays(mViewPager.getCurrentItem()));
+
+            mAddDialog.setArguments(bundle);
+
             mAddDialog.show(getFragmentManager(), "AddScheduleDialogFragment");
 
             return true;
@@ -170,7 +177,7 @@ public class DaysNavigationFragment extends NavigationFragment implements AddIte
         perso.addCourse(course,date,inter);
 
         Toast.makeText(getActivity().getApplicationContext(),
-                title + "ajouté",
+                title + " added",
                 Toast.LENGTH_LONG).show();
 
         mAddDialog.dismiss();

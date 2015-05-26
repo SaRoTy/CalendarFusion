@@ -77,15 +77,25 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
 
 
         if((b = getArguments()) != null){
-            Calendar time = (Calendar)b.get("time");
+            Calendar time;
+            DateTime datetime;
+            if(b.containsKey("time")){
+                time = (Calendar)b.get("time");
+                mMinute = time.get(Calendar.MINUTE);
+                mHour = time.get(Calendar.HOUR_OF_DAY);
 
-            mMinute = time.get(Calendar.MINUTE);
-            mHour = time.get(Calendar.HOUR_OF_DAY);
+                mYear = time.get(Calendar.YEAR);
+                mMonth = time.get(Calendar.MONTH);
+                mDay = time.get(Calendar.DAY_OF_MONTH);
+            }
 
-            mYear = time.get(Calendar.YEAR);
-            mMonth = time.get(Calendar.MONTH);
-            mDay = time.get(Calendar.DAY_OF_MONTH);
+            if(b.containsKey("datetime")) {
+                datetime = (DateTime) b.get("datetime");
 
+                mYear = datetime.getYear();
+                mMonth = datetime.getMonth();
+                mDay = datetime.getDay();
+            }
         }else{
             mYear = myCalendar.get(Calendar.YEAR);
             mMonth = myCalendar.get(Calendar.MONTH);

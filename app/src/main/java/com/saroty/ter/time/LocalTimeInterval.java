@@ -3,6 +3,7 @@ package com.saroty.ter.time;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * Created by Arthur on 10/03/2015.
@@ -27,6 +28,15 @@ public class LocalTimeInterval implements Comparable<LocalTimeInterval>, Seriali
     public LocalTime getEnd()
     {
         return end;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(!(o instanceof LocalTimeInterval)){
+            return false;
+        }
+        LocalTimeInterval inter = (LocalTimeInterval)o;
+        return (start == inter.getStart() && end == inter.getEnd());
     }
 
     @Override

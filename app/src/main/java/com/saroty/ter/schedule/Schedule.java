@@ -1,5 +1,7 @@
 package com.saroty.ter.schedule;
 
+import android.util.Log;
+
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
 import com.saroty.ter.schedule.filter.IScheduleFilter;
@@ -69,6 +71,7 @@ public class Schedule implements Serializable
                     c.getValue().get(interval).add(course);
                 else
                 {
+                    Log.v("debug romain","nouvelle liste");
                     List<Course> newList = new ArrayList<>();
                     newList.add(course);
                     c.getValue().put(interval, newList);
@@ -76,6 +79,8 @@ public class Schedule implements Serializable
                 return;
             }
         }
+
+        Log.v("debug romain","nouvelle treemap");
         TreeMap<LocalTimeInterval, List<Course>> newMap = new TreeMap<>();
         List<Course> newList = new ArrayList<>();
         newList.add(course);

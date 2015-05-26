@@ -52,7 +52,7 @@ public class ScheduleManager extends Observable
         List<Schedule> list = ((ScheduleGroup) mScheduleGroups.get(groupName)).getScheduleList();
 
         for(Iterator<Schedule> ite = list.iterator();ite.hasNext() && !trouve;){
-            if(((Schedule)ite.next()).getName() == scheduleName)
+            if(((Schedule)ite.next()).getName().equals(scheduleName))
                 trouve = true;
         }
 
