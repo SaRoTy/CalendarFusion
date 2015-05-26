@@ -1,40 +1,43 @@
 package com.saroty.ter.fragments.dialog;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.saroty.ter.R;
-import com.saroty.ter.fragments.navigation.day.DaysNavigationFragment;
 
 import java.util.Calendar;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Romain on 19/05/2015.
  */
 public class AddItemDialogFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener,
         DatePickerDialog.OnDateSetListener{
-
-    private EditText hour;
-    private EditText date;
+    private EditText mTitleEditText;
+    private EditText mLocationEditText;
+    private EditText mDurationEditText;
+    private EditText mHourEditText;
+    private EditText mDateEditText;
+    private int mHour;
+    private int mMinute;
+    private int mYear;
+    private int mMonth;
+    private int mDay;
     private Calendar myCalendar;
 
     public static AddItemDialogFragment newInstance(AddItemDialogListener listener){
@@ -55,32 +58,48 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
 
         myCalendar = Calendar.getInstance();
 
-        hour = (EditText)view.findViewById(R.id.item_hour);
+        mTitleEditText = (EditText)view.findViewById(R.id.item_name);
 
-        date = (EditText)view.findViewById(R.id.item_date);
+        mLocationEditText = (EditText)view.findViewById(R.id.item_location);
+
+        mDurationEditText = (EditText)view.findViewById(R.id.item_duration);
+
+        mHourEditText = (EditText)view.findViewById(R.id.item_hour);
+
+        mDateEditText = (EditText)view.findViewById(R.id.item_date);
 
         Button okButton = (Button)view.findViewById(R.id.ok_button);
         Button cancelButton = (Button)view.findViewById(R.id.cancel_button);
 
-        date.setFocusable(false);
+        mDateEditText.setFocusable(false);
 
-        hour.setFocusable(false);
+        mHourEditText.setFocusable(false);
 
 
         if((b = getArguments()) != null){
             Calendar time = (Calendar)b.get("time");
-            hour.setText(String.format("%02d:%02d", time.get(Calendar.HOUR_OF_DAY),
-                    time.get(Calendar.MINUTE)));
 
-            date.setText(String.format("%d/%02d/%02d", time.get(Calendar.YEAR),
-                    time.get(Calendar.MONTH),time.get(Calendar.DAY_OF_MONTH)));
+            mMinute = time.get(Calendar.MINUTE);
+            mHour = time.get(Calendar.HOUR_OF_DAY);
+
+            mYear = time.get(Calendar.YEAR);
+            mMonth = time.get(Calendar.MONTH);
+            mDay = time.get(Calendar.DAY_OF_MONTH);
+
+        }else{
+            mYear = myCalendar.get(Calendar.YEAR);
+            mMonth = myCalendar.get(Calendar.MONTH);
+            mDay = myCalendar.get(Calendar.DAY_OF_MONTH);
         }
 
-        hour.setOnTouchListener(new View.OnTouchListener() {
+        mHourEditText.setText(String.format("%02d:%02d", mHour,mMinute));
+        mDateEditText.setText(String.format("%d/%02d/%02d",mYear,mMonth,mDay ));
+
+        mHourEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if (v == hour && event.getAction() == MotionEvent.ACTION_UP)
+                if (v == mHourEditText && event.getAction() == MotionEvent.ACTION_UP)
                     showTimeDialog();
                 return false;
 
@@ -88,10 +107,10 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
             }
         });
 
-        date.setOnTouchListener(new View.OnTouchListener() {
+        mDateEditText.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if (v == date && event.getAction() == MotionEvent.ACTION_UP)
+                if (v == mDateEditText && event.getAction() == MotionEvent.ACTION_UP)
                     showDateDialog();
                 return false;
             }
@@ -100,7 +119,12 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
         okButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((AddItemDialogListener)getTargetFragment()).validate();
+
+                /*int duration = Integer.parseInt(mDurationEditText.getText().toString());
+                Log.v("debug romain",mTitleEditText.getText().toString()+"");
+                Log.v("debug romain", duration+"");*/
+
+                okClickHandler();
             }
         });
 
@@ -111,23 +135,72 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
             }
         });
 
-        date.setText(myCalendar.get(Calendar.YEAR) + "/"
-                + String.format("%02d/%02d",
-                myCalendar.get(Calendar.MONTH),
-                myCalendar.get(Calendar.DAY_OF_MONTH)));
-
         return view;
     }
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        hour.setText(String.format("%02d:%02d", hourOfDay, minute));
+        mHour = hourOfDay;
+        mMinute = minute;
+        mHourEditText.setText(String.format("%02d:%02d", hourOfDay, minute));
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        //TODO stocker la date dans un date time
-        date.setText(year + "/" + String.format("%02d/%02d", monthOfYear, dayOfMonth));
+        mDateEditText.setText(String.format("%d/%02d/%02d", year, monthOfYear, dayOfMonth));
+        mYear = year;
+        mMonth = monthOfYear;
+        mDay = dayOfMonth;
+    }
+
+    public void okClickHandler(){
+        if(mTitleEditText.getText().toString().equals("")){
+            mTitleEditText.requestFocus();
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Title empty",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(mDurationEditText.getText().toString().equals("")){
+            mDurationEditText.requestFocus();
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Duration empty",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(mLocationEditText.getText().toString().equals("")){
+            mLocationEditText.requestFocus();
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Location empty",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(mHourEditText.getText().toString().equals("")){
+            mHourEditText.requestFocus();
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Hour empty",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if(mDateEditText.getText().toString().equals("")){
+            mDateEditText.requestFocus();
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Date empty",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        ((AddItemDialogListener)getTargetFragment()).
+                validate(mTitleEditText.getText().toString(),
+                        mLocationEditText.getText().toString(),
+                        Integer.parseInt(mDurationEditText.getText().toString()),
+                        mHour,
+                        mMinute,
+                        DateTime.forDateOnly(mYear, mMonth, mDay));
     }
 
     private void showTimeDialog(){
@@ -145,7 +218,8 @@ public class AddItemDialogFragment extends DialogFragment implements TimePickerD
     }
 
     public interface AddItemDialogListener{
-        public void validate();
+        public void validate(String title, String location, int duration, int hour,
+                             int minute, DateTime date);
 
         public void cancel();
     }

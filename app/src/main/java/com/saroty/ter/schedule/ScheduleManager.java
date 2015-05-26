@@ -41,6 +41,25 @@ public class ScheduleManager extends Observable
         return INSTANCE;
     }
 
+    public String getDEFAULT_GROUP_NAME(){ return DEFAULT_GROUP_NAME;}
+
+    public boolean containSchedule(String groupName, String scheduleName){
+        if(!mScheduleGroups.containsKey(groupName))
+            return false;
+
+        boolean trouve = false;
+
+        List<Schedule> list = ((ScheduleGroup) mScheduleGroups.get(groupName)).getScheduleList();
+
+        for(Iterator<Schedule> ite = list.iterator();ite.hasNext() && !trouve;){
+            if(((Schedule)ite.next()).getName() == scheduleName)
+                trouve = true;
+        }
+
+        return trouve;
+
+    }
+
     public void deleteSchedule(UUID scheduleUUID)
     {
         for (ScheduleGroup group : mScheduleGroups.values())

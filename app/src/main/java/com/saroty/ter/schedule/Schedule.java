@@ -34,6 +34,13 @@ public class Schedule implements Serializable
 
     private TreeMap<DateTime, TreeMap<LocalTimeInterval, List<Course>>> mSchedule;
 
+    public Schedule(){
+        mUUID = UUID.randomUUID();
+        mSchedule = new TreeMap<>();
+        mLastUpdate = DateTime.now(TimeZone.getDefault());
+        mBaseUrl = null;
+    }
+
     public Schedule(URL baseUrl)
     {
         mBaseUrl = baseUrl;

@@ -125,7 +125,8 @@ public class CourseListFragment extends Fragment implements ItemMenuActionListen
     }
 
     @Override
-    public void validate() {
+    public void validate(String title, String location, int duration, int hour,
+                         int minute, DateTime date) {
         mAddDialog.dismiss();
     }
 

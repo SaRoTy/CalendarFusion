@@ -27,6 +27,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import hirondelle.date4j.DateTime;
+
 /**
  * Created by Romain on 09/05/2015.
  */
@@ -159,7 +161,8 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     }
 
     @Override
-    public void validate() {
+    public void validate(String title, String location, int duration, int hour,
+                         int minute, DateTime date) {
         mBundle.clear();
         mAddDialog.dismiss();
     }

@@ -136,4 +136,6 @@ public class MainActivity extends ActionBarActivity
         } else
             return mNavigationFragments[mNavigationPosition].onOptionsItemSelected(item);
     }
+
+    public ScheduleManager getScheduleManager(){ return mScheduleManager;}
 }
