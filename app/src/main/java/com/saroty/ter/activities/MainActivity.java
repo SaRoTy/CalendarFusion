@@ -71,7 +71,13 @@ public class MainActivity extends ActionBarActivity
         ((NavigationRowAdapter) mNavigationListView.getAdapter()).setSelectedElement(position);
         mDrawerLayout.closeDrawers();
 
-        setCurrentFragment(mNavigationFragments[position], false);
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                setCurrentFragment(mNavigationFragments[mNavigationPosition], false);
+            }
+        });
+
         invalidateOptionsMenu();
     }
 
