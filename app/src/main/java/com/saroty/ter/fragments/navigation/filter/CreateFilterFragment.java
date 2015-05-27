@@ -5,9 +5,14 @@ import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.util.SparseBooleanArray;
+import android.view.ActionMode;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -18,6 +23,7 @@ import com.saroty.ter.models.list.ManagerCourseRowModel;
 import com.saroty.ter.schedule.Course;
 import com.saroty.ter.schedule.Schedule;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -44,9 +50,12 @@ public class CreateFilterFragment extends Fragment {
 
 
         Set<ManagerCourseRowModel> set = mSchedule.getSetEvent();
-        ManagerCourseRowModel[] tab = set.toArray(new ManagerCourseRowModel[set.size()]);
+
+        List<ManagerCourseRowModel> tab = new ArrayList<>(set);
 
         mAdapter = new ListCourseRowAdapter(getActivity(),tab);
+
+        mList.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
 
         mList.setAdapter(mAdapter);
 

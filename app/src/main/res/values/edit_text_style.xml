@@ -6,7 +6,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:background">@drawable/textlines</item>
         <item name="android:cursorVisible">true</item>
-        <item name="android:padding">20dp</item>
+        <item name="android:padding">10dp</item>
         <item name="android:layout_margin">5dp</item>
     </style>
 </resources>

@@ -6,6 +6,7 @@ import android.content.ClipData;
 import android.content.DialogInterface;
 import android.graphics.RectF;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,10 +23,12 @@ import com.saroty.ter.fragments.navigation.NavigationFragment;
 import com.saroty.ter.fragments.navigation.courses.DetailCourseFragment;
 import com.saroty.ter.utils.ScheduleToEventsUtils;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.TimeZone;
 
 import hirondelle.date4j.DateTime;
 
@@ -55,7 +58,6 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
         mBundle = new Bundle();
         mWeekView = (WeekView) rootView.findViewById(R.id.weekView);
 
-        // Show a toast message about the touched event.
         mWeekView.setOnEventClickListener(this);
 
         // The week view has infinite scrolling horizontally. We have to provide the events of a
@@ -67,11 +69,18 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
 
         mWeekView.goToHour(6);
 
-        mWeekView.setEmptyViewClickListener(new WeekView.EmptyViewClickListener()
-        {
+        DateTime date = DateTime.now(TimeZone.getDefault());
+        date = date.minusDays(date.getWeekDay()-2);
+
+        Log.v("debug romain",date.toString());
+        Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+        calendar.setTimeInMillis(date.getMilliseconds(TimeZone.getDefault()));
+
+        mWeekView.goToDate(calendar);
+
+        mWeekView.setEmptyViewClickListener(new WeekView.EmptyViewClickListener() {
             @Override
-            public void onEmptyViewClicked(Calendar time)
-            {
+            public void onEmptyViewClicked(Calendar time) {
                 showAddItemDialog(time);
             }
         });
@@ -145,7 +154,7 @@ public class WeekNavigationFragment extends NavigationFragment implements WeekVi
     @Override
     public List<WeekViewEvent> onMonthChange(int newYear, int newMonth)
     {
-        List<WeekViewEvent> events = new ArrayList<WeekViewEvent>();
+        List<WeekViewEvent> events;
 
         events = ScheduleToEventsUtils.getEvents(newMonth, newYear);
 

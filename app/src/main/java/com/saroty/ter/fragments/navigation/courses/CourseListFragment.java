@@ -73,14 +73,18 @@ public class CourseListFragment extends Fragment implements ItemMenuActionListen
         this.mList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Calendar calendar = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
+                Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
                 calendar.setTimeInMillis(mDay.getMilliseconds(TimeZone.getDefault()));
+                calendar.set(Calendar.HOUR_OF_DAY,
+                        mAdapter.getModel()[position].getInterval().getStart().getHour());
+                calendar.set(Calendar.MINUTE,
+                        mAdapter.getModel()[position].getInterval().getStart().getMinute());
 
                 mBundle.putSerializable("time", calendar);
 
                 showItemOptionMenu();
 
-                return false;
+                return true;
             }
         });
 

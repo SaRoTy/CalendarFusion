@@ -3,16 +3,21 @@ package com.saroty.ter.fragments.dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Toast;
 
 import com.saroty.ter.R;
 import com.saroty.ter.fragments.navigation.home.HomeNavigationFragment;
 
 import java.util.Calendar;
+import java.util.TimeZone;
+
+import hirondelle.date4j.DateTime;
 
 /**
  * Created by Romain on 18/05/2015.
@@ -62,15 +67,22 @@ public class CalendarDialogFragment extends DialogFragment {
 
     private void okButtonClicked(View v)
     {
-        Calendar cal = Calendar.getInstance();
+        DateTime date = DateTime.now(TimeZone.getDefault());
+        DateTime comp = DateTime.forInstant(mCalendar.getDate(),TimeZone.getDefault());
 
-        cal.setTimeInMillis(mCalendar.getDate());
+        if(  comp.getMilliseconds(TimeZone.getDefault()) <=
+                date.minusDays(1).getMilliseconds(TimeZone.getDefault())  ){
+            Toast.makeText(getActivity().getApplicationContext(),
+                    "Error can't choose a day before today",
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
 
         mBundle = new Bundle();
 
-        mBundle.putInt("year", cal.get(Calendar.YEAR));
-        mBundle.putInt("month", cal.get(Calendar.MONTH) + 1);
-        mBundle.putInt("dayOfMonth", cal.get(Calendar.DAY_OF_MONTH));
+        mBundle.putInt("year", comp.getYear());
+        mBundle.putInt("month", comp.getMonth());
+        mBundle.putInt("dayOfMonth",comp.getDay());
 
         ((HomeNavigationFragment)getTargetFragment()).onButtonOkClick();
 

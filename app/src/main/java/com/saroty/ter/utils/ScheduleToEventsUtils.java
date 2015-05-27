@@ -37,7 +37,7 @@ public class ScheduleToEventsUtils extends WeekViewEvent {
         List<WeekViewEvent> events = new ArrayList<>();
         DateTime date = DateTime.forDateOnly(_year, _month, 1);
         Integer id = 0;
-        WeekViewEvent e;
+        ScheduleToEventsUtils e;
         LocalTime start;
         LocalTime end;
         int month;
@@ -69,7 +69,7 @@ public class ScheduleToEventsUtils extends WeekViewEvent {
                             end.getMinute()
                     );
 
-                    ((ScheduleToEventsUtils) e).setDetails(c, entry.getKey(), date);
+                    e.setDetails(c, entry.getKey(), date);
                     e.setColor(c.getColor());
 
                     events.add(e);

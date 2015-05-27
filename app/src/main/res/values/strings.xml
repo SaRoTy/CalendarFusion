@@ -62,6 +62,7 @@
     <!--Filter-->
     <string name="title_create_tab">Create filter</string>
     <string name="title_manage_tab">Manage filter</string>
+    <string name="create_button">Save</string>
 
     <!-- Buttons -->
     <string name="ok_button">Ok</string>
