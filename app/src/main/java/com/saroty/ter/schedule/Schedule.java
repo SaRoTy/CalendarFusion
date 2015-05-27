@@ -4,14 +4,17 @@ import android.util.Log;
 
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.models.list.ManagerCourseRowModel;
 import com.saroty.ter.schedule.filter.IScheduleFilter;
 import com.saroty.ter.time.LocalTimeInterval;
 
 import java.io.Serializable;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.TreeMap;
 import java.util.UUID;
@@ -135,6 +138,20 @@ public class Schedule implements Serializable
         }
 
         return size;
+    }
+
+    public Set<ManagerCourseRowModel> getSetEvent(){
+        Set<ManagerCourseRowModel> set = new HashSet<>();
+
+        for(Map.Entry<DateTime,TreeMap<LocalTimeInterval,List<Course>>> entry : mSchedule.entrySet()){
+            for(Map.Entry<LocalTimeInterval,List<Course>> entrymap : entry.getValue().entrySet()){
+                for(Course course : entrymap.getValue()){
+                    set.add(new ManagerCourseRowModel(course.getTitle(),course.getColor()));
+                }
+            }
+        }
+
+        return set;
     }
 
     @Override

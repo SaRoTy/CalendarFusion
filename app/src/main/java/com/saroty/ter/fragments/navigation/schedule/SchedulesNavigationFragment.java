@@ -1,20 +1,26 @@
 package com.saroty.ter.fragments.navigation.schedule;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
+import android.widget.Toast;
 
 import com.idunnololz.widgets.AnimatedExpandableListView;
 import com.saroty.ter.R;
 import com.saroty.ter.ScheduleApplication;
+import com.saroty.ter.activities.MainActivity;
 import com.saroty.ter.adapters.ScheduleGroupAdapter;
 import com.saroty.ter.fragments.dialog.AddScheduleDialogFragment;
 import com.saroty.ter.fragments.navigation.NavigationFragment;
+import com.saroty.ter.fragments.navigation.setting.ScheduleManagementFragment;
 import com.saroty.ter.schedule.Schedule;
 import com.saroty.ter.schedule.ScheduleGroup;
 import com.saroty.ter.schedule.ScheduleManager;
@@ -22,6 +28,7 @@ import com.saroty.ter.schedule.ScheduleManager;
 public class SchedulesNavigationFragment extends NavigationFragment implements AddScheduleDialogFragment.AddScheduleDialogListener
 {
     private AnimatedExpandableListView mListView;
+    private ScheduleGroupAdapter mAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -33,6 +40,18 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
 
         refreshList();
 
+        mListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                Fragment f = new ScheduleManagementFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("schedule",(Schedule)mAdapter.getChild(groupPosition,childPosition));
+                f.setArguments(bundle);
+                ((MainActivity) getActivity()).setCurrentFragment(f, true);
+                return false;
+            }
+        });
+
         return rootView;
     }
 
@@ -42,10 +61,10 @@ public class SchedulesNavigationFragment extends NavigationFragment implements A
 
         ScheduleGroup[] groups = ScheduleManager.getInstance().getGroups();
 
-        ScheduleGroupAdapter adapter = new ScheduleGroupAdapter(getActivity(), groups);
+         mAdapter = new ScheduleGroupAdapter(getActivity(), groups);
 
-        mListView.setAdapter(adapter);
-        int count = adapter.getGroupCount();
+        mListView.setAdapter(mAdapter);
+        int count = mAdapter.getGroupCount();
 
         for (int i = 0; i < count; i++)
             if (groups[i].isEnabled())
