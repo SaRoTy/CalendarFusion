@@ -1,54 +1,15 @@
-### Format des fichiers de configs
-#### Concepts :
-+ Blacklist
-+ Expression régulières (On laisseras le choix sur le logiciel / site)
-+ XML
-+ ...
+# Calendar Fusion
 
-#### Exemple possible (XML) :
+## About
 
-```xml
-<srtcal>
-	<title>Master RO</title>
-	
-	<schedules>
-		<schedule type="celcat" url="http://...">
-			<blacklist>
-				<item type="regexp"><![[CDATA Programmation *$ ]]></item>
-				<item type="text"><![[CDATA Coman etr 1 pro ss lol pr shoutix ]]></item>
-			</blacklist>
-		</schedule>
-		<schedule type="adeweb" url="http://....">
-			<properties>
-				<!-- On vas surement en need dans quelques cas -->
-			</properties>
-			<blacklist>
-			</blacklist>
-		</schedule>
-	</schedules>
-</srtcal>
-```
+CalendarFusion is an Android app that aims to provide students a way to merge multiple event sources/calendar in one place. 
 
-Et vu qu'il veux des "Super groupes" :
+## Supported format
 
-```xml
-<calgroup>
-	<srtcal>
-		<title>Master SWEGG</title>
-		
-		...
-	</srtcal>
-	<srtcal>
-		<title>Master LEL</title>
-		
-		...
-	</srtcal>
-	...
-</calgroup>
-```
+You can add a new supported calendar format by implementing `com.saroty.ter.converters.IConverter`.
 
-### Liste des liens importants 
-[Efficient UI](https://www.youtube.com/watch?v=N6YdwzAvwOA), plutôt interessant et utile.  
-[GWT-RCP](https://docs.google.com/document/d/1eG0YocsYYbNAtivkLtcaiEE5IOF5u4LUol8-LL0TIKU/edit) : Protocol pour ade web
+* (Celcat)[http://www.celcat.com/] - A proprietary timetable solution that we reverse-engineered
+* (iCalendar)[https://en.wikipedia.org/wiki/ICalendar] - An open format for calendars
 
-### TODO :
+## Demo
+
